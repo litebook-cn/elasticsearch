@@ -1,0 +1,532 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>分析 · ElasticSearch 7 教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="modules.html" />
+    
+    
+    <link rel="prev" href="mapping.html" />
+    
+
+    
+        <link rel="shortcut icon" href='favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic-concepts.html">
+            
+                <a href="basic-concepts.html">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="populate.html">
+            
+                <a href="populate.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="conventions.html">
+            
+                <a href="conventions.html">
+            
+                    
+                    API约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="document-apis.html">
+            
+                <a href="document-apis.html">
+            
+                    
+                    文档API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="search-apis.html">
+            
+                <a href="search-apis.html">
+            
+                    
+                    搜索API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="aggregations.html">
+            
+                <a href="aggregations.html">
+            
+                    
+                    聚合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="index-api.html">
+            
+                <a href="index-api.html">
+            
+                    
+                    索引API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="cluster-api.html">
+            
+                <a href="cluster-api.html">
+            
+                    
+                    集群API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="query-dsl.html">
+            
+                <a href="query-dsl.html">
+            
+                    
+                    DSL查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="mapping.html">
+            
+                <a href="mapping.html">
+            
+                    
+                    映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13" data-path="analysis.html">
+            
+                <a href="analysis.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x5206;&#x6790;"><b></b>&#x5206;&#x6790;</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x5206;&#x6790;"><a name="&#x5206;&#x6790;" class="anchor-navigation-ex-anchor" href="#&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5206;&#x6790;" class="plugin-anchor" href="#&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5206;&#x6790;</h2>
+<p> &#x5F53;&#x5728;&#x641C;&#x7D22;&#x64CD;&#x4F5C;&#x671F;&#x95F4;&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x5206;&#x6790;&#x6A21;&#x5757;&#x5206;&#x6790;&#x4EFB;&#x4F55;&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x5185;&#x5BB9;.&#x8BE5;&#x6A21;&#x5757;&#x7531;analyzer, tokenizer, tokenfilters&#x548C;charfilters&#x7EC4;&#x6210;.&#x5982;&#x679C;&#x672A;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5185;&#x7F6E;analyzers, token, filters&#x548C;tokenizers&#x5C06;&#x5728;&#x5206;&#x6790;&#x6A21;&#x5757;&#x4E2D;&#x6CE8;&#x518C;.&#x4F8B;&#x5982;.</p>
+<pre><code>POST /pictures
+{
+   &quot;settings&quot;: {
+      &quot;analysis&quot;: {
+         &quot;analyzer&quot;: {
+            &quot;index_analyzer&quot;: {
+               &quot;tokenizer&quot;: &quot;standard&quot;, &quot;filter&quot;: [
+                  &quot;standard&quot;, &quot;my_delimiter&quot;, &quot;lowercase&quot;, &quot;stop&quot;, 
+                     &quot;asciifolding&quot;, &quot;porter_stem&quot;
+               ]
+            },
+            &quot;search_analyzer&quot;: {
+               &quot;tokenizer&quot;: &quot;standard&quot;, &quot;filter&quot;: [
+                  &quot;standard&quot;, &quot;lowercase&quot;, &quot;stop&quot;, &quot;asciifolding&quot;, &quot;porter_stem&quot;
+               ]
+            }
+         },
+         &quot;filter&quot;: {
+            &quot;my_delimiter&quot;: {
+               &quot;type&quot;: &quot;word_delimiter&quot;,
+               &quot;generate_word_parts&quot;: true,
+               &quot;catenate_words&quot;: true,
+               &quot;catenate_numbers&quot;: true,
+               &quot;catenate_all&quot;: true,
+               &quot;split_on_case_change&quot;: true,
+               &quot;preserve_original&quot;: true,
+               &quot;split_on_numerics&quot;: true,
+               &quot;stem_english_possessive&quot;: true
+            }
+         }
+      }
+   }
+}
+</code></pre><p><strong>&#x5206;&#x6790;&#x5668;</strong></p>
+<p> &#x5206;&#x6790;&#x5668;&#x7531;tokenizer&#x548C;&#x53EF;&#x9009;&#x7684;token filter&#x7EC4;&#x6210;.&#x8FD9;&#x4E9B;&#x5206;&#x6790;&#x5668;&#x4EE5;&#x903B;&#x8F91;&#x540D;&#x79F0;&#x6CE8;&#x518C;&#x5728;&#x5206;&#x6790;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x903B;&#x8F91;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x5728;&#x6620;&#x5C04;&#x5B9A;&#x4E49;&#x4E2D;&#x5F15;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E9B;API&#x4E2D;&#x5F15;&#x7528;.&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x9ED8;&#x8BA4;&#x5206;&#x6790;&#x4EEA;</p>
+<p> 1.Standard analyzer (standard)&#xFF1A;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x5206;&#x6790;&#x5668;&#x8BBE;&#x7F6E;stopwords&#x548C;max_token_length&#x8BBE;&#x7F6E;.&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;stopwords&#x5217;&#x8868;&#x4E3A;&#x7A7A;&#xFF0C;&#x6700;&#x5927;&#x4EE4;&#x724C;&#x957F;&#x5EA6;&#x4E3A;255.</p>
+<p> 2.Simple analyzer (simple)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7531;&#x5C0F;&#x5199;&#x6807;&#x8BB0;&#x5668;&#x7EC4;&#x6210;.</p>
+<p> 3.Whitespace analyzer (whitespace)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7531;&#x7A7A;&#x767D;&#x6807;&#x8BB0;&#x5668;&#x7EC4;&#x6210;.</p>
+<p> 4.Stop analyzer (stop)&#xFF1A;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;stopwords&#x548C;stopwords_path.&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;stopwords&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x82F1;&#x6587;stopwords&#xFF0C;stopwords_path&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5305;&#x542B;stop words&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;.</p>
+<p> 5.Keyword analyzer (keyword)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x5C06;&#x6574;&#x4E2A;&#x6D41;&#x6807;&#x8BB0;&#x4E3A;&#x5355;&#x4E2A;&#x6807;&#x8BB0;.&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x90AE;&#x653F;&#x7F16;&#x7801;.</p>
+<p> 6.Pattern analyzer (pattern)&#xFF1A;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x4E3B;&#x8981;&#x5904;&#x7406;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;.&#x50CF;&#x5C0F;&#x5199;&#x3001;&#x6A21;&#x5F0F;&#x3001;&#x6807;&#x5FD7;&#x3001;&#x505C;&#x6B62;&#x5B57;&#x8FD9;&#x6837;&#x7684;&#x8BBE;&#x7F6E;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;.</p>
+<p> 7.Language analyzer&#xFF1A;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x5904;&#x7406;&#x5370;&#x5730;&#x8BED;&#x3001;&#x963F;&#x62C9;&#x4F2F;&#x8BED;&#x3001;&#x7BA1;&#x9053;&#x8BED;&#x7B49;&#x8BED;&#x8A00;.</p>
+<p> 8.Snowball analyzer (snowball)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x4EE4;&#x724C;&#x5316;&#x5668;&#xFF0C;&#x5E26;&#x6709;&#x6807;&#x51C6;&#x8FC7;&#x6EE4;&#x5668;&#x3001;&#x5C0F;&#x5199;&#x8FC7;&#x6EE4;&#x5668;&#x3001;&#x505C;&#x6B62;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x96EA;&#x7403;&#x8FC7;&#x6EE4;&#x5668;.</p>
+<p> 9.Custom analyzer (custom)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x5E26;&#x6709;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x7684;&#x5B9A;&#x5236;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x5E26;&#x6709;&#x53EF;&#x9009;&#x7684;&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x8BA1;&#x8D39;&#x8FC7;&#x6EE4;&#x5668;.&#x53EF;&#x4EE5;&#x5728;&#x6B64;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x914D;&#x7F6E;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x3001;&#x8FC7;&#x6EE4;&#x5668;&#x3001;char_filter&#x548C;position_increment_gap&#x7B49;&#x8BBE;&#x7F6E;.</p>
+<p><strong>&#x4EE4;&#x724C;&#x5316;&#x5668;</strong></p>
+<p> &#x4EE4;&#x724C;&#x5316;&#x5668;&#x7528;&#x4E8E;&#x4ECE;ElasticSearch&#x4E2D;&#x7684;&#x6587;&#x672C;&#x751F;&#x6210;&#x4EE4;&#x724C;.&#x901A;&#x8FC7;&#x8003;&#x8651;&#x7A7A;&#x683C;&#x6216;&#x5176;&#x4ED6;&#x6807;&#x70B9;&#x7B26;&#x53F7;&#xFF0C;&#x6587;&#x672C;&#x53EF;&#x4EE5;&#x88AB;&#x5206;&#x89E3;&#x6210;&#x8BB0;&#x53F7;.ElasticSearch&#x6709;&#x5F88;&#x591A;&#x5185;&#x7F6E;&#x7684;&#x6807;&#x8BB0;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x4F7F;&#x7528;.</p>
+<p> 1.Standard tokenizer (standard)&#xFF1A;&#x57FA;&#x4E8E;&#x8BED;&#x6CD5;&#x7684;&#x4EE4;&#x724C;&#x5316;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x914D;&#x7F6E;max_token_length.</p>
+<p> 2.Edge NGram tokenizer (edgeNGram)&#xFF1A;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;min_gram&#x3001;max_gram&#x3001;token_chars&#x7B49;&#x8BBE;&#x7F6E;.</p>
+<p> 3.Keyword tokenizer (keyword)&#xFF1A;&#x751F;&#x6210;&#x6574;&#x4E2A;&#x8F93;&#x5165;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x8BBE;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;.</p>
+<p> 4.Letter tokenizer (letter)&#xFF1A;&#x6355;&#x83B7;&#x6574;&#x4E2A;&#x5355;&#x8BCD;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x975E;&#x5B57;&#x6BCD;.</p>
+<p> 5.Lowercase tokenizer (lowercase)&#xFF1A;&#x4E0E;Letter tokenizer&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x521B;&#x5EFA;&#x4EE4;&#x724C;&#x540E;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x5176;&#x66F4;&#x6539;&#x4E3A;&#x5C0F;&#x5199;.</p>
+<p> 6.NGram Tokenizer (nGram)&#xFF1A;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;min_gram(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;1)&#x3001;max_gram(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;2)&#x548C;token_chars&#x7B49;&#x8BBE;&#x7F6E;.</p>
+<p> 7.Whitespace tokenizer (whitespace)&#xFF1A;&#x6839;&#x636E;&#x7A7A;&#x767D;&#x5206;&#x9694;&#x6587;&#x672C;.</p>
+<p> 8.Pattern tokenizer (pattern)&#xFF1A;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4F5C;&#x4E3A;&#x4EE4;&#x724C;&#x5206;&#x9694;&#x7B26;.&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;&#x6A21;&#x5F0F;&#x3001;&#x6807;&#x5FD7;&#x548C;&#x7EC4;&#x8BBE;&#x7F6E;.</p>
+<p> 9.UAX Email URL Tokenizer (uax_url_email)&#xFF1A;&#x4E0E;lie&#x6807;&#x51C6;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x5B83;&#x5C06;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x548C;&#x7F51;&#x5740;&#x89C6;&#x4E3A;&#x5355;&#x4E00;&#x4EE4;&#x724C;.</p>
+<p> 10.Path hierarchy tokenizer (path_hierarchy)&#xFF1A;&#x8BE5;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x751F;&#x6210;&#x8F93;&#x5165;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;&#x4E2D;&#x5B58;&#x5728;&#x7684;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x8DEF;&#x5F84;.&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x53EF;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&#x6709;&#x5206;&#x9694;&#x7B26;(&#x9ED8;&#x8BA4;&#x4E3A;/)&#x3001;&#x66FF;&#x6362;&#x3001;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;&#x4E3A;1024)&#x3001;&#x53CD;&#x8F6C;(&#x9ED8;&#x8BA4;&#x4E3A;false)&#x548C;&#x8DF3;&#x8FC7;(&#x9ED8;&#x8BA4;&#x4E3A;0).</p>
+<p> 11.Classic tokenizer (classic)&#xFF1A;&#x5728;&#x57FA;&#x4E8E;&#x8BED;&#x6CD5;&#x7684;&#x6807;&#x8BB0;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5DE5;&#x4F5C;&#x7684;.&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;max_token_length.</p>
+<p> 12.Thai tokenizer (thai)&#xFF1A;&#x8BE5;&#x6807;&#x8BB0;&#x5668;&#x7528;&#x4E8E;&#x6CF0;&#x8BED;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x7684;&#x6CF0;&#x8BED;&#x5206;&#x6BB5;&#x7B97;&#x6CD5;.</p>
+<p><strong>&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;</strong></p>
+<p> &#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;&#x4ECE;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x63A5;&#x6536;&#x8F93;&#x5165;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E9B;&#x8FC7;&#x6EE4;&#x5668;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x6216;&#x6DFB;&#x52A0;&#x8F93;&#x5165;&#x4E2D;&#x7684;&#x6587;&#x672C;.ElasticSearch&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x5185;&#x7F6E;&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;.&#x5176;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x5DF2;&#x7ECF;&#x5728;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x89E3;&#x91CA;&#x8FC7;&#x4E86;.</p>
+<p><strong>&#x5B57;&#x7B26;&#x8FC7;&#x6EE4;&#x5668;</strong></p>
+<p> &#x8FD9;&#x4E9B;&#x8FC7;&#x6EE4;&#x5668;&#x5728;&#x6807;&#x8BB0;&#x5668;&#x4E4B;&#x524D;&#x5904;&#x7406;&#x6587;&#x672C;.&#x5B57;&#x7B26;&#x8FC7;&#x6EE4;&#x5668;&#x67E5;&#x627E;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x6216;html&#x6807;&#x8BB0;&#x6216;&#x6307;&#x5B9A;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x8981;&#x4E48;&#x5220;&#x9664;&#x5B83;&#x4EEC;&#xFF0C;&#x8981;&#x4E48;&#x5C06;&#x5176;&#x66F4;&#x6539;&#x4E3A;&#x9002;&#x5F53;&#x7684;&#x5355;&#x8BCD;&#xFF0C;&#x5982;&#x201C;&amp;&#x201D;&#x548C;&#x201C;&#x5220;&#x9664;html&#x6807;&#x8BB0;&#x201D;.&#x4EE5;&#x4E0B;&#x662F;&#x540C;&#x4E49;&#x8BCD;. txt&#x4E2D;&#x6307;&#x5B9A;&#x4E86;&#x540C;&#x4E49;&#x8BCD;&#x7684;&#x5206;&#x6790;&#x5668;&#x793A;&#x4F8B;</p>
+<pre><code>{
+   &quot;settings&quot;:{
+      &quot;index&quot;:{
+         &quot;analysis&quot;:{
+            &quot;analyzer&quot;:{
+               &quot;synonym&quot;:{
+                  &quot;tokenizer&quot;:&quot;whitespace&quot;, &quot;filter&quot;:[&quot;synonym&quot;]
+               }
+            },
+            &quot;filter&quot;:{
+               &quot;synonym&quot;:{
+                  &quot;type&quot;:&quot;synonym&quot;, &quot;synonyms_path&quot;:&quot;synonym.txt&quot;, &quot;ignore_case&quot;:&quot;true&quot;
+               }
+            }
+         }
+      }
+   }
+}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="mapping.html" class="navigation navigation-prev " aria-label="Previous page: 映射">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="modules.html" class="navigation navigation-next " aria-label="Next page: 模块">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"分析","level":"1.13","depth":1,"next":{"title":"模块","level":"1.14","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"previous":{"title":"映射","level":"1.12","depth":1,"path":"mapping.md","ref":"mapping.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"analysis.md","mtime":"2021-03-08T10:39:07.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T10:45:30.928Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-baidu-nfer/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

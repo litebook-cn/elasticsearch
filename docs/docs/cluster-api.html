@@ -1,0 +1,556 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>集群API · ElasticSearch 7 教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="query-dsl.html" />
+    
+    
+    <link rel="prev" href="index-api.html" />
+    
+
+    
+        <link rel="shortcut icon" href='favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic-concepts.html">
+            
+                <a href="basic-concepts.html">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="populate.html">
+            
+                <a href="populate.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="conventions.html">
+            
+                <a href="conventions.html">
+            
+                    
+                    API约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="document-apis.html">
+            
+                <a href="document-apis.html">
+            
+                    
+                    文档API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="search-apis.html">
+            
+                <a href="search-apis.html">
+            
+                    
+                    搜索API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="aggregations.html">
+            
+                <a href="aggregations.html">
+            
+                    
+                    聚合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="index-api.html">
+            
+                <a href="index-api.html">
+            
+                    
+                    索引API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10" data-path="cluster-api.html">
+            
+                <a href="cluster-api.html">
+            
+                    
+                    集群API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="query-dsl.html">
+            
+                <a href="query-dsl.html">
+            
+                    
+                    DSL查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="mapping.html">
+            
+                <a href="mapping.html">
+            
+                    
+                    映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="analysis.html">
+            
+                <a href="analysis.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >集群API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x96C6;&#x7FA4;api"><b></b>&#x96C6;&#x7FA4;API</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x96C6;&#x7FA4;api"><a name="&#x96C6;&#x7FA4;api" class="anchor-navigation-ex-anchor" href="#&#x96C6;&#x7FA4;api"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x96C6;&#x7FA4;api" class="plugin-anchor" href="#&#x96C6;&#x7FA4;api"><i class="fa fa-link" aria-hidden="true"></i></a>&#x96C6;&#x7FA4;API</h2>
+<hr>
+<p> &#x8BE5;API&#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x96C6;&#x7FA4;&#x53CA;&#x5176;&#x8282;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x66F4;&#x6539;&#x3002;&#x4E3A;&#x4E86;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7F16;&#x7A0B;&#x63A5;&#x53E3;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x8282;&#x70B9;&#x540D;&#x3001;&#x5730;&#x5740;&#x6216;&#x672C;&#x5730;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_nodes/_local
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+{
+   &quot;cluster_name&quot;:&quot;elasticsearch&quot;, &quot;nodes&quot;:{
+      &quot;Vy3KxqcHQdm4cIM22U1ewA&quot;:{
+         &quot;name&quot;:&quot;Red Guardian&quot;, &quot;transport_address&quot;:&quot;127.0.0.1:9300&quot;, 
+         &quot;host&quot;:&quot;127.0.0.1&quot;, &quot;ip&quot;:&quot;127.0.0.1&quot;, &quot;version&quot;:&quot;2.1.1&quot;, 
+         &quot;build&quot;:&quot;40e2c53&quot;, &quot;http_address&quot;:&quot;127.0.0.1:9200&quot;,
+      }
+   }
+}
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p> &#x6216;&#x8005;</p>
+<pre><code>Get /_nodes/127.0.0.1
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<p>  &#x4E0E;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x76F8;&#x540C;&#x3002;</p>
+<p><strong>&#x7FA4;&#x96C6;&#x5065;&#x5EB7;</strong></p>
+<p> &#x8BE5;API&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x9644;&#x52A0;health&#x5173;&#x952E;&#x5B57;&#x6765;&#x83B7;&#x53D6;&#x96C6;&#x7FA4;&#x7684;&#x5065;&#x5EB7;&#x72B6;&#x6001;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_cluster/health
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>{
+   &quot;cluster_name&quot;:&quot;elasticsearch&quot;, &quot;status&quot;:&quot;yellow&quot;, &quot;timed_out&quot;:false,
+   &quot;number_of_nodes&quot;:1, &quot;number_of_data_nodes&quot;:1, &quot;active_primary_shards&quot;:23,
+   &quot;active_shards&quot;:23, &quot;relocating_shards&quot;:0, &quot;initializing_shards&quot;:0,
+   &quot;unassigned_shards&quot;:23, &quot;delayed_unassigned_shards&quot;:0, &quot;number_of_pending_tasks&quot;:0,
+   &quot;number_of_in_flight_fetch&quot;:0, &quot;task_max_waiting_in_queue_millis&quot;:0,
+   &quot;active_shards_percent_as_number&quot;:50.0
+}
+</code></pre><p><strong>&#x96C6;&#x7FA4;&#x72B6;&#x6001;</strong></p>
+<p> &#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5728;&#x8BF7;&#x6C42;URL&#x4E2D;&#x9644;&#x52A0;state&#x5173;&#x952E;&#x5B57;&#x6765;&#x83B7;&#x53D6;&#x96C6;&#x7FA4;&#x7684;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x3002;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x5305;&#x542B;&#x7248;&#x672C;&#x3001;&#x4E3B;&#x8282;&#x70B9;&#x3001;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x3001;&#x8DEF;&#x7531;&#x8868;&#x3001;&#x5143;&#x6570;&#x636E;&#x548C;&#x5757;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_cluster/state 10. Elasticsearch &#x2014; Cluster APIs
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+
+{
+   &quot;cluster_name&quot;:&quot;elasticsearch&quot;, &quot;version&quot;:27, &quot;state_uuid&quot;:&quot;B3P7uHGKQUGsSsiX2rGYUQ&quot;,
+   &quot;master_node&quot;:&quot;Vy3KxqcHQdm4cIM22U1ewA&quot;,
+}
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>&#x96C6;&#x7FA4;&#x7EDF;&#x8BA1;</strong></p>
+<p> &#x8FD9;&#x4E2A;API&#x901A;&#x8FC7;&#x4F7F;&#x7528;stats&#x5173;&#x952E;&#x5B57;&#x6765;&#x5E2E;&#x52A9;&#x68C0;&#x7D22;&#x5173;&#x4E8E;&#x96C6;&#x7FA4;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x8BE5;&#x5E94;&#x7528;&#x7F16;&#x7A0B;&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x788E;&#x7247;&#x53F7;&#x3001;&#x5B58;&#x50A8;&#x5927;&#x5C0F;&#x3001;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3001;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x3001;&#x89D2;&#x8272;&#x3001;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x548C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_cluster/stats
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+{
+   &quot;timestamp&quot;:1454496710020, &quot;cluster_name&quot;:&quot;elasticsearch&quot;, &quot;status&quot;:&quot;yellow&quot;,
+   &quot;indices&quot;:{
+      &quot;count&quot;:5, &quot;shards&quot;:{
+         &quot;total&quot;:23, &quot;primaries&quot;:23, &quot;replication&quot;:0.0,&quot;
+      }
+   }
+}
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>&#x6302;&#x8D77;&#x7FA4;&#x96C6;&#x4EFB;&#x52A1;</strong></p>
+<p> &#x6B64;API&#x7528;&#x4E8E;&#x76D1;&#x63A7;&#x4EFB;&#x4F55;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x6302;&#x8D77;&#x4EFB;&#x52A1;&#x3002;&#x4EFB;&#x52A1;&#x7C7B;&#x4F3C;&#x4E8E;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#x3001;&#x66F4;&#x65B0;&#x6620;&#x5C04;&#x3001;&#x5206;&#x914D;&#x788E;&#x7247;&#x3001;&#x5931;&#x8D25;&#x788E;&#x7247;&#x7B49;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_cluster/pending_tasks
+</code></pre><p><strong>&#x96C6;&#x7FA4;&#x91CD;&#x8DEF;&#x7531;</strong></p>
+<p> &#x6B64;API&#x7528;&#x4E8E;&#x5C06;&#x788E;&#x7247;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x6216;&#x8005;&#x53D6;&#x6D88;&#x4EFB;&#x4F55;&#x5206;&#x914D;&#x6216;&#x5206;&#x914D;&#x4EFB;&#x4F55;&#x672A;&#x5206;&#x914D;&#x7684;&#x788E;&#x7247;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /_cluster/reroute
+{
+   &quot;commands&quot; : [ 
+      {
+         &quot;move&quot; :
+         {
+            &quot;index&quot; : &quot;schools&quot;, &quot;shard&quot; : 2,
+            &quot;from_node&quot; : &quot;nodea&quot;, &quot;to_node&quot; : &quot;nodeb&quot;
+         }
+      },
+      {
+         &quot;allocate&quot; : {
+            &quot;index&quot; : &quot;test&quot;, &quot;shard&quot; : 1, &quot;node&quot; : &quot;nodec&quot;
+         }
+      }
+   ]
+}
+</code></pre><p><strong>&#x96C6;&#x7FA4;&#x66F4;&#x65B0;&#x8BBE;&#x7F6E;</strong></p>
+<p> &#x6B64;API&#x5141;&#x8BB8;&#x60A8;&#x4F7F;&#x7528;settings&#x5173;&#x952E;&#x5B57;&#x66F4;&#x65B0;&#x96C6;&#x7FA4;&#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x6709;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8BBE;&#x7F6E;&#x2014;&#x6301;&#x4E45;&#x6027;&#x8BBE;&#x7F6E;(&#x5728;&#x91CD;&#x542F;&#x65F6;&#x5E94;&#x7528;)&#x548C;&#x77AC;&#x6001;&#x8BBE;&#x7F6E;(&#x5728;&#x5B8C;&#x5168;&#x96C6;&#x7FA4;&#x91CD;&#x542F;&#x540E;&#x4E0D;&#x5B58;&#x5728;)&#x3002;</p>
+<p><strong>&#x8282;&#x70B9;&#x7EDF;&#x8BA1;</strong></p>
+<p> &#x8BE5;API&#x7528;&#x4E8E;&#x68C0;&#x7D22;&#x96C6;&#x7FA4;&#x4E2D;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x8282;&#x70B9;&#x7EDF;&#x8BA1;&#x51E0;&#x4E4E;&#x4E0E;&#x96C6;&#x7FA4;&#x76F8;&#x540C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_nodes/stats
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+{
+   &quot;cluster_name&quot;:&quot;elasticsearch&quot;, &quot;nodes&quot;:{
+      &quot;Vy3KxqcHQdm4cIM22U1ewA&quot;:{
+         &quot;timestamp&quot;:1454497097572, &quot;name&quot;:&quot;Red Guardian&quot;, 
+         &quot;transport_address&quot;:&quot;127.0.0.1:9300&quot;, &quot;host&quot;:&quot;127.0.0.1&quot;, &quot;ip&quot;:[&quot;127.0.0.1:9300&quot;,
+      }
+   }
+}
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>&#x8282;&#x70B9;&#x70ED;&#x7EBF;&#x7A0B;</strong></p>
+<p>&#x8BE5;API&#x5E2E;&#x52A9;&#x60A8;&#x68C0;&#x7D22;&#x96C6;&#x7FA4;&#x4E2D;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x5F53;&#x524D;&#x70ED;&#x7EBF;&#x7A0B;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /_nodes/hot_threads
+</code></pre><p>&#x54CD;&#x5E94;</p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+::: {Red Guardian} {Vy3KxqcHQdm4cIM22U1ewA} {127.0.0.1}{127.0.0.1:9300}Hot threads at 
+   2016-02-03T10:59:48.856Z, interval = 500ms, busiestThreads = 3, 
+   ignoreIdleThreads = true:0.0% (0s out of 500ms) cpu usage by thread &apos;Attach Listener&apos;
+      unique snapshot
+      unique snapshot
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="index-api.html" class="navigation navigation-prev " aria-label="Previous page: 索引API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="query-dsl.html" class="navigation navigation-next " aria-label="Next page: DSL查询">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"集群API","level":"1.10","depth":1,"next":{"title":"DSL查询","level":"1.11","depth":1,"path":"query-dsl.md","ref":"query-dsl.md","articles":[]},"previous":{"title":"索引API","level":"1.9","depth":1,"path":"index-api.md","ref":"index-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"cluster-api.md","mtime":"2021-03-08T10:33:45.708Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T10:45:30.928Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-baidu-nfer/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

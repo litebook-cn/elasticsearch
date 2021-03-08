@@ -1,0 +1,622 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>索引API · ElasticSearch 7 教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="cluster-api.html" />
+    
+    
+    <link rel="prev" href="aggregations.html" />
+    
+
+    
+        <link rel="shortcut icon" href='favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic-concepts.html">
+            
+                <a href="basic-concepts.html">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="populate.html">
+            
+                <a href="populate.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="conventions.html">
+            
+                <a href="conventions.html">
+            
+                    
+                    API约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="document-apis.html">
+            
+                <a href="document-apis.html">
+            
+                    
+                    文档API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="search-apis.html">
+            
+                <a href="search-apis.html">
+            
+                    
+                    搜索API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="aggregations.html">
+            
+                <a href="aggregations.html">
+            
+                    
+                    聚合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="index-api.html">
+            
+                <a href="index-api.html">
+            
+                    
+                    索引API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="cluster-api.html">
+            
+                <a href="cluster-api.html">
+            
+                    
+                    集群API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="query-dsl.html">
+            
+                <a href="query-dsl.html">
+            
+                    
+                    DSL查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="mapping.html">
+            
+                <a href="mapping.html">
+            
+                    
+                    映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="analysis.html">
+            
+                <a href="analysis.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >索引API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x7D22;&#x5F15;api"><b></b>&#x7D22;&#x5F15;API</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x7D22;&#x5F15;api"><a name="&#x7D22;&#x5F15;api" class="anchor-navigation-ex-anchor" href="#&#x7D22;&#x5F15;api"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x7D22;&#x5F15;api" class="plugin-anchor" href="#&#x7D22;&#x5F15;api"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D22;&#x5F15;API</h2>
+<hr>
+<p> &#x8FD9;&#x4E9B;API&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x7D22;&#x5F15;&#x7684;&#x6240;&#x6709;&#x65B9;&#x9762;&#xFF0C;&#x5982;&#x8BBE;&#x7F6E;&#x3001;&#x522B;&#x540D;&#x3001;&#x6620;&#x5C04;&#x3001;&#x7D22;&#x5F15;&#x6A21;&#x677F;&#x3002;</p>
+<p><strong>&#x521B;&#x5EFA;&#x7D22;&#x5F15;</strong></p>
+<p> &#x8FD9;&#x4E2A;API&#x7528;&#x6765;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5C06;JSON&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x7ED9;&#x7D22;&#x5F15;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#x3002;&#x8981;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5E26;&#x6709;settings&#x3001;mappings&#x548C;aliases&#x7684;post&#x8BF7;&#x6C42;&#xFF0C;&#x6216;&#x8005;&#x53EA;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E0D;&#x5E26;&#x6B63;&#x6587;&#x7684;&#x7B80;&#x5355;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /colleges
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;acknowledged&quot;:true}
+  &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;settings.
+POST /colleges
+{
+   &quot;settings&quot; : {
+      &quot;index&quot; : {
+         &quot;number_of_shards&quot; : 5, &quot;number_of_replicas&quot; : 3
+      }
+   }
+}
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;mapping.</p>
+<pre><code>POST /colleges
+{
+   &quot;settings&quot; : {
+      &quot;number_of_shards&quot; : 3
+   },
+   &quot;mappings&quot; : {
+      &quot;type1&quot; : {
+         &quot;_source&quot; : { &quot;enabled&quot; : false }, &quot;properties&quot; : {
+            &quot;college_name&quot; : { &quot;type&quot; : &quot;string&quot; }, &quot;college type&quot; : {&quot;type&quot;:&quot;string&quot;}
+         }
+      }
+   }
+}
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;alias&#x3002;</p>
+<pre><code>POST /colleges
+{
+   &quot;aliases&quot; : {
+      &quot;alias_1&quot; : {}, &quot;alias_2&quot; : {
+         &quot;filter&quot; : {
+            &quot;term&quot; : {&quot;user&quot; : &quot;manu&quot; }
+         },
+         &quot;routing&quot; : &quot;manu&quot;
+      }
+   }
+}
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre><p><strong>&#x5220;&#x9664;&#x7D22;&#x5F15;</strong></p>
+<p> &#x8BE5;API&#x7528;&#x6765;&#x5220;&#x9664;&#x4EFB;&#x4F55;&#x7D22;&#x5F15;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x7279;&#x5B9A;&#x7D22;&#x5F15;&#x540D;&#x79F0;&#x7684;&#x5220;&#x9664;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>DELETE /colleges
+</code></pre><p> &#x4F7F;&#x7528;_all&#xFF0C;*&#x5373;&#x53EF;&#x5220;&#x9664;&#x6240;&#x6709;&#x7D22;&#x5F15;&#x3002;</p>
+<p><strong>&#x83B7;&#x53D6;&#x7D22;&#x5F15;</strong></p>
+<p> &#x8FD9;&#x4E2A;API&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x53D1;&#x9001;get&#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x5C06;&#x8FD4;&#x56DE;&#x5173;&#x4E8E;&#x7D22;&#x5F15;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<pre><code>GET /schools
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{
+   &quot;schools&quot;:{
+      &quot;aliases&quot;:{}, &quot;mappings&quot;:{
+         &quot;school&quot;:{
+            &quot;properties&quot;:{
+               &quot;city&quot;:{&quot;type&quot;:&quot;string&quot;}, &quot;description&quot;:{&quot;type&quot;:&quot;string&quot;},
+               &quot;fees&quot;:{&quot;type&quot;:&quot;long&quot;}, &quot;location&quot;:{&quot;type&quot;:&quot;double&quot;},
+               &quot;name&quot;:{&quot;type&quot;:&quot;string&quot;}, &quot;rating&quot;:{&quot;type&quot;:&quot;string&quot;},
+               &quot;state&quot;:{&quot;type&quot;:&quot;string&quot;}, &quot;street&quot;:{&quot;type&quot;:&quot;string&quot;},
+               &quot;tags&quot;:{&quot;type&quot;:&quot;string&quot;}, &quot;zip&quot;:{&quot;type&quot;:&quot;string&quot;}
+            }
+         }
+      },
+      &quot;settings&quot;:{
+         &quot;index&quot;:{
+            &quot;creation_date&quot;:&quot;1454409831535&quot;, &quot;number_of_shards&quot;:&quot;5&quot;,
+            &quot;number_of_replicas&quot;:&quot;1&quot;, &quot;uuid&quot;:&quot;iKdjTtXQSMCW4xZMhpsOVA&quot;,
+            &quot;version&quot;:{&quot;created&quot;:&quot;2010199&quot;}
+         }
+      },
+      &quot;warmers&quot;:{}
+   }
+}
+</code></pre><p> &#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_all&#x6216;*&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p><strong>&#x68C0;&#x67E5;&#x7D22;&#x5F15;&#x662F;&#x5426;&#x5B58;&#x5728;</strong></p>
+<p> &#x5411;&#x67D0;&#x4E2A;&#x7D22;&#x5F15;&#x53D1;&#x9001;GET&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x7D22;&#x5F15;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;HTTP&#x54CD;&#x5E94;&#x4E3A;200&#xFF0C;&#x5219;&#x5B58;&#x5728;&#xFF1B;&#x5982;&#x679C;&#x662F;404&#xFF0C;&#x5219;&#x4E0D;&#x5B58;&#x5728;&#x3002;</p>
+<p><strong>&#x5F00;&#x542F;/&#x5173;&#x95ED;&#x7D22;&#x5F15;</strong></p>
+<p> &#x901A;&#x8FC7;&#x5728;&#x8BF7;&#x6C42;&#x4E2D;&#x6DFB;&#x52A0;_close&#x6216;_open&#x6765;&#x8BF7;&#x6C42;&#x7D22;&#x5F15;&#xFF0C;&#x5173;&#x95ED;&#x6216;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /schools/_close
+</code></pre><p>&#x6216;&#x8005;</p>
+<pre><code>POST /schools/_open
+</code></pre><p><strong>&#x7D22;&#x5F15;&#x522B;&#x540D;</strong></p>
+<p> &#x8FD9;&#x4E2A;API&#x901A;&#x8FC7;&#x4F7F;&#x7528;_aliases&#x5173;&#x952E;&#x5B57;&#x5E2E;&#x52A9;&#x7ED9;&#x7D22;&#x5F15;&#x8D4B;&#x4E88;&#x522B;&#x540D;&#x3002;&#x5355;&#x4E2A;&#x522B;&#x540D;&#x53EF;&#x4EE5;&#x6620;&#x5C04;&#x5230;&#x591A;&#x4E2A;&#x522B;&#x540D;&#xFF0C;&#x522B;&#x540D;&#x4E0D;&#x80FD;&#x4E0E;&#x7D22;&#x5F15;&#x540C;&#x540D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /_aliases
+{
+   &quot;actions&quot; : [
+      { &quot;add&quot; : { &quot;index&quot; : &quot;schools&quot;, &quot;alias&quot; : &quot;schools_pri&quot; } }
+   ]
+}
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;acknowledged&quot;:true}
+</code></pre><p>&#x7136;&#x540E;&#xFF0C;</p>
+<pre><code>GET /schools_pri
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+{&quot;schools&quot;:{&quot;aliases&quot;:{&quot;schools_pri&quot;:{}},&quot;}}
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>&#x7D22;&#x5F15;&#x8BBE;&#x7F6E;</strong></p>
+<p> &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x7F51;&#x5740;&#x672B;&#x5C3E;&#x9644;&#x52A0;_settings&#x5173;&#x952E;&#x5B57;&#x6765;&#x83B7;&#x5F97;&#x7D22;&#x5F15;&#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /schools/_settings
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{
+   &quot;schools&quot;:{
+      &quot;settings&quot;:{
+         &quot;index&quot;:{
+            &quot;creation_date&quot;:&quot;1454409831535&quot;, &quot;number_of_shards&quot;:&quot;5&quot;, 
+            &quot;number_of_replicas&quot;:&quot;1&quot;, &quot;uuid&quot;:&quot;iKdjTtXQSMCW4xZMhpsOVA&quot;, 
+            &quot;version&quot;:{&quot;created&quot;:&quot;2010199&quot;}
+        }
+      }
+   }
+}
+</code></pre><p><strong>&#x5206;&#x8BCD;</strong></p>
+<p> &#x8BE5;API&#x5E2E;&#x52A9;&#x5206;&#x6790;&#x6587;&#x672C;&#x5E76;&#x53D1;&#x9001;&#x5E26;&#x6709;&#x504F;&#x79FB;&#x503C;&#x548C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;token&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /_analyze
+{
+   &quot;analyzer&quot; : &quot;standard&quot;,
+   &quot;text&quot; : &quot;you are reading this at tutorials point&quot;
+}
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{
+   &quot;tokens&quot;:[
+      {&quot;token&quot;:&quot;you&quot;, &quot;start_offset&quot;:0, &quot;end_offset&quot;:3, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:0},
+      {&quot;token&quot;:&quot;are&quot;, &quot;start_offset&quot;:4, &quot;end_offset&quot;:7, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:1},
+      {&quot;token&quot;:&quot;reading&quot;, &quot;start_offset&quot;:8, &quot;end_offset&quot;:15, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:2},
+      {&quot;token&quot;:&quot;this&quot;, &quot;start_offset&quot;:16, &quot;end_offset&quot;:20, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:3},
+      {&quot;token&quot;:&quot;at&quot;, &quot;start_offset&quot;:21, &quot;end_offset&quot;:23, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:4},
+      {&quot;token&quot;:&quot;tutorials&quot;, &quot;start_offset&quot;:24, &quot;end_offset&quot;:33, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:5},
+      {&quot;token&quot;:&quot;point&quot;, &quot;start_offset&quot;:34, &quot;end_offset&quot;:39, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:6}
+   ]
+}
+</code></pre><p> &#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x6765;&#x5206;&#x6790;&#x6587;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6839;&#x636E;&#x4E0E;&#x8BE5;&#x7D22;&#x5F15;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5206;&#x6790;&#x5668;&#x6765;&#x5206;&#x6790;&#x6587;&#x672C;&#x3002;</p>
+<p><strong>&#x7D22;&#x5F15;&#x6A21;&#x677F;</strong></p>
+<p> &#x60A8;&#x8FD8;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x5E26;&#x6709;&#x6620;&#x5C04;&#x7684;&#x7D22;&#x5F15;&#x6A21;&#x677F;&#xFF0C;&#x8FD9;&#x4E9B;&#x6A21;&#x677F;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;&#x65B0;&#x7684;&#x7D22;&#x5F15;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>POST /_template/template_a
+{
+   &quot;template&quot; : &quot;tu*&quot;, 
+      &quot;settings&quot; : {
+         &quot;number_of_shards&quot; : 3
+   },
+   &quot;mappings&quot; : {
+      &quot;chapter&quot; : {
+         &quot;_source&quot; : { &quot;enabled&quot; : false }
+      }
+   }
+}
+</code></pre><p> &#x4EFB;&#x4F55;&#x4EE5;&#x201C;tu&#x201D;&#x5F00;&#x5934;&#x7684;&#x7D22;&#x5F15;&#x90FD;&#x5C06;&#x5177;&#x6709;&#x4E0E;template_a&#x76F8;&#x540C;&#x7684;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p><strong>&#x7D22;&#x5F15;&#x7EDF;&#x8BA1;</strong></p>
+<p> &#x8BE5;API&#x5E2E;&#x52A9;&#x60A8;&#x63D0;&#x53D6;&#x7279;&#x5B9A;&#x7D22;&#x5F15;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x7D22;&#x5F15;&#x7F51;&#x5740;&#x548C;_stats&#x5173;&#x952E;&#x5B57;&#x7684;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x3002;</p>
+<pre><code>GET /schools/_stats
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+{&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}, &quot;_all&quot;:{&quot;primaries&quot;:{&quot;docs&quot;:{
+   &quot;count&quot;:3, &quot;deleted&quot;:0}}}, &quot;store&quot;:{&quot;size_in_bytes&quot;:16653, &quot;throttle_time_in_millis&quot;:0},
+&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>Flush</strong></p>
+<p> &#x6B64;API&#x7528;&#x4E8E;&#x6E05;&#x9664;&#x7D22;&#x5F15;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E76;&#x5C06;&#x5176;&#x8FC1;&#x79FB;&#x5230;&#x7D22;&#x5F15;&#x5B58;&#x50A8;&#x4E2D;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x6E05;&#x9664;&#x5185;&#x90E8;&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /schools/_flush
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}}
+</code></pre><p><strong>&#x5237;&#x65B0;</strong></p>
+<p> &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;ElasticSearch&#x4F1A;&#x5B9A;&#x65F6;&#x5237;&#x65B0;&#xFF0C;&#x4F46;&#x662F;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_refresh&#x663E;&#x5F0F;&#x5237;&#x65B0;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<pre><code>GET /schools/_refresh
+</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+<pre><code>{&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="aggregations.html" class="navigation navigation-prev " aria-label="Previous page: 聚合">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="cluster-api.html" class="navigation navigation-next " aria-label="Next page: 集群API">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"索引API","level":"1.9","depth":1,"next":{"title":"集群API","level":"1.10","depth":1,"path":"cluster-api.md","ref":"cluster-api.md","articles":[]},"previous":{"title":"聚合","level":"1.8","depth":1,"path":"aggregations.md","ref":"aggregations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"index-api.md","mtime":"2021-03-08T10:32:00.075Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T10:45:30.928Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-baidu-nfer/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
