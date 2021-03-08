@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>接收器&纯函数 · ElasticSearch 7 教程</title>
+        <title>基础概念 · ElasticSearch 7 教程</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -66,10 +66,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="high-order-functions.html" />
+    <link rel="next" href="installation.html" />
     
     
-    <link rel="prev" href="methods.html" />
+    <link rel="prev" href="./" />
     
 
     
@@ -129,7 +129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="basic-concepts.html">
+        <li class="chapter active" data-level="1.2" data-path="basic-concepts.html">
             
                 <a href="basic-concepts.html">
             
@@ -337,7 +337,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.18" data-path="mut-receivers-pure-functions.html">
+        <li class="chapter " data-level="1.18" data-path="mut-receivers-pure-functions.html">
             
                 <a href="mut-receivers-pure-functions.html">
             
@@ -680,7 +680,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >接收器&纯函数</a>
+        <a href="." >基础概念</a>
     </h1>
 </div>
 
@@ -695,34 +695,76 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions"><b></b>&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;(Mutable receivers &amp; pure functions)</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions"><a name="&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions" class="anchor-navigation-ex-anchor" href="#&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions" class="plugin-anchor" href="#&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;mutable-receivers--pure-functions"><i class="fa fa-link" aria-hidden="true"></i></a>&#x53EF;&#x53D8;&#x63A5;&#x6536;&#x5668;&#x53CA;&#x7EAF;&#x51FD;&#x6570;(Mutable receivers &amp; pure functions)</h2>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#&#x57FA;&#x7840;&#x6982;&#x5FF5;"><b></b>&#x57FA;&#x7840;&#x6982;&#x5FF5;</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="&#x57FA;&#x7840;&#x6982;&#x5FF5;"><a name="&#x57FA;&#x7840;&#x6982;&#x5FF5;" class="anchor-navigation-ex-anchor" href="#&#x57FA;&#x7840;&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x57FA;&#x7840;&#x6982;&#x5FF5;" class="plugin-anchor" href="#&#x57FA;&#x7840;&#x6982;&#x5FF5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x57FA;&#x7840;&#x6982;&#x5FF5;</h2>
 <hr>
-<pre><code>struct User {
-    is_registered bool
-}
+<p> ElasticSearch&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;Apache Lucene&#x7684;&#x641C;&#x7D22;&#x670D;&#x52A1;&#x5668;&#x3002;&#x5B83;&#x7531;&#x8C22;&#x4F0A;&#xB7;&#x5DF4;&#x519C;(Shay Banon)&#x5F00;&#x53D1;&#xFF0C;&#x4E8E;2010&#x5E74;&#x51FA;&#x7248;&#x3002;&#x5B83;&#x73B0;&#x5728;&#x7531;ElasticSearch&#x516C;&#x53F8;&#x7EF4;&#x62A4;&#x3002;&#x622A;&#x6B62;&#x5230;2019&#x5E74;6&#x6708;19&#x65E5;&#xFF0C;&#x5B83;&#x7684;&#x6700;&#x65B0;&#x7248;&#x672C;&#x662F;7.1.1&#x3002;</p>
+<p> ElasticSearch&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x65F6;&#x5206;&#x5E03;&#x5F0F;&#x5F00;&#x6E90;&#x5168;&#x6587;&#x641C;&#x7D22;&#x548C;&#x5206;&#x6790;&#x5F15;&#x64CE;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x4ECE;RESTful&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x63A5;&#x53E3;&#x8BBF;&#x95EE;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x65E0;&#x6A21;&#x5F0F;JSON (JavaScript&#x5BF9;&#x8C61;&#x7B26;&#x53F7;)&#x6587;&#x6863;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x3002;&#x5B83;&#x5EFA;&#x7ACB;&#x5728;Java&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E4B;&#x4E0A;&#xFF0C;&#x4F7F;ElasticSearch&#x80FD;&#x591F;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x5E73;&#x53F0;&#x4E0A;&#x8FD0;&#x884C;&#x3002;&#x5B83;&#x4F7F;&#x7528;&#x6237;&#x80FD;&#x591F;&#x4EE5;&#x975E;&#x5E38;&#x9AD8;&#x7684;&#x901F;&#x5EA6;&#x6D4F;&#x89C8;&#x975E;&#x5E38;&#x5927;&#x91CF;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p><strong>ElasticSearch&#x7684;&#x7279;&#x70B9;</strong></p>
+<ul>
+<li>ElasticSearch&#x6700;&#x591A;&#x53EF;&#x6269;&#x5C55;&#x5230;&#x5343;&#x5146;&#x5B57;&#x8282;&#x7684;&#x7ED3;&#x6784;&#x5316;&#x548C;&#x975E;&#x7ED3;&#x6784;&#x5316;&#x6570;&#x636E;&#x3002;</li>
+<li>ElasticSearch&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x66FF;&#x4EE3;&#x50CF;MongoDB&#x548C;RavenDB&#x8FD9;&#x6837;&#x7684;&#x6587;&#x6863;&#x5B58;&#x50A8;&#x3002;</li>
+<li>ElasticSearch&#x4F7F;&#x7528;&#x53CD;&#x89C4;&#x8303;&#x5316;&#x6765;&#x63D0;&#x9AD8;&#x641C;&#x7D22;&#x6027;&#x80FD;&#x3002;</li>
+<li>ElasticSearch(ElasticSearch)&#x662F;&#x6D41;&#x884C;&#x7684;&#x4F01;&#x4E1A;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x4E4B;&#x4E00;&#xFF0C;&#x76EE;&#x524D;&#x6B63;&#x88AB;&#x7EF4;&#x57FA;&#x767E;&#x79D1;&#x3001;&#x536B;&#x62A5;&#x3001;StackOverflow&#x3001;GitHub&#x7B49;&#x8BB8;&#x591A;&#x5927;&#x7EC4;&#x7EC7;&#x4F7F;&#x7528;&#x3002;</li>
+<li>ElasticSearch&#x662F;&#x5F00;&#x6E90;&#x7684;&#xFF0C;&#x5728;Apache&#x8BB8;&#x53EF;&#x7248;&#x672C;2.0&#x4E0B;&#x53EF;&#x7528;&#x3002;</li>
+</ul>
+<p><strong>ElasticSearch&#x5173;&#x952E;&#x6982;&#x5FF5;</strong></p>
+<ul>
+<li>Node&#xFF08;&#x8282;&#x70B9;&#xFF09;:&#x5B83;&#x6307;&#x7684;&#x662F;ElasticSearch&#x7684;&#x5355;&#x4E2A;&#x8FD0;&#x884C;&#x5B9E;&#x4F8B;&#x3002;&#x5355;&#x4E2A;&#x7269;&#x7406;&#x548C;&#x865A;&#x62DF;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x5BB9;&#x7EB3;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5177;&#x4F53;&#x53D6;&#x51B3;&#x4E8E;&#x5176;&#x7269;&#x7406;&#x8D44;&#x6E90;(&#x5982;&#x5185;&#x5B58;&#x3001;&#x5B58;&#x50A8;&#x548C;&#x5904;&#x7406;&#x80FD;&#x529B;)&#x7684;&#x80FD;&#x529B;&#x3002;</li>
+<li>Cluster&#xFF08;&#x96C6;&#x7FA4;&#xFF09;:&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#x7684;&#x96C6;&#x5408;&#x3002;&#x96C6;&#x7FA4;&#x4E3A;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x8DE8;&#x8282;&#x70B9;&#x7684;&#x7D22;&#x5F15;&#x548C;&#x641C;&#x7D22;&#x529F;&#x80FD;&#x3002;</li>
+<li>Index&#xFF08;&#x7D22;&#x5F15;&#xFF09;:&#x5305;&#x542B;&#x4E00;&#x5806;&#x6709;&#x76F8;&#x4F3C;&#x7ED3;&#x6784;&#x7684;&#x6587;&#x6863;&#x6570;&#x636E;&#xFF0C;&#x6BD4;&#x5982;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7D22;&#x5F15;&#xFF0C;&#x5546;&#x54C1;&#x5206;&#x7C7B;&#x7D22;&#x5F15;&#xFF0C;&#x8BA2;&#x5355;&#x7D22;&#x5F15;&#xFF0C;&#x7D22;&#x5F15;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x3002;&#x4E00;&#x4E2A;index&#x5305;&#x542B;&#x5F88;&#x591A;document&#xFF0C;&#x4E00;&#x4E2A;index&#x5C31;&#x4EE3;&#x8868;&#x4E86;&#x4E00;&#x7C7B;&#x7C7B;&#x4F3C;&#x7684;&#x6216;&#x8005;&#x76F8;&#x540C;&#x7684;Document&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x5546;&#x54C1;&#x7D22;&#x5F15;&#xFF0C;&#x91CC;&#x9762;&#x53EF;&#x80FD;&#x5C31;&#x5B58;&#x653E;&#x4E86;&#x6240;&#x6709;&#x7684;&#x5546;&#x54C1;&#x6570;&#x636E;&#x3002;</li>
+<li>Type/Mapping&#xFF08;&#x7C7B;&#x578B;/&#x6620;&#x5C04;):&#x5B83;&#x662F;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x7D22;&#x5F15;&#x4E2D;&#x4E00;&#x7EC4;&#x516C;&#x5171;&#x5B57;&#x6BB5;&#x7684;&#x6587;&#x6863;&#x96C6;&#x5408;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7D22;&#x5F15;&#x5305;&#x542B;&#x793E;&#x4EA4;&#x7F51;&#x7EDC;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x6709;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x7528;&#x6237;&#x7B80;&#x6863;&#x6570;&#x636E;&#x3001;&#x53E6;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#x6570;&#x636E;&#x548C;&#x53E6;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8BC4;&#x8BBA;&#x6570;&#x636E;&#x3002;</li>
+<li>Document(&#x6587;&#x6863;):&#x5B83;&#x662F;&#x4EE5;JSON&#x683C;&#x5F0F;&#x5B9A;&#x4E49;&#x7684;&#x7279;&#x5B9A;&#x65B9;&#x5F0F;&#x7684;&#x5B57;&#x6BB5;&#x96C6;&#x5408;&#x3002;&#x6BCF;&#x4E2A;&#x6587;&#x6863;&#x90FD;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x9A7B;&#x7559;&#x5728;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x4E2D;&#x3002;&#x6BCF;&#x4E2A;&#x6587;&#x6863;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x79F0;&#x4E3A;UID&#x3002;</li>
+<li>Shard(&#x5206;&#x7247;):&#x5355;&#x53F0;&#x673A;&#x5668;&#x65E0;&#x6CD5;&#x5B58;&#x50A8;&#x5927;&#x91CF;&#x6570;&#x636E;&#xFF0C;ElasticSearch&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5207;&#x5206;&#x4E3A;&#x591A;&#x4E2A;Shard&#xFF0C;&#x5206;&#x5E03;&#x5728;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5B58;&#x50A8;&#x3002;&#x6709;&#x4E86;Shard&#x5C31;&#x53EF;&#x4EE5;&#x6A2A;&#x5411;&#x6269;&#x5C55;&#xFF0C;&#x5B58;&#x50A8;&#x66F4;&#x591A;&#x6570;&#x636E;&#xFF0C;&#x8BA9;&#x641C;&#x7D22;&#x548C;&#x5206;&#x6790;&#x7B49;&#x64CD;&#x4F5C;&#x5206;&#x5E03;&#x5230;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x53BB;&#x6267;&#x884C;&#xFF0C;&#x63D0;&#x5347;&#x541E;&#x5410;&#x91CF;&#x548C;&#x6027;&#x80FD;&#x3002;</li>
+<li>Replicas(&#x526F;&#x672C;):&#x670D;&#x52A1;&#x5668;&#x968F;&#x65F6;&#x53EF;&#x80FD;&#x6545;&#x969C;&#x6216;&#x5B95;&#x673A;&#xFF0C;&#x6B64;&#x65F6;Shard&#x53EF;&#x80FD;&#x5C31;&#x4F1A;&#x4E22;&#x5931;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4E3A;&#x6BCF;&#x4E2A;Shard&#x521B;&#x5EFA;&#x591A;&#x4E2A;Replica&#x526F;&#x672C;&#x3002;Replica&#x53EF;&#x4EE5;&#x5728;Shard&#x6545;&#x969C;&#x65F6;&#x63D0;&#x4F9B;&#x5907;&#x7528;&#x670D;&#x52A1;&#xFF0C;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x4E0D;&#x4E22;&#x5931;&#xFF0C;&#x591A;&#x4E2A;Replica&#x8FD8;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x641C;&#x7D22;&#x64CD;&#x4F5C;&#x7684;&#x541E;&#x5410;&#x91CF;&#x548C;&#x6027;&#x80FD;&#x3002;</li>
+</ul>
+<p><strong>ElasticSearch&#x7684;&#x4F18;&#x52BF;</strong></p>
+<ul>
+<li>ElasticSearch&#x662F;&#x5728;Java&#x4E0A;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x5B83;&#x5728;&#x51E0;&#x4E4E;&#x6BCF;&#x4E2A;&#x5E73;&#x53F0;&#x4E0A;&#x90FD;&#x662F;&#x517C;&#x5BB9;&#x7684;&#x3002;</li>
+<li>ElasticSearch&#x662F;&#x5B9E;&#x65F6;&#x7684;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x4E00;&#x79D2;&#x949F;&#x540E;&#x6DFB;&#x52A0;&#x7684;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x5F15;&#x64CE;&#x4E2D;&#x641C;&#x7D22;&#x3002;</li>
+<li>ElasticSearch&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x5B83;&#x6613;&#x4E8E;&#x5728;&#x4EFB;&#x4F55;&#x5927;&#x7EC4;&#x7EC7;&#x4E2D;&#x6269;&#x5C55;&#x548C;&#x96C6;&#x6210;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x4F7F;&#x7528;ElasticSearch&#x4E2D;&#x7684;&#x7F51;&#x5173;&#x6982;&#x5FF5;&#xFF0C;&#x521B;&#x5EFA;&#x5B8C;&#x6574;&#x5907;&#x4EFD;&#x5F88;&#x5BB9;&#x6613;&#x3002;</li>
+<li>&#x4E0E;Apache Solr&#x76F8;&#x6BD4;&#xFF0C;&#x5728;ElasticSearch&#x4E2D;&#x5904;&#x7406;&#x591A;&#x7528;&#x6237;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x3002;</li>
+<li>ElasticSearch&#x4F7F;&#x7528;JSON&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x7528;&#x5927;&#x91CF;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x8C03;&#x7528;ElasticSearch&#x670D;&#x52A1;&#x5668;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;</li>
+<li>ElasticSearch&#x652F;&#x6301;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x6587;&#x6863;&#x7C7B;&#x578B;&#xFF0C;&#x9664;&#x4E86;&#x90A3;&#x4E9B;&#x4E0D;&#x652F;&#x6301;&#x6587;&#x672C;&#x5448;&#x73B0;&#x7684;&#x3002;</li>
+</ul>
+<p><strong>ElasticSearch&#x7684;&#x7F3A;&#x70B9;</strong></p>
+<ul>
+<li>ElasticSearch&#x5728;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x6570;&#x636E;&#x65B9;&#x9762;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x591A;&#x8BED;&#x8A00;&#x652F;&#x6301;(&#x4EC5;&#x5728;JSON&#x4E2D;&#x53EF;&#x80FD;)&#xFF0C;&#x8FD9;&#x4E0E;Apache Solr&#x4E0D;&#x540C;&#xFF0C;Apache Solr&#x4E2D;&#x53EF;&#x80FD;&#x6709;CSV&#x3001;XML&#x548C;JSON&#x683C;&#x5F0F;&#x3002;</li>
+<li>ElasticSearch&#x4E5F;&#x6709;&#x5206;&#x88C2;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x5728;&#x6781;&#x5C11;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#x3002;</li>
+</ul>
+<p><strong>ElasticSearch&#x4E0E;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x7CFB;&#x7EDF;&#x7684;&#x6BD4;&#x8F83;</strong></p>
+<p> &#x5728;ElasticSearch&#x4E2D;&#xFF0C;&#x7D22;&#x5F15;&#x662F;&#x7C7B;&#x578B;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x6B63;&#x5982;&#x6570;&#x636E;&#x5E93;&#x662F;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#x4E2D;&#x8868;&#x7684;&#x96C6;&#x5408;&#x4E00;&#x6837;&#x3002;&#x6BCF;&#x4E2A;&#x8868;&#x90FD;&#x662F;&#x884C;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5C31;&#x50CF;&#x6BCF;&#x4E2A;&#x6620;&#x5C04;&#x90FD;&#x662F;JSON&#x5BF9;&#x8C61;ElasticSearch&#x7684;&#x96C6;&#x5408;&#x4E00;&#x6837;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ElasticSearch</th>
+<th style="text-align:left">RDBMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Index</td>
+<td style="text-align:left">Database</td>
+</tr>
+<tr>
+<td style="text-align:left">Shard</td>
+<td style="text-align:left">Shard</td>
+</tr>
+<tr>
+<td style="text-align:left">Mapping</td>
+<td style="text-align:left">Table</td>
+</tr>
+<tr>
+<td style="text-align:left">Field</td>
+<td style="text-align:left">Field</td>
+</tr>
+<tr>
+<td style="text-align:left">JSON Object</td>
+<td style="text-align:left">Tuple</td>
+</tr>
+</tbody>
+</table>
 
-fn (u mut User) register() {
-    u.is_registered = true
-}
-
-fn main() {
-    mut user := User{}
-    println(user.is_registered) // ==&gt; &quot;false&quot;  
-    user.register()
-    // TODO: Maybe force marking methods that modify the receiver with `!`
-    // user.register()!  
-    println(user.is_registered) // ==&gt; &quot;true&quot;  
-}
-</code></pre><p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x529F;&#x80FD;&#x53EA;&#x80FD;&#x4FEE;&#x6539;&#x63A5;&#x6536;&#x5668;&#x3002;<code>fn register(u mut User)</code>&#x8FD9;&#x6837;&#x7684;&#x505A;&#x6CD5;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x3002;</p>
-<p>&#x8FD9;&#x70B9;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x6240;&#x4EE5;&#x518D;&#x6B21;&#x7533;&#x660E;&#xFF1A;V&#x8BED;&#x8A00;&#x4E2D;&#x51FD;&#x6570;&#x662F;&#x90E8;&#x5206;&#x7EAF;&#x7684;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x53C2;&#x6570;<strong>&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;</strong>&#x88AB;&#x51FD;&#x6570;&#x4FEE;&#x6539;&#x3002;</p>
-<p>&#x4FEE;&#x6539;&#x5BF9;&#x8C61;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x8FD4;&#x56DE;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x7248;&#x672C;(<strong>*&#x5F85;&#x5B9E;&#x73B0;</strong>):</p>
-<pre><code>// TODO: this syntax is not implemented yet  
-fn register(u User) User {
-    return { u | is_registered: true }
-}
-
-user = register(user)
-</code></pre>
                                 
                                 </section>
                             
@@ -749,12 +791,12 @@ user = register(user)
 
             
                 
-                <a href="methods.html" class="navigation navigation-prev " aria-label="Previous page: 方法(Methods)">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 介绍">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="high-order-functions.html" class="navigation navigation-next " aria-label="Next page: 高阶函数">
+                <a href="installation.html" class="navigation navigation-next " aria-label="Next page: 安装">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -765,7 +807,7 @@ user = register(user)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"接收器&纯函数","level":"1.18","depth":1,"next":{"title":"高阶函数","level":"1.19","depth":1,"path":"high-order-functions.md","ref":"high-order-functions.md","articles":[]},"previous":{"title":"方法(Methods)","level":"1.17","depth":1,"path":"methods.md","ref":"methods.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"mut-receivers-pure-functions.md","mtime":"2019-10-16T00:48:41.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T09:55:47.793Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基础概念","level":"1.2","depth":1,"next":{"title":"安装","level":"1.3","depth":1,"path":"installation.md","ref":"installation.md","articles":[]},"previous":{"title":"介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"basic-concepts.md","mtime":"2021-03-08T08:41:12.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-08T09:55:47.793Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
