@@ -15,4 +15,5 @@
 <url> <loc>http://es.litebook.cn/analysis.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://es.litebook.cn/modules.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://es.litebook.cn/testing.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-initialization.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
