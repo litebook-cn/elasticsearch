@@ -16,4 +16,23 @@
 <url> <loc>http://es.litebook.cn/modules.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://es.litebook.cn/testing.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>http://es.litebook.cn/java-initialization.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-document-new-index-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-get-document-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-exists-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-delete-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-update-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-term-vectors-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-bulk-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-multiget-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-reindex-request.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-update-by-query-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-delete-by-query-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-rethrottle-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-multi-term-vectors-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-search-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-search-api-search.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-search-uri-request.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-rest-high-search-scroll-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-rest-high-clear-scroll-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>http://es.litebook.cn/java-rest-high-multi-search-api.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>

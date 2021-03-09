@@ -1,0 +1,862 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>JAVA实例：更新文档 · ElasticSearch 7 教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="java-term-vectors-api.html" />
+    
+    
+    <link rel="prev" href="java-delete-api.html" />
+    
+
+    
+        <link rel="shortcut icon" href='favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="basic-concepts.html">
+            
+                <a href="basic-concepts.html">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="installation.html">
+            
+                <a href="installation.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="populate.html">
+            
+                <a href="populate.html">
+            
+                    
+                    准备工作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="conventions.html">
+            
+                <a href="conventions.html">
+            
+                    
+                    API约定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="document-apis.html">
+            
+                <a href="document-apis.html">
+            
+                    
+                    文档API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="search-apis.html">
+            
+                <a href="search-apis.html">
+            
+                    
+                    搜索API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="aggregations.html">
+            
+                <a href="aggregations.html">
+            
+                    
+                    聚合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="index-api.html">
+            
+                <a href="index-api.html">
+            
+                    
+                    索引API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="cluster-api.html">
+            
+                <a href="cluster-api.html">
+            
+                    
+                    集群API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="query-dsl.html">
+            
+                <a href="query-dsl.html">
+            
+                    
+                    DSL查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="mapping.html">
+            
+                <a href="mapping.html">
+            
+                    
+                    映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="analysis.html">
+            
+                <a href="analysis.html">
+            
+                    
+                    分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="modules.html">
+            
+                <a href="modules.html">
+            
+                    
+                    模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="testing.html">
+            
+                <a href="testing.html">
+            
+                    
+                    测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="java-initialization.html">
+            
+                <a href="java-initialization.html">
+            
+                    
+                    JAVA实例：初始化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="java-document-new-index-api.html">
+            
+                <a href="java-document-new-index-api.html">
+            
+                    
+                    JAVA实例：添加新文档（indexRequest）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="java-get-document-api.html">
+            
+                <a href="java-get-document-api.html">
+            
+                    
+                    JAVA实例：获取文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="java-exists-api.html">
+            
+                <a href="java-exists-api.html">
+            
+                    
+                    JAVA实例：检查文档是否存在
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="java-delete-api.html">
+            
+                <a href="java-delete-api.html">
+            
+                    
+                    JAVA实例：删除文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.21" data-path="java-update-api.html">
+            
+                <a href="java-update-api.html">
+            
+                    
+                    JAVA实例：更新文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="java-term-vectors-api.html">
+            
+                <a href="java-term-vectors-api.html">
+            
+                    
+                    JAVA实例：术语向量(Term Vectors)API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="java-bulk-api.html">
+            
+                <a href="java-bulk-api.html">
+            
+                    
+                    JAVA实例：Bulk API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="java-multiget-api.html">
+            
+                <a href="java-multiget-api.html">
+            
+                    
+                    JAVA实例：Multi-Get API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="java-reindex-request.html">
+            
+                <a href="java-reindex-request.html">
+            
+                    
+                    JAVA实例：Reindex API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="java-update-by-query-api.html">
+            
+                <a href="java-update-by-query-api.html">
+            
+                    
+                    JAVA实例：Update By Query API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="java-delete-by-query-api.html">
+            
+                <a href="java-delete-by-query-api.html">
+            
+                    
+                    JAVA实例：Delete By Query API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="java-rethrottle-api.html">
+            
+                <a href="java-rethrottle-api.html">
+            
+                    
+                    JAVA实例：Rethrottle API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="java-multi-term-vectors-api.html">
+            
+                <a href="java-multi-term-vectors-api.html">
+            
+                    
+                    JAVA实例：Multi Term Vectors API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="java-search-api.html">
+            
+                <a href="java-search-api.html">
+            
+                    
+                    JAVA实例：搜索API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="java-search-api-search.html">
+            
+                <a href="java-search-api-search.html">
+            
+                    
+                    JAVA实例：搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="java-search-uri-request.html">
+            
+                <a href="java-search-uri-request.html">
+            
+                    
+                    JAVA实例：URI搜索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="java-rest-high-search-scroll-api.html">
+            
+                <a href="java-rest-high-search-scroll-api.html">
+            
+                    
+                    JAVA实例：Search Scroll API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="java-rest-high-clear-scroll-api.html">
+            
+                <a href="java-rest-high-clear-scroll-api.html">
+            
+                    
+                    JAVA实例：Clear Scroll API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="java-rest-high-multi-search-api.html">
+            
+                <a href="java-rest-high-multi-search-api.html">
+            
+                    
+                    JAVA实例：Multi-Search API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >JAVA实例：更新文档</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><ul><li><span class="title-icon "></span><a href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;"><b></b>JAVA&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;</a></li></ul></ul></div><a href="#" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;" class="anchor-navigation-ex-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;&#x66F4;&#x65B0;&#x6587;&#x6863;</h2>
+<hr>
+<p><strong>UpdateRequest</strong></p>
+<pre><code>UpdateRequest request = new UpdateRequest(
+        &quot;posts&quot;, //&#x7D22;&#x5F15;
+        &quot;1&quot;);   //&#x6587;&#x6863;id
+</code></pre><p> Update API&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x811A;&#x672C;&#x6216;&#x4F20;&#x9012;&#x90E8;&#x5206;&#x6587;&#x6863;&#x6765;&#x66F4;&#x65B0;&#x73B0;&#x6709;&#x6587;&#x6863;&#x3002;</p>
+<p><strong>&#x7528;&#x811A;&#x672C;&#x66F4;&#x65B0;</strong> </p>
+<p> &#x8BE5;&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x5185;&#x5D4C;&#x811A;&#x672C;&#x63D0;&#x4F9B;:</p>
+<pre><code>Map&lt;String, Object&gt; parameters = singletonMap(&quot;count&quot;, 4); //&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x6620;&#x5C04;&#x63D0;&#x4F9B;&#x7684;&#x811A;&#x672C;&#x53C2;&#x6570;
+Script inline = new Script(ScriptType.INLINE, &quot;painless&quot;,
+        &quot;ctx._source.field += params.count&quot;, parameters);  //&#x4F7F;&#x7528;painless&#x8BED;&#x8A00;&#x548C;&#x524D;&#x9762;&#x7684;&#x53C2;&#x6570;&#x521B;&#x5EFA;&#x5185;&#x5D4C;&#x811A;&#x672C;
+request.script(inline);  //&#x5C06;&#x811A;&#x672C;&#x8BBE;&#x7F6E;&#x4E3A;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;
+</code></pre><p> &#x6216;&#x8005;&#x4F5C;&#x4E3A;&#x5B58;&#x50A8;&#x7684;&#x811A;&#x672C;:</p>
+<pre><code>Script stored = new Script(
+        ScriptType.STORED, null, &quot;increment-field&quot;, parameters);  //&#x5F15;&#x7528;painless&#x8BED;&#x8A00;&#x4E2D;&#x5B58;&#x50A8;&#x5728;&#x540D;&#x79F0;&#x589E;&#x91CF;&#x5B57;&#x6BB5;&#x4E0B;&#x7684;&#x811A;&#x672C;
+request.script(stored);  //&#x5728;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x4E2D;&#x8BBE;&#x7F6E;&#x811A;&#x672C;
+</code></pre><p><strong>&#x7528;&#x90E8;&#x5206;&#x6587;&#x6863;&#x66F4;&#x65B0;</strong></p>
+<p> &#x5BF9;&#x90E8;&#x5206;&#x6587;&#x6863;&#x4F7F;&#x7528;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x90E8;&#x5206;&#x6587;&#x6863;&#x5C06;&#x4E0E;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5408;&#x5E76;&#x3002;</p>
+<p> &#x90E8;&#x5206;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x63D0;&#x4F9B;:</p>
+<pre><code>UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;1&quot;);
+String jsonString = &quot;{&quot; +
+        &quot;\&quot;updated\&quot;:\&quot;2017-01-01\&quot;,&quot; +
+        &quot;\&quot;reason\&quot;:\&quot;daily update\&quot;&quot; +
+        &quot;}&quot;;
+request.doc(jsonString, XContentType.JSON); //&#x4EE5;JSON&#x683C;&#x5F0F;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x63D0;&#x4F9B;&#x7684;&#x90E8;&#x5206;&#x6587;&#x6863;&#x6E90;
+Map&lt;String, Object&gt; jsonMap = new HashMap&lt;&gt;();
+jsonMap.put(&quot;updated&quot;, new Date());
+jsonMap.put(&quot;reason&quot;, &quot;daily update&quot;);
+UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;1&quot;)
+        .doc(jsonMap); //&#x4F5C;&#x4E3A;Map&#x63D0;&#x4F9B;&#x7684;&#x90E8;&#x5206;&#x6587;&#x6863;&#x6E90;&#x4F1A;&#x81EA;&#x52A8;&#x8F6C;&#x6362;&#x4E3A;JSON&#x683C;&#x5F0F;
+</code></pre><pre><code>XContentBuilder builder = XContentFactory.jsonBuilder();
+builder.startObject();
+{
+    builder.timeField(&quot;updated&quot;, new Date());
+    builder.field(&quot;reason&quot;, &quot;daily update&quot;);
+}
+builder.endObject();
+UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;1&quot;)
+        .doc(builder);  //&#x4F5C;&#x4E3A;XContentBuilder&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x7684;&#x90E8;&#x5206;&#x6587;&#x6863;&#x6E90;&#xFF0C;&#x5F39;&#x6027;&#x641C;&#x7D22;&#x5185;&#x7F6E;&#x5E2E;&#x52A9;&#x5668;&#xFF0C;&#x7528;&#x4E8E;&#x751F;&#x6210;JSON&#x5185;&#x5BB9;
+UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;1&quot;)
+        .doc(&quot;updated&quot;, new Date(),
+             &quot;reason&quot;, &quot;daily update&quot;); //&#x4F5C;&#x4E3A;&#x952E;&#x503C;&#x5BF9;&#x63D0;&#x4F9B;&#x7684;&#x90E8;&#x5206;&#x6587;&#x6863;&#x6E90;&#xFF0C;&#x8F6C;&#x6362;&#x4E3A;JSON&#x683C;&#x5F0F;
+</code></pre><p><strong>Upserts</strong></p>
+<p> &#x5982;&#x679C;&#x6587;&#x6863;&#x5C1A;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;upsert&#x65B9;&#x6CD5;&#x5B9A;&#x4E49;&#x4E00;&#x4E9B;&#x5C06;&#x4F5C;&#x4E3A;&#x65B0;&#x6587;&#x6863;&#x63D2;&#x5165;&#x7684;&#x5185;&#x5BB9;:</p>
+<pre><code>String jsonString = &quot;{\&quot;created\&quot;:\&quot;2017-01-01\&quot;}&quot;;
+request.upsert(jsonString, XContentType.JSON);  //&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x63D0;&#x4F9B;&#x7684;Upsert&#x6587;&#x6863;&#x6E90;
+</code></pre><p> &#x4E0E;&#x90E8;&#x5206;&#x6587;&#x6863;&#x66F4;&#x65B0;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x63A5;&#x53D7;&#x5B57;&#x7B26;&#x4E32;&#x3001;Map&#x3001;XContentBuilder&#x6216;&#x952E;&#x503C;&#x5BF9;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x5B9A;&#x4E49;upsert&#x6587;&#x6863;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p><strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong></p>
+<pre><code>request.routing(&quot;routing&quot;); //&#x8DEF;&#x7531;&#x503C;
+request.timeout(TimeValue.timeValueSeconds(1)); //&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;
+request.timeout(&quot;1s&quot;); ////&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;
+request.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL); //&#x4EE5;WriteRequest.RefreshPolicy&#x5B9E;&#x4F8B;&#x5F62;&#x5F0F;&#x8BBE;&#x7F6E;&#x5237;&#x65B0;&#x7B56;&#x7565;
+request.setRefreshPolicy(&quot;wait_for&quot;);//&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x5237;&#x65B0;&#x7B56;&#x7565;  
+request.retryOnConflict(3); //&#x5982;&#x679C;&#x8981;&#x66F4;&#x65B0;&#x7684;&#x6587;&#x6863;&#x5728;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x7684;&#x83B7;&#x53D6;&#x548C;&#x7D22;&#x5F15;&#x9636;&#x6BB5;&#x4E4B;&#x95F4;&#x88AB;&#x53E6;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x66F4;&#x6539;&#xFF0C;&#x91CD;&#x8BD5;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x7684;&#x6B21;&#x6570;
+request.fetchSource(true); //&#x542F;&#x7528;&#x6E90;&#x68C0;&#x7D22;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x7981;&#x7528;
+String[] includes = new String[]{&quot;updated&quot;, &quot;r*&quot;};
+String[] excludes = Strings.EMPTY_ARRAY;
+request.fetchSource(
+        new FetchSourceContext(true, includes, excludes)); //&#x4E3A;&#x7279;&#x5B9A;&#x5B57;&#x6BB5;&#x914D;&#x7F6E;&#x6E90;&#x5305;&#x542B;
+String[] includes = Strings.EMPTY_ARRAY;
+String[] excludes = new String[]{&quot;updated&quot;};
+request.fetchSource(
+        new FetchSourceContext(true, includes, excludes)); //&#x4E3A;&#x7279;&#x5B9A;&#x5B57;&#x6BB5;&#x914D;&#x7F6E;&#x6E90;&#x6392;&#x9664;
+
+request.setIfSeqNo(2L); //ifSeqNo
+request.setIfPrimaryTerm(1L); //ifPrimaryTerm
+request.detectNoop(false); //&#x7981;&#x7528;noop&#x68C0;&#x6D4B;
+request.scriptedUpsert(true); //&#x6307;&#x51FA;&#x65E0;&#x8BBA;&#x6587;&#x6863;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x811A;&#x672C;&#x90FD;&#x5FC5;&#x987B;&#x8FD0;&#x884C;&#xFF0C;&#x5373;&#x5982;&#x679C;&#x6587;&#x6863;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x811A;&#x672C;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x6587;&#x6863;&#x3002;
+request.docAsUpsert(true); //&#x6307;&#x793A;&#x5982;&#x679C;&#x90E8;&#x5206;&#x6587;&#x6863;&#x5C1A;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x5C06;&#x5176;&#x7528;&#x4F5C;upsert&#x6587;&#x6863;&#x3002;
+request.waitForActiveShards(2); //&#x8BBE;&#x7F6E;&#x5728;&#x7EE7;&#x7EED;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x6D3B;&#x52A8;&#x7684;&#x788E;&#x7247;&#x526F;&#x672C;&#x6570;&#x91CF;&#x3002;
+request.waitForActiveShards(ActiveShardCount.ALL); //ActiveShardCount&#x7684;&#x788E;&#x7247;&#x526F;&#x672C;&#x6570;&#x3002;&#x53EF;&#x9009;&#x503C;&#xFF1A;ActiveShardCount.ALL, ActiveShardCount.ONE&#x6216;&#x8005; ActiveShardCount.DEFAULT
+</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
+<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;&#x66F4;&#x65B0;&#x54CD;&#x5E94;:</p>
+<pre><code>UpdateResponse updateResponse = client.update(
+        request, RequestOptions.DEFAULT);
+</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
+<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseException&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
+<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
+<p> &#x6267;&#x884C;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x5B8C;&#x6210;&#xFF0C;&#x4EE5;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5411;&#x5F02;&#x6B65;&#x66F4;&#x65B0;&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
+<pre><code>client.updateAsync(request, RequestOptions.DEFAULT, listener); //&#x8981;&#x6267;&#x884C;&#x7684;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;
+</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
+<p> &#x5178;&#x578B;&#x7684;&#x66F4;&#x65B0;&#x76D1;&#x542C;&#x5668;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code>listener = new ActionListener&lt;UpdateResponse&gt;() {
+    @Override
+    public void onResponse(UpdateResponse updateResponse) {
+        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+    }
+};
+</code></pre><p><strong>Update Response</strong></p>
+<p> &#x8FD4;&#x56DE;&#x7684;&#x66F4;&#x65B0;&#x54CD;&#x5E94;&#x5141;&#x8BB8;&#x68C0;&#x7D22;&#x5173;&#x4E8E;&#x5DF2;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code>String index = updateResponse.getIndex();
+String id = updateResponse.getId();
+long version = updateResponse.getVersion();
+if (updateResponse.getResult() == DocWriteResponse.Result.CREATED) {
+    //&#x5904;&#x7406;&#x7B2C;&#x4E00;&#x6B21;&#x521B;&#x5EFA;&#x6587;&#x6863;&#x7684;&#x60C5;&#x51B5;(upsert)
+} else if (updateResponse.getResult() == DocWriteResponse.Result.UPDATED) {
+    //&#x5904;&#x7406;&#x6587;&#x6863;&#x66F4;&#x65B0;&#x7684;&#x60C5;&#x51B5;
+} else if (updateResponse.getResult() == DocWriteResponse.Result.DELETED) {
+    //&#x5904;&#x7406;&#x6587;&#x6863;&#x88AB;&#x5220;&#x9664;&#x7684;&#x60C5;&#x51B5;
+} else if (updateResponse.getResult() == DocWriteResponse.Result.NOOP) {
+   //&#x5904;&#x7406;&#x6587;&#x6863;&#x4E0D;&#x53D7;&#x66F4;&#x65B0;&#x5F71;&#x54CD;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5373;&#x6CA1;&#x6709;&#x5BF9;&#x6587;&#x6863;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;(noop)   
+}
+</code></pre><p> &#x5F53;&#x901A;&#x8FC7;fetchSource&#x65B9;&#x6CD5;&#x5728;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x4E2D;&#x542F;&#x7528;&#x6E90;&#x68C0;&#x7D22;&#x65F6;&#xFF0C;&#x54CD;&#x5E94;&#x5305;&#x542B;&#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6E90;:</p>
+<pre><code>GetResult result = updateResponse.getGetResult(); //&#x4EE5;GetResult&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x66F4;&#x65B0;&#x7684;&#x6587;&#x6863;
+if (result.isExists()) {
+    String sourceAsString = result.sourceAsString(); //&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6765;&#x6E90;
+    Map&lt;String, Object&gt; sourceAsMap = result.sourceAsMap(); //&#x4EE5;Map&lt;String, Object&gt;&#x7684;&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6E90;
+    byte[] sourceAsBytes = result.source(); //&#x4EE5;byte[]&#x7684;&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x66F4;&#x65B0;&#x6587;&#x6863;&#x7684;&#x6E90;
+} else {
+    //&#x5904;&#x7406;&#x54CD;&#x5E94;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x6587;&#x6863;&#x6E90;&#x7684;&#x60C5;&#x51B5;(&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;)
+}
+</code></pre><p> &#x4E5F;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x788E;&#x7247;&#x6545;&#x969C;:</p>
+<pre><code>ReplicationResponse.ShardInfo shardInfo = updateResponse.getShardInfo();
+if (shardInfo.getTotal() != shardInfo.getSuccessful()) {
+    //&#x5904;&#x7406;&#x6210;&#x529F;&#x788E;&#x7247;&#x6570;&#x5C11;&#x4E8E;&#x603B;&#x788E;&#x7247;&#x6570;&#x7684;&#x60C5;&#x51B5;
+}
+if (shardInfo.getFailed() &gt; 0) {
+    for (ReplicationResponse.ShardInfo.Failure failure :
+            shardInfo.getFailures()) {//&#x5904;&#x7406;&#x6F5C;&#x5728;&#x7684;&#x6545;&#x969C;
+        String reason = failure.reason(); 
+    }
+}
+</code></pre><p> &#x5F53;&#x5BF9;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x6587;&#x6863;&#x6267;&#x884C;UpdateRequest&#x65F6;&#xFF0C;&#x54CD;&#x5E94;&#x6709;404&#x4E2A;&#x72B6;&#x6001;&#x4EE3;&#x7801;&#xFF0C;&#x4F1A;&#x5F15;&#x53D1;&#x4E00;&#x4E2A;ElasticsearchException&#xFF0C;&#x9700;&#x8981;&#x5982;&#x4E0B;&#x5904;&#x7406;:</p>
+<pre><code>UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;does_not_exist&quot;)
+        .doc(&quot;field&quot;, &quot;value&quot;);
+try {
+    UpdateResponse updateResponse = client.update(
+            request, RequestOptions.DEFAULT);
+} catch (ElasticsearchException e) {
+    if (e.status() == RestStatus.NOT_FOUND) {
+        //&#x5904;&#x7406;&#x7531;&#x4E8E;&#x6587;&#x6863;&#x4E0D;&#x5B58;&#x5728;&#x800C;&#x5F15;&#x53D1;&#x7684;&#x5F02;&#x5E38;
+    }
+}
+</code></pre><p> &#x5982;&#x679C;&#x5B58;&#x5728;&#x7248;&#x672C;&#x51B2;&#x7A81;&#xFF0C;&#x5C06;&#x5F15;&#x53D1;ElasticsearchException:</p>
+<pre><code>UpdateRequest request = new UpdateRequest(&quot;posts&quot;, &quot;1&quot;)
+        .doc(&quot;field&quot;, &quot;value&quot;)
+        .setIfSeqNo(101L)
+        .setIfPrimaryTerm(200L);
+try {
+    UpdateResponse updateResponse = client.update(
+            request, RequestOptions.DEFAULT);
+} catch(ElasticsearchException e) {
+    if (e.status() == RestStatus.CONFLICT) {
+        //&#x5F15;&#x53D1;&#x7684;&#x5F02;&#x5E38;&#x8868;&#x660E;&#x8FD4;&#x56DE;&#x4E86;&#x7248;&#x672C;&#x51B2;&#x7A81;&#x9519;&#x8BEF;&#x3002;
+    }
+}
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="java-delete-api.html" class="navigation navigation-prev " aria-label="Previous page: JAVA实例：删除文档">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="java-term-vectors-api.html" class="navigation navigation-next " aria-label="Next page: JAVA实例：术语向量(Term Vectors)API">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：更新文档","level":"1.21","depth":1,"next":{"title":"JAVA实例：术语向量(Term Vectors)API","level":"1.22","depth":1,"path":"java-term-vectors-api.md","ref":"java-term-vectors-api.md","articles":[]},"previous":{"title":"JAVA实例：删除文档","level":"1.20","depth":1,"path":"java-delete-api.md","ref":"java-delete-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","splitter","expandable-chapters-small","anchors","sharing-plus","anchor-navigation-ex","baidu-nfer","favicon","sitemap3"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"mode":"float","multipleH1":true,"pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":false},"favicon":{"shortcut":"/favicon.ico","bookmark":"/favicon.ico"},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://es.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-update-api.md","mtime":"2021-03-08T11:25:45.487Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-09T05:14:34.188Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-baidu-nfer/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
