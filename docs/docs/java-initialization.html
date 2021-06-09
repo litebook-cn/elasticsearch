@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,10 +610,10 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;&#x521D;&#x59CB;&#x5316;"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;&#x521D;&#x59CB;&#x5316;" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x521D;&#x59CB;&#x5316;"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;&#x521D;&#x59CB;&#x5316;</h2>
+                                <h2 id="java实例：初始化"><a name="java实例：初始化" class="plugin-anchor" href="#java实例：初始化"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：初始化</h2>
 <hr>
-<p> ElasticSearch&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;API&#x4F9B;&#x5F00;&#x53D1;&#x8005;&#x8C03;&#x7528;&#xFF0C;&#x5728;&#x8FC7;&#x53BB;&#x7684;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x5E94;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x5E7F;&#x6CDB;&#x7684;&#x662F;&#x901A;&#x8FC7;Transport&#x7AEF;&#x53E3;&#x8C03;&#x7528;&#x76F8;&#x5E94;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x662F;&#x65B0;&#x7248;&#x672C;&#x7684;ElasticSearch&#x5DF2;&#x7ECF;&#x4E0D;&#x63A8;&#x8350;&#x4F7F;&#x7528;Transport&#x7AEF;&#x53E3;&#xFF0C;&#x800C;&#x662F;&#x63A8;&#x8350;&#x4F7F;&#x7528;REST&#x7684;&#x65B9;&#x5F0F;&#x8C03;&#x7528;&#x529F;&#x80FD;&#x3002;&#x672C;&#x5B9E;&#x4F8B;&#x4EE5;Java REST Client&#x4E3A;&#x4F5C;&#x4E3A;&#x53C2;&#x8003;&#x3002;</p>
-<p><strong>&#x6DFB;&#x52A0;pom&#x5F15;&#x7528;</strong></p>
+<p> ElasticSearch提供了很多API供开发者调用，在过去的版本中，应用的比较广泛的是通过Transport端口调用相应的功能，但是新版本的ElasticSearch已经不推荐使用Transport端口，而是推荐使用REST的方式调用功能。本实例以Java REST Client为作为参考。</p>
+<p><strong>添加pom引用</strong></p>
 <pre><code>&lt;dependency&gt;
 &lt;groupId&gt;org.elasticsearch&lt;/groupId&gt;
 &lt;artifactId&gt;elasticsearch&lt;/artifactId&gt;
@@ -644,15 +644,15 @@
 &lt;artifactId&gt;elasticsearch-rest-client-sniffer&lt;/artifactId&gt;
 &lt;version&gt;7.1.1&lt;/version&gt;
 &lt;/dependency&gt;
-</code></pre><p> Java High Level REST Client&#x9700;&#x8981;Java 1.8&#xFF0C;&#x5E76;&#x4E14;&#x4F9D;&#x8D56;&#x4E8E;Elasticsearch core&#x9879;&#x76EE;&#x3002;</p>
-<p><strong>&#x521D;&#x59CB;&#x5316;</strong></p>
-<p> RestHighLevelClient&#x5B9E;&#x4F8B;&#x9700;&#x8981;&#x6309;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x6784;&#x5EFA;:</p>
+</code></pre><p> Java High Level REST Client需要Java 1.8，并且依赖于Elasticsearch core项目。</p>
+<p><strong>初始化</strong></p>
+<p> RestHighLevelClient实例需要按如下方式构建:</p>
 <pre><code>RestHighLevelClient client = new RestHighLevelClient(
         RestClient.builder(
                 new HttpHost(&quot;localhost&quot;, 9200, &quot;http&quot;),
                 new HttpHost(&quot;localhost&quot;, 9201, &quot;http&quot;)));
-</code></pre><p><strong>&#x5173;&#x95ED;&#x5BA2;&#x6237;&#x7AEF;</strong></p>
-<p> RestHighLevelClient&#x5C06;&#x6839;&#x636E;&#x63D0;&#x4F9B;&#x7684;&#x6784;&#x5EFA;&#x5668;&#x5728;&#x5185;&#x90E8;&#x521B;&#x5EFA;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x8BF7;&#x6C42;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x8BE5;&#x5BA2;&#x6237;&#x7AEF;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6C60;&#x5E76;&#x542F;&#x52A8;&#x4E00;&#x4E9B;&#x7EBF;&#x7A0B;&#xFF0C;&#x56E0;&#x6B64;&#x5F53;&#x60A8;&#x5904;&#x7406;&#x597D;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x60A8;&#x5E94;&#x8BE5;&#x5C06;&#x5176;&#x5173;&#x95ED;&#x4EE5;&#x91CA;&#x653E;&#x8FD9;&#x4E9B;&#x8D44;&#x6E90;&#xFF0C;&#x6539;&#x64CD;&#x4F5C;&#x901A;&#x8FC7;&#x8C03;&#x7528;close()&#x65B9;&#x6CD5;&#x6765;&#x5B8C;&#x6210;:</p>
+</code></pre><p><strong>关闭客户端</strong></p>
+<p> RestHighLevelClient将根据提供的构建器在内部创建用于执行请求的客户端。该客户端维护一个连接池并启动一些线程，因此当您处理好请求时，您应该将其关闭以释放这些资源，改操作通过调用close()方法来完成:</p>
 <pre><code>client.close();
 </code></pre>
                                 
@@ -697,7 +697,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：初始化","level":"1.16","depth":1,"next":{"title":"JAVA实例：添加新文档（indexRequest）","level":"1.17","depth":1,"path":"java-document-new-index-api.md","ref":"java-document-new-index-api.md","articles":[]},"previous":{"title":"测试","level":"1.15","depth":1,"path":"testing.md","ref":"testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-initialization.md","mtime":"2021-03-08T11:20:28.067Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：初始化","level":"1.16","depth":1,"next":{"title":"JAVA实例：添加新文档（indexRequest）","level":"1.17","depth":1,"path":"java-document-new-index-api.md","ref":"java-document-new-index-api.md","articles":[]},"previous":{"title":"测试","level":"1.15","depth":1,"path":"testing.md","ref":"testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-initialization.md","mtime":"2021-03-08T11:20:28.067Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

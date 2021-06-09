@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,13 +610,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x641C;&#x7D22;api"><a name="&#x641C;&#x7D22;api" class="plugin-anchor" href="#&#x641C;&#x7D22;api"><i class="fa fa-link" aria-hidden="true"></i></a>&#x641C;&#x7D22;API</h2>
+                                <h2 id="搜索api"><a name="搜索api" class="plugin-anchor" href="#搜索api"><i class="fa fa-link" aria-hidden="true"></i></a>搜索API</h2>
 <hr>
-<p> &#x8BE5;API&#x7528;&#x4E8E;&#x5728; ElasticSearch&#x4E2D;&#x641C;&#x7D22;&#x5185;&#x5BB9;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x53D1;&#x9001;&#x4EE5;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x7684;get&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;post&#x8BF7;&#x6C42;&#x7684;&#x6D88;&#x606F;&#x4F53;&#x4E2D;&#x8FDB;&#x884C;&#x67E5;&#x8BE2;&#x3002;&#x6240;&#x6709;&#x7684;&#x641C;&#x7D22;APIS&#x90FD;&#x652F;&#x6301;&#x591A;&#x7D22;&#x5F15;&#x3001;&#x591A;&#x7C7B;&#x578B;&#x7684;&#xFF08;&#x65B0;&#x7248;&#x672C;&#x7684;ES&#x5DF2;&#x7ECF;&#x5F31;&#x5316;&#x4E86;&#x7C7B;&#x578B;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#xFF09;&#x3002;</p>
-<p><strong>&#x591A;&#x7D22;&#x5F15;</strong></p>
-<p> ElasticSearch&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x641C;&#x7D22;&#x6240;&#x6709;&#x7D22;&#x5F15;&#x6216;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x6587;&#x6863;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x641C;&#x7D22;&#x6240;&#x6709;name&#x5305;&#x542B;central&#x7684;&#x6587;&#x6863;&#x3002;</p>
+<p> 该API用于在 ElasticSearch中搜索内容。用户可以通过发送以查询字符串作为参数的get请求进行搜索，也可以在post请求的消息体中进行查询。所有的搜索APIS都支持多索引、多类型的（新版本的ES已经弱化了类型的概念，一个索引只支持一个类型）。</p>
+<p><strong>多索引</strong></p>
+<p> ElasticSearch允许我们搜索所有索引或某些特定索引中的文档。例如，如果我们需要搜索所有name包含central的文档。</p>
 <pre><code>GET  /_search?q = name:central
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{
    &quot;took&quot;:78, &quot;timed_out&quot;:false, &quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:10, &quot;failed&quot;:0},
    &quot;hits&quot;:{
@@ -631,12 +631,12 @@
       }]
    }
 }
-</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;schools&#x3001;schools_gov&#x7D22;&#x5F15;&#x4E2D;&#x641C;&#x7D22;&#x76F8;&#x540C;&#x7684;&#x5185;&#x5BB9;</p>
+</code></pre><p> 或者，我们可以在schools、schools_gov索引中搜索相同的内容</p>
 <pre><code>GET /schools,schools_gov/_search?q = name:model
-</code></pre><p><strong>&#x591A;&#x7C7B;&#x578B;</strong></p>
-<p> &#x6CE8;&#x610F;&#xFF1A;&#x65B0;&#x7248;&#x672C;&#x7684;ES&#x5DF2;&#x7ECF;&#x5F31;&#x5316;&#x4E86;&#x7C7B;&#x578B;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x53EA;&#x652F;&#x6301;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x3002;</p>
+</code></pre><p><strong>多类型</strong></p>
+<p> 注意：新版本的ES已经弱化了类型的概念，一个索引只支持一个类型。</p>
 <pre><code>GET /schools/_search?q = tags:sports
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{
    &quot;took&quot;:16, &quot;timed_out&quot;:false, &quot;_shards&quot;:{&quot;total&quot;:5, &quot;successful&quot;:5, &quot;failed&quot;:0},
    &quot;hits&quot;:{
@@ -651,20 +651,20 @@
       }]
    }
 }
-</code></pre><p><strong>URI&#x641C;&#x7D22;</strong></p>
-<p> &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;URI&#x4E2D;&#x4F20;&#x9012;&#x8BB8;&#x591A;&#x53C2;&#x6570;</p>
+</code></pre><p><strong>URI搜索</strong></p>
+<p> 我们可以在URI中传递许多参数</p>
 <ul>
-<li>Q&#xFF1A;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x641C;&#x7D22;&#x7684;&#x5B57;&#x7B26;&#x4E32;</li>
-<li>lenient&#xFF1A;&#x82E5;&#x5C06;&#x6B64;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x57FA;&#x4E8E;&#x683C;&#x5F0F;&#x7684;&#x9519;&#x8BEF;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B83;&#x4E3A;false&#x3002;</li>
-<li>fields:&#x8BE5;&#x53C2;&#x6570;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x4ECE;&#x9009;&#x62E9;&#x6027;&#x5B57;&#x6BB5;&#x4E2D;&#x83B7;&#x5F97;&#x54CD;&#x5E94;&#x3002;</li>
-<li>sort:&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6539;&#x53D8;&#x6392;&#x5E8F;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5141;&#x8BB8;&#x7684;&#x503C;&#x662F;&#x5B57;&#x6BB5;&#x540D;:ASC/&#x5B57;&#x6BB5;&#x540D;:desc</li>
-<li>timeout:&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x8BE5;&#x53C2;&#x6570;&#x6765;&#x9650;&#x5236;&#x641C;&#x7D22;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x4E14;&#x54CD;&#x5E94;&#x4EC5;&#x5305;&#x542B;&#x5728;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#x7684;&#x547D;&#x4E2D;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;timeout&#x3002;</li>
-<li>terminate_after:&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x5206;&#x7247;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x54CD;&#x5E94;&#x9650;&#x5236;&#x5728;&#x6307;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x6570;&#x91CF;&#xFF0C;&#x67E5;&#x8BE2;&#x5C06;&#x63D0;&#x524D;&#x7EC8;&#x6B62;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x6307;&#x5B9A;terminate_after&#x3002;</li>
-<li>from:&#x4ECE;&#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x5F00;&#x59CB;&#x8FD4;&#x56DE;. &#x9ED8;&#x8BA4;&#x4E3A;0.</li>
-<li>size:&#x8868;&#x793A;&#x8981;&#x8FD4;&#x56DE;&#x7684;&#x8BB0;&#x5F55;&#x6570;. &#x9ED8;&#x8BA4;&#x4E3A;10.</li>
+<li>Q：用于指定搜索的字符串</li>
+<li>lenient：若将此参数设置为true，就可以忽略基于格式的错误。默认情况下，它为false。</li>
+<li>fields:该参数帮助我们从选择性字段中获得响应。</li>
+<li>sort:我们可以通过使用这个参数改变排序结果，这个参数允许的值是字段名:ASC/字段名:desc</li>
+<li>timeout:我们可以通过使用该参数来限制搜索时间，并且响应仅包含在指定时间内的命中。默认情况下，不指定timeout。</li>
+<li>terminate_after:对于每个分片，我们可以将响应限制在指定数量的文档，一旦达到这个数量，查询将提前终止。默认情况下，不指定terminate_after。</li>
+<li>from:从指定的索引开始返回. 默认为0.</li>
+<li>size:表示要返回的记录数. 默认为10.</li>
 </ul>
-<p><strong>&#x8BF7;&#x6C42;&#x4F53;&#x67E5;&#x8BE2;</strong></p>
-<p> &#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8BF7;&#x6C42;&#x4F53;&#x4E2D;&#x4F7F;&#x7528;DSL&#x6765;&#x6307;&#x5B9A;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#xFF0C;&#x5728;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x5DF2;&#x7ECF;&#x7ED9;&#x51FA;&#x4E86;&#x8BB8;&#x591A;&#x4F8B;&#x5B50;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<p><strong>请求体查询</strong></p>
+<p> 我们也可以在请求体中使用DSL来指定查询条件，在前面的章节中已经给出了许多例子，例如：</p>
 <pre><code>POST /schools/_search
 {
    &quot;query&quot;:{
@@ -673,8 +673,8 @@
       }
    }
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
-<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;.
+</code></pre><p><strong>响应</strong></p>
+<pre><code>……………………………………………….
 {
    &quot;_source&quot;:{
       &quot;name&quot;:&quot;City School&quot;, &quot;description&quot;:&quot;ICSE&quot;, &quot;street&quot;:&quot;West End&quot;,
@@ -682,7 +682,7 @@
       &quot;fees&quot;:3500, &quot;tags&quot;:[&quot;Well equipped labs&quot;],&quot;rating&quot;:&quot;4.5&quot;
    }
 }
-&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;.
+……………………………………………….
 </code></pre>
                                 
                                 </section>
@@ -726,7 +726,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"搜索API","level":"1.7","depth":1,"next":{"title":"聚合","level":"1.8","depth":1,"path":"aggregations.md","ref":"aggregations.md","articles":[]},"previous":{"title":"文档API","level":"1.6","depth":1,"path":"document-apis.md","ref":"document-apis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"search-apis.md","mtime":"2021-03-08T10:29:19.806Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"搜索API","level":"1.7","depth":1,"next":{"title":"聚合","level":"1.8","depth":1,"path":"aggregations.md","ref":"aggregations.md","articles":[]},"previous":{"title":"文档API","level":"1.6","depth":1,"path":"document-apis.md","ref":"document-apis.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"search-apis.md","mtime":"2021-03-08T10:29:19.806Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,8 +610,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x5206;&#x6790;"><a name="&#x5206;&#x6790;" class="plugin-anchor" href="#&#x5206;&#x6790;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5206;&#x6790;</h2>
-<p> &#x5F53;&#x5728;&#x641C;&#x7D22;&#x64CD;&#x4F5C;&#x671F;&#x95F4;&#x5904;&#x7406;&#x67E5;&#x8BE2;&#x65F6;&#xFF0C;&#x5206;&#x6790;&#x6A21;&#x5757;&#x5206;&#x6790;&#x4EFB;&#x4F55;&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x5185;&#x5BB9;.&#x8BE5;&#x6A21;&#x5757;&#x7531;analyzer, tokenizer, tokenfilters&#x548C;charfilters&#x7EC4;&#x6210;.&#x5982;&#x679C;&#x672A;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5185;&#x7F6E;analyzers, token, filters&#x548C;tokenizers&#x5C06;&#x5728;&#x5206;&#x6790;&#x6A21;&#x5757;&#x4E2D;&#x6CE8;&#x518C;.&#x4F8B;&#x5982;.</p>
+                                <h2 id="分析"><a name="分析" class="plugin-anchor" href="#分析"><i class="fa fa-link" aria-hidden="true"></i></a>分析</h2>
+<p> 当在搜索操作期间处理查询时，分析模块分析任何索引中的内容.该模块由analyzer, tokenizer, tokenfilters和charfilters组成.如果未定义分析器，则默认情况下，内置analyzers, token, filters和tokenizers将在分析模块中注册.例如.</p>
 <pre><code>POST /pictures
 {
    &quot;settings&quot;: {
@@ -645,35 +645,35 @@
       }
    }
 }
-</code></pre><p><strong>&#x5206;&#x6790;&#x5668;</strong></p>
-<p> &#x5206;&#x6790;&#x5668;&#x7531;tokenizer&#x548C;&#x53EF;&#x9009;&#x7684;token filter&#x7EC4;&#x6210;.&#x8FD9;&#x4E9B;&#x5206;&#x6790;&#x5668;&#x4EE5;&#x903B;&#x8F91;&#x540D;&#x79F0;&#x6CE8;&#x518C;&#x5728;&#x5206;&#x6790;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x903B;&#x8F91;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x5728;&#x6620;&#x5C04;&#x5B9A;&#x4E49;&#x4E2D;&#x5F15;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E9B;API&#x4E2D;&#x5F15;&#x7528;.&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x9ED8;&#x8BA4;&#x5206;&#x6790;&#x4EEA;</p>
-<p> 1.Standard analyzer (standard)&#xFF1A;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x5206;&#x6790;&#x5668;&#x8BBE;&#x7F6E;stopwords&#x548C;max_token_length&#x8BBE;&#x7F6E;.&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;stopwords&#x5217;&#x8868;&#x4E3A;&#x7A7A;&#xFF0C;&#x6700;&#x5927;&#x4EE4;&#x724C;&#x957F;&#x5EA6;&#x4E3A;255.</p>
-<p> 2.Simple analyzer (simple)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7531;&#x5C0F;&#x5199;&#x6807;&#x8BB0;&#x5668;&#x7EC4;&#x6210;.</p>
-<p> 3.Whitespace analyzer (whitespace)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7531;&#x7A7A;&#x767D;&#x6807;&#x8BB0;&#x5668;&#x7EC4;&#x6210;.</p>
-<p> 4.Stop analyzer (stop)&#xFF1A;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;stopwords&#x548C;stopwords_path.&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;stopwords&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x82F1;&#x6587;stopwords&#xFF0C;stopwords_path&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5305;&#x542B;stop words&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;.</p>
-<p> 5.Keyword analyzer (keyword)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x5C06;&#x6574;&#x4E2A;&#x6D41;&#x6807;&#x8BB0;&#x4E3A;&#x5355;&#x4E2A;&#x6807;&#x8BB0;.&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x4F5C;&#x90AE;&#x653F;&#x7F16;&#x7801;.</p>
-<p> 6.Pattern analyzer (pattern)&#xFF1A;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x4E3B;&#x8981;&#x5904;&#x7406;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;.&#x50CF;&#x5C0F;&#x5199;&#x3001;&#x6A21;&#x5F0F;&#x3001;&#x6807;&#x5FD7;&#x3001;&#x505C;&#x6B62;&#x5B57;&#x8FD9;&#x6837;&#x7684;&#x8BBE;&#x7F6E;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;.</p>
-<p> 7.Language analyzer&#xFF1A;&#x8FD9;&#x4E2A;&#x5206;&#x6790;&#x5668;&#x5904;&#x7406;&#x5370;&#x5730;&#x8BED;&#x3001;&#x963F;&#x62C9;&#x4F2F;&#x8BED;&#x3001;&#x7BA1;&#x9053;&#x8BED;&#x7B49;&#x8BED;&#x8A00;.</p>
-<p> 8.Snowball analyzer (snowball)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x4EE4;&#x724C;&#x5316;&#x5668;&#xFF0C;&#x5E26;&#x6709;&#x6807;&#x51C6;&#x8FC7;&#x6EE4;&#x5668;&#x3001;&#x5C0F;&#x5199;&#x8FC7;&#x6EE4;&#x5668;&#x3001;&#x505C;&#x6B62;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x96EA;&#x7403;&#x8FC7;&#x6EE4;&#x5668;.</p>
-<p> 9.Custom analyzer (custom)&#xFF1A;&#x8BE5;&#x5206;&#x6790;&#x5668;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x5E26;&#x6709;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x7684;&#x5B9A;&#x5236;&#x5206;&#x6790;&#x5668;&#xFF0C;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x5E26;&#x6709;&#x53EF;&#x9009;&#x7684;&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x8BA1;&#x8D39;&#x8FC7;&#x6EE4;&#x5668;.&#x53EF;&#x4EE5;&#x5728;&#x6B64;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x914D;&#x7F6E;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x3001;&#x8FC7;&#x6EE4;&#x5668;&#x3001;char_filter&#x548C;position_increment_gap&#x7B49;&#x8BBE;&#x7F6E;.</p>
-<p><strong>&#x4EE4;&#x724C;&#x5316;&#x5668;</strong></p>
-<p> &#x4EE4;&#x724C;&#x5316;&#x5668;&#x7528;&#x4E8E;&#x4ECE;ElasticSearch&#x4E2D;&#x7684;&#x6587;&#x672C;&#x751F;&#x6210;&#x4EE4;&#x724C;.&#x901A;&#x8FC7;&#x8003;&#x8651;&#x7A7A;&#x683C;&#x6216;&#x5176;&#x4ED6;&#x6807;&#x70B9;&#x7B26;&#x53F7;&#xFF0C;&#x6587;&#x672C;&#x53EF;&#x4EE5;&#x88AB;&#x5206;&#x89E3;&#x6210;&#x8BB0;&#x53F7;.ElasticSearch&#x6709;&#x5F88;&#x591A;&#x5185;&#x7F6E;&#x7684;&#x6807;&#x8BB0;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x6790;&#x5668;&#x4E2D;&#x4F7F;&#x7528;.</p>
-<p> 1.Standard tokenizer (standard)&#xFF1A;&#x57FA;&#x4E8E;&#x8BED;&#x6CD5;&#x7684;&#x4EE4;&#x724C;&#x5316;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x914D;&#x7F6E;max_token_length.</p>
-<p> 2.Edge NGram tokenizer (edgeNGram)&#xFF1A;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;min_gram&#x3001;max_gram&#x3001;token_chars&#x7B49;&#x8BBE;&#x7F6E;.</p>
-<p> 3.Keyword tokenizer (keyword)&#xFF1A;&#x751F;&#x6210;&#x6574;&#x4E2A;&#x8F93;&#x5165;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x8BBE;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;.</p>
-<p> 4.Letter tokenizer (letter)&#xFF1A;&#x6355;&#x83B7;&#x6574;&#x4E2A;&#x5355;&#x8BCD;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x975E;&#x5B57;&#x6BCD;.</p>
-<p> 5.Lowercase tokenizer (lowercase)&#xFF1A;&#x4E0E;Letter tokenizer&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x521B;&#x5EFA;&#x4EE4;&#x724C;&#x540E;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x5176;&#x66F4;&#x6539;&#x4E3A;&#x5C0F;&#x5199;.</p>
-<p> 6.NGram Tokenizer (nGram)&#xFF1A;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;min_gram(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;1)&#x3001;max_gram(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;2)&#x548C;token_chars&#x7B49;&#x8BBE;&#x7F6E;.</p>
-<p> 7.Whitespace tokenizer (whitespace)&#xFF1A;&#x6839;&#x636E;&#x7A7A;&#x767D;&#x5206;&#x9694;&#x6587;&#x672C;.</p>
-<p> 8.Pattern tokenizer (pattern)&#xFF1A;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4F5C;&#x4E3A;&#x4EE4;&#x724C;&#x5206;&#x9694;&#x7B26;.&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;&#x6A21;&#x5F0F;&#x3001;&#x6807;&#x5FD7;&#x548C;&#x7EC4;&#x8BBE;&#x7F6E;.</p>
-<p> 9.UAX Email URL Tokenizer (uax_url_email)&#xFF1A;&#x4E0E;lie&#x6807;&#x51C6;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x5B83;&#x5C06;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x548C;&#x7F51;&#x5740;&#x89C6;&#x4E3A;&#x5355;&#x4E00;&#x4EE4;&#x724C;.</p>
-<p> 10.Path hierarchy tokenizer (path_hierarchy)&#xFF1A;&#x8BE5;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x751F;&#x6210;&#x8F93;&#x5165;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;&#x4E2D;&#x5B58;&#x5728;&#x7684;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x8DEF;&#x5F84;.&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x53EF;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&#x6709;&#x5206;&#x9694;&#x7B26;(&#x9ED8;&#x8BA4;&#x4E3A;/)&#x3001;&#x66FF;&#x6362;&#x3001;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;(&#x9ED8;&#x8BA4;&#x4E3A;1024)&#x3001;&#x53CD;&#x8F6C;(&#x9ED8;&#x8BA4;&#x4E3A;false)&#x548C;&#x8DF3;&#x8FC7;(&#x9ED8;&#x8BA4;&#x4E3A;0).</p>
-<p> 11.Classic tokenizer (classic)&#xFF1A;&#x5728;&#x57FA;&#x4E8E;&#x8BED;&#x6CD5;&#x7684;&#x6807;&#x8BB0;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x5DE5;&#x4F5C;&#x7684;.&#x53EF;&#x4EE5;&#x4E3A;&#x6B64;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x8BBE;&#x7F6E;max_token_length.</p>
-<p> 12.Thai tokenizer (thai)&#xFF1A;&#x8BE5;&#x6807;&#x8BB0;&#x5668;&#x7528;&#x4E8E;&#x6CF0;&#x8BED;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x5185;&#x7F6E;&#x7684;&#x6CF0;&#x8BED;&#x5206;&#x6BB5;&#x7B97;&#x6CD5;.</p>
-<p><strong>&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;</strong></p>
-<p> &#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;&#x4ECE;&#x4EE4;&#x724C;&#x5316;&#x5668;&#x63A5;&#x6536;&#x8F93;&#x5165;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E9B;&#x8FC7;&#x6EE4;&#x5668;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x3001;&#x5220;&#x9664;&#x6216;&#x6DFB;&#x52A0;&#x8F93;&#x5165;&#x4E2D;&#x7684;&#x6587;&#x672C;.ElasticSearch&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x5185;&#x7F6E;&#x4EE4;&#x724C;&#x8FC7;&#x6EE4;&#x5668;.&#x5176;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x5DF2;&#x7ECF;&#x5728;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x89E3;&#x91CA;&#x8FC7;&#x4E86;.</p>
-<p><strong>&#x5B57;&#x7B26;&#x8FC7;&#x6EE4;&#x5668;</strong></p>
-<p> &#x8FD9;&#x4E9B;&#x8FC7;&#x6EE4;&#x5668;&#x5728;&#x6807;&#x8BB0;&#x5668;&#x4E4B;&#x524D;&#x5904;&#x7406;&#x6587;&#x672C;.&#x5B57;&#x7B26;&#x8FC7;&#x6EE4;&#x5668;&#x67E5;&#x627E;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&#x6216;html&#x6807;&#x8BB0;&#x6216;&#x6307;&#x5B9A;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x8981;&#x4E48;&#x5220;&#x9664;&#x5B83;&#x4EEC;&#xFF0C;&#x8981;&#x4E48;&#x5C06;&#x5176;&#x66F4;&#x6539;&#x4E3A;&#x9002;&#x5F53;&#x7684;&#x5355;&#x8BCD;&#xFF0C;&#x5982;&#x201C;&amp;&#x201D;&#x548C;&#x201C;&#x5220;&#x9664;html&#x6807;&#x8BB0;&#x201D;.&#x4EE5;&#x4E0B;&#x662F;&#x540C;&#x4E49;&#x8BCD;. txt&#x4E2D;&#x6307;&#x5B9A;&#x4E86;&#x540C;&#x4E49;&#x8BCD;&#x7684;&#x5206;&#x6790;&#x5668;&#x793A;&#x4F8B;</p>
+</code></pre><p><strong>分析器</strong></p>
+<p> 分析器由tokenizer和可选的token filter组成.这些分析器以逻辑名称注册在分析模块中，这些逻辑名称可以在映射定义中引用，也可以在一些API中引用.有如下几种默认分析仪</p>
+<p> 1.Standard analyzer (standard)：可以为此分析器设置stopwords和max_token_length设置.默认情况下，stopwords列表为空，最大令牌长度为255.</p>
+<p> 2.Simple analyzer (simple)：该分析器由小写标记器组成.</p>
+<p> 3.Whitespace analyzer (whitespace)：该分析器由空白标记器组成.</p>
+<p> 4.Stop analyzer (stop)：可以配置stopwords和stopwords_path.默认情况下，stopwords初始化为英文stopwords，stopwords_path包含一个包含stop words的文本文件的路径.</p>
+<p> 5.Keyword analyzer (keyword)：该分析器将整个流标记为单个标记.它可以用作邮政编码.</p>
+<p> 6.Pattern analyzer (pattern)：这个分析器主要处理正则表达式.像小写、模式、标志、停止字这样的设置可以在这个分析器中设置.</p>
+<p> 7.Language analyzer：这个分析器处理印地语、阿拉伯语、管道语等语言.</p>
+<p> 8.Snowball analyzer (snowball)：该分析器使用标准令牌化器，带有标准过滤器、小写过滤器、停止过滤器和雪球过滤器.</p>
+<p> 9.Custom analyzer (custom)：该分析器用于创建带有令牌化器的定制分析器，令牌化器带有可选的令牌过滤器和计费过滤器.可以在此分析器中配置令牌化器、过滤器、char_filter和position_increment_gap等设置.</p>
+<p><strong>令牌化器</strong></p>
+<p> 令牌化器用于从ElasticSearch中的文本生成令牌.通过考虑空格或其他标点符号，文本可以被分解成记号.ElasticSearch有很多内置的标记器，可以在自定义分析器中使用.</p>
+<p> 1.Standard tokenizer (standard)：基于语法的令牌化器，可以为此令牌化器配置max_token_length.</p>
+<p> 2.Edge NGram tokenizer (edgeNGram)：为此令牌化器设置min_gram、max_gram、token_chars等设置.</p>
+<p> 3.Keyword tokenizer (keyword)：生成整个输入作为输出，并且可以为此设置缓冲区大小.</p>
+<p> 4.Letter tokenizer (letter)：捕获整个单词，直到遇到一个非字母.</p>
+<p> 5.Lowercase tokenizer (lowercase)：与Letter tokenizer的工作原理相同，但是在创建令牌后，它会将其更改为小写.</p>
+<p> 6.NGram Tokenizer (nGram)：为此令牌化器设置min_gram(默认值为1)、max_gram(默认值为2)和token_chars等设置.</p>
+<p> 7.Whitespace tokenizer (whitespace)：根据空白分隔文本.</p>
+<p> 8.Pattern tokenizer (pattern)：使用正则表达式作为令牌分隔符.可以为此令牌化器设置模式、标志和组设置.</p>
+<p> 9.UAX Email URL Tokenizer (uax_url_email)：与lie标准令牌化器相同，但它将电子邮件和网址视为单一令牌.</p>
+<p> 10.Path hierarchy tokenizer (path_hierarchy)：该令牌化器生成输入目录路径中存在的所有可能路径.此令牌化器可用的设置有分隔符(默认为/)、替换、缓冲区大小(默认为1024)、反转(默认为false)和跳过(默认为0).</p>
+<p> 11.Classic tokenizer (classic)：在基于语法的标记的基础上工作的.可以为此令牌化器设置max_token_length.</p>
+<p> 12.Thai tokenizer (thai)：该标记器用于泰语，并使用内置的泰语分段算法.</p>
+<p><strong>令牌过滤器</strong></p>
+<p> 令牌过滤器从令牌化器接收输入，然后这些过滤器可以修改、删除或添加输入中的文本.ElasticSearch提供了大量内置令牌过滤器.其中大部分已经在前面的章节中解释过了.</p>
+<p><strong>字符过滤器</strong></p>
+<p> 这些过滤器在标记器之前处理文本.字符过滤器查找特殊字符或html标记或指定的模式，然后要么删除它们，要么将其更改为适当的单词，如“&amp;”和“删除html标记”.以下是同义词. txt中指定了同义词的分析器示例</p>
 <pre><code>{
    &quot;settings&quot;:{
       &quot;index&quot;:{
@@ -735,7 +735,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"分析","level":"1.13","depth":1,"next":{"title":"模块","level":"1.14","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"previous":{"title":"映射","level":"1.12","depth":1,"path":"mapping.md","ref":"mapping.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"analysis.md","mtime":"2021-03-08T10:39:07.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"分析","level":"1.13","depth":1,"next":{"title":"模块","level":"1.14","depth":1,"path":"modules.md","ref":"modules.md","articles":[]},"previous":{"title":"映射","level":"1.12","depth":1,"path":"mapping.md","ref":"mapping.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"analysis.md","mtime":"2021-03-08T10:39:07.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

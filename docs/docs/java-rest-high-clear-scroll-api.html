@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,43 +610,43 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;clear-scroll-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;clear-scroll-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;clear-scroll-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Clear Scroll API</h2>
+                                <h2 id="java实例：clear-scroll-api"><a name="java实例：clear-scroll-api" class="plugin-anchor" href="#java实例：clear-scroll-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Clear Scroll API</h2>
 <hr>
 <p><strong>Clear Scroll API</strong></p>
-<p> &#x5F53;&#x6EDA;&#x52A8;&#x8D85;&#x65F6;&#x65F6;&#xFF0C;Search Scroll API&#x4F7F;&#x7528;&#x7684;&#x641C;&#x7D22;&#x4E0A;&#x4E0B;&#x6587;&#x4F1A;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x3002;&#x4F46;&#x662F;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;Clear Scroll API&#xFF0C;&#x4E00;&#x65E6;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x641C;&#x7D22;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x5C31;&#x7ACB;&#x5373;&#x91CA;&#x653E;&#x5B83;&#x4EEC;&#x3002;</p>
+<p> 当滚动超时时，Search Scroll API使用的搜索上下文会自动删除。但是建议使用Clear Scroll API，一旦不再需要搜索上下文，就立即释放它们。</p>
 <p><strong>ClearScrollRequest</strong></p>
-<p> &#x53EF;&#x4EE5;&#x6309;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;ClearScrollRequest:</p>
-<pre><code>ClearScrollRequest request = new ClearScrollRequest(); //&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;ClearScrollRequest
-request.addScrollId(scrollId); //&#x5C06;&#x6EDA;&#x52A8;id&#x6DFB;&#x52A0;&#x5230;&#x8981;&#x6E05;&#x9664;&#x7684;&#x6EDA;&#x52A8;&#x6807;&#x8BC6;&#x7B26;&#x5217;&#x8868;&#x4E2D;
-</code></pre><p><strong>&#x63D0;&#x4F9B;&#x6EDA;&#x52A8;&#x6807;&#x8BC6;&#x7B26;</strong></p>
-<p> ClearScrollRequest&#x5141;&#x8BB8;&#x5728;&#x5355;&#x4E2A;&#x8BF7;&#x6C42;&#x4E2D;&#x6E05;&#x9664;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6EDA;&#x52A8;&#x6807;&#x8BC6;&#x7B26;&#x3002;</p>
-<p> &#x6EDA;&#x52A8;&#x6807;&#x8BC6;&#x7B26;&#x53EF;&#x4EE5;&#x4E00;&#x4E2A;&#x63A5;&#x4E00;&#x4E2A;&#x5730;&#x6DFB;&#x52A0;&#x5230;&#x8BF7;&#x6C42;&#x4E2D;:</p>
+<p> 可以按如下方式创建一个ClearScrollRequest:</p>
+<pre><code>ClearScrollRequest request = new ClearScrollRequest(); //创建一个新的ClearScrollRequest
+request.addScrollId(scrollId); //将滚动id添加到要清除的滚动标识符列表中
+</code></pre><p><strong>提供滚动标识符</strong></p>
+<p> ClearScrollRequest允许在单个请求中清除一个或多个滚动标识符。</p>
+<p> 滚动标识符可以一个接一个地添加到请求中:</p>
 <pre><code>request.addScrollId(scrollId);
-</code></pre><p> &#x6216;&#x8005;&#x4E00;&#x8D77;&#x4F7F;&#x7528;:</p>
+</code></pre><p> 或者一起使用:</p>
 <pre><code>request.setScrollIds(scrollIds);
-</code></pre><p><strong>&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;</strong></p>
+</code></pre><p><strong>同步方式执行</strong></p>
 <pre><code>ClearScrollResponse response = client.clearScroll(request, RequestOptions.DEFAULT);
-</code></pre><p><strong>&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;</strong></p>
-<p> ClearScrollRequest&#x7684;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x9700;&#x8981;&#x5C06;ClearScrollRequest&#x5B9E;&#x4F8B;&#x548C;ActionListener&#x5B9E;&#x4F8B;&#x90FD;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;:</p>
+</code></pre><p><strong>异步方式执行</strong></p>
+<p> ClearScrollRequest的异步执行需要将ClearScrollRequest实例和ActionListener实例都传递给异步方法:</p>
 <pre><code>client.clearScrollAsync(request, RequestOptions.DEFAULT, listener);
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;</p>
-<p> &#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;ClearScrollResponse&#x76D1;&#x542C;&#x5668;&#x50CF;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#xFF1A;</p>
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。</p>
+<p> 一个典型的ClearScrollResponse监听器像下面这样：</p>
 <pre><code>ActionListener&lt;ClearScrollResponse&gt; listener =
         new ActionListener&lt;ClearScrollResponse&gt;() {
     @Override
     public void onResponse(ClearScrollResponse clearScrollResponse) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //成功的时候调用
     }
 
     @Override
     public void onFailure(Exception e) {
-        //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //失败的时候调用
     }
 };
 </code></pre><p><strong>ClearScrollResponse</strong></p>
-<p> &#x8FD4;&#x56DE;&#x7684;ClearScrollResponse&#x5141;&#x8BB8;&#x68C0;&#x7D22;&#x5173;&#x4E8E;&#x53D1;&#x5E03;&#x7684;&#x641C;&#x7D22;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x4FE1;&#x606F;:</p>
-<pre><code>boolean success = response.isSucceeded(); //&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x6210;&#x529F;&#x8FD4;&#x56DE;true
-int released = response.getNumFreed(); //&#x8FD4;&#x56DE;&#x53D1;&#x5E03;&#x7684;&#x641C;&#x7D22;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x6570;&#x91CF;
+<p> 返回的ClearScrollResponse允许检索关于发布的搜索上下文的信息:</p>
+<pre><code>boolean success = response.isSucceeded(); //如果请求成功返回true
+int released = response.getNumFreed(); //返回发布的搜索上下文的数量
 </code></pre>
                                 
                                 </section>
@@ -690,7 +690,7 @@ int released = response.getNumFreed(); //&#x8FD4;&#x56DE;&#x53D1;&#x5E03;&#x7684
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Clear Scroll API","level":"1.34","depth":1,"next":{"title":"JAVA实例：Multi-Search API","level":"1.35","depth":1,"path":"java-rest-high-multi-search-api.md","ref":"java-rest-high-multi-search-api.md","articles":[]},"previous":{"title":"JAVA实例：Search Scroll API","level":"1.33","depth":1,"path":"java-rest-high-search-scroll-api.md","ref":"java-rest-high-search-scroll-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-rest-high-clear-scroll-api.md","mtime":"2021-03-09T02:58:10.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Clear Scroll API","level":"1.34","depth":1,"next":{"title":"JAVA实例：Multi-Search API","level":"1.35","depth":1,"path":"java-rest-high-multi-search-api.md","ref":"java-rest-high-multi-search-api.md","articles":[]},"previous":{"title":"JAVA实例：Search Scroll API","level":"1.33","depth":1,"path":"java-rest-high-search-scroll-api.md","ref":"java-rest-high-search-scroll-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-rest-high-clear-scroll-api.md","mtime":"2021-03-09T02:58:10.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

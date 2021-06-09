@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,25 +610,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;&#x672F;&#x8BED;&#x5411;&#x91CF;term-vectorsapi"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;&#x672F;&#x8BED;&#x5411;&#x91CF;term-vectorsapi" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x672F;&#x8BED;&#x5411;&#x91CF;term-vectorsapi"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;&#x672F;&#x8BED;&#x5411;&#x91CF;(Term Vectors)API</h2>
+                                <h2 id="java实例：术语向量term-vectorsapi"><a name="java实例：术语向量term-vectorsapi" class="plugin-anchor" href="#java实例：术语向量term-vectorsapi"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：术语向量(Term Vectors)API</h2>
 <hr>
-<p> &#x672F;&#x8BED;&#x5411;&#x91CF;API&#x8FD4;&#x56DE;&#x7279;&#x5B9A;&#x6587;&#x6863;&#x5B57;&#x6BB5;&#x4E2D;&#x672F;&#x8BED;&#x7684;&#x4FE1;&#x606F;&#x548C;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x6587;&#x6863;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x5728;&#x7D22;&#x5F15;&#x4E2D;&#x6216;&#x8005;&#x7531;&#x7528;&#x6237;&#x4EBA;&#x5DE5;&#x63D0;&#x4F9B;&#x3002;</p>
+<p> 术语向量API返回特定文档字段中术语的信息和统计信息。文档可以存储在索引中或者由用户人工提供。</p>
 <p><strong>TermVectorsRequest</strong></p>
-<p> &#x4E00;&#x4E2A;TermVectorsRequest&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x3001;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x548C;&#x4E00;&#x4E2A;id&#x6765;&#x6307;&#x5B9A;&#x67D0;&#x4E2A;&#x6587;&#x6863;&#x4EE5;&#x53CA;&#x4E3A;&#x5176;&#x68C0;&#x7D22;&#x4FE1;&#x606F;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<p> 一个TermVectorsRequest需要一个索引、一个类型和一个id来指定某个文档以及为其检索信息的字段。</p>
 <pre><code>TermVectorsRequest request = new TermVectorsRequest(&quot;authors&quot;, &quot;1&quot;);
 request.setFields(&quot;user&quot;);
-</code></pre><p> &#x4E5F;&#x53EF;&#x4EE5;&#x4E3A;&#x4EBA;&#x5DE5;&#x6587;&#x6863;&#x751F;&#x6210;&#x672F;&#x8BED;&#x5411;&#x91CF;&#xFF0C;&#x5373;&#x7D22;&#x5F15;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x6587;&#x6863;:</p>
+</code></pre><p> 也可以为人工文档生成术语向量，即索引中不存在的文档:</p>
 <pre><code>XContentBuilder docBuilder = XContentFactory.jsonBuilder();
 docBuilder.startObject().field(&quot;user&quot;, &quot;guest-user&quot;).endObject();
 TermVectorsRequest request = new TermVectorsRequest(&quot;authors&quot;,
     docBuilder);
-</code></pre><p> &#x4E00;&#x4E2A;&#x4EBA;&#x5DE5;&#x6587;&#x6863;&#x4F5C;&#x4E3A;XContentBuilder&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#xFF0C;XContentBuilder&#x5BF9;&#x8C61;&#x662F;&#x751F;&#x6210;JSON&#x5185;&#x5BB9;&#x7684;Elasticsearch&#x5185;&#x7F6E;&#x5E2E;&#x52A9;&#x5668;&#x3002;</p>
-<p><strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong></p>
-<pre><code>request.setFieldStatistics(false); //&#x5C06;&#x5B57;&#x6BB5;&#x7EDF;&#x8BA1;&#x8BBE;&#x7F6E;&#x4E3A;false(&#x9ED8;&#x8BA4;&#x4E3A;true)&#x4EE5;&#x5FFD;&#x7565;&#x6587;&#x6863;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;
-request.setTermStatistics(true); //&#x5C06;&#x672F;&#x8BED;&#x7EDF;&#x8BA1;&#x8BBE;&#x7F6E;&#x4E3A;true(&#x9ED8;&#x8BA4;&#x4E3A;false)&#xFF0C;&#x4EE5;&#x663E;&#x793A;&#x603B;&#x672F;&#x8BED;&#x9891;&#x7387;&#x548C;&#x6587;&#x6863;&#x9891;&#x7387;&#x3002;
-request.setPositions(false); //&#x5C06;&#x4F4D;&#x7F6E;&#x8BBE;&#x7F6E;&#x4E3A;false(&#x9ED8;&#x8BA4;&#x4E3A;true)&#xFF0C;&#x4EE5;&#x5FFD;&#x7565;&#x4F4D;&#x7F6E;&#x8F93;&#x51FA;&#x3002;
-request.setOffsets(false); //&#x5C06;&#x504F;&#x79FB;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A;false(&#x9ED8;&#x8BA4;&#x4E3A;true)&#xFF0C;&#x4EE5;&#x5FFD;&#x7565;&#x504F;&#x79FB;&#x91CF;&#x7684;&#x8F93;&#x51FA;&#x3002;
-request.setPayloads(false); //&#x5C06;&#x6709;&#x6548;&#x8F7D;&#x8377;&#x8BBE;&#x7F6E;&#x4E3A;false(&#x9ED8;&#x8BA4;&#x4E3A;true)&#xFF0C;&#x4EE5;&#x5FFD;&#x7565;&#x6709;&#x6548;&#x8F7D;&#x8377;&#x7684;&#x8F93;&#x51FA;&#x3002;
+</code></pre><p> 一个人工文档作为XContentBuilder对象提供，XContentBuilder对象是生成JSON内容的Elasticsearch内置帮助器。</p>
+<p><strong>可选参数</strong></p>
+<pre><code>request.setFieldStatistics(false); //将字段统计设置为false(默认为true)以忽略文档统计信息。
+request.setTermStatistics(true); //将术语统计设置为true(默认为false)，以显示总术语频率和文档频率。
+request.setPositions(false); //将位置设置为false(默认为true)，以忽略位置输出。
+request.setOffsets(false); //将偏移量设置为false(默认为true)，以忽略偏移量的输出。
+request.setPayloads(false); //将有效载荷设置为false(默认为true)，以忽略有效载荷的输出。
 
 Map&lt;String, Integer&gt; filterSettings = new HashMap&lt;&gt;();
 filterSettings.put(&quot;max_num_terms&quot;, 3);
@@ -639,65 +639,65 @@ filterSettings.put(&quot;max_doc_freq&quot;, 100);
 filterSettings.put(&quot;min_word_length&quot;, 1);
 filterSettings.put(&quot;max_word_length&quot;, 10);
 
-request.setFilterSettings(filterSettings);  //&#x8BBE;&#x7F6E;&#x8FC7;&#x6EE4;&#x5668;&#x8BBE;&#x7F6E;&#xFF0C;&#x6839;&#x636E;tf-idf&#x5206;&#x6570;&#x8FC7;&#x6EE4;&#x53EF;&#x8FD4;&#x56DE;&#x7684;&#x672F;&#x8BED;&#x3002;
+request.setFilterSettings(filterSettings);  //设置过滤器设置，根据tf-idf分数过滤可返回的术语。
 
 Map&lt;String, String&gt; perFieldAnalyzer = new HashMap&lt;&gt;();
 perFieldAnalyzer.put(&quot;user&quot;, &quot;keyword&quot;);
-request.setPerFieldAnalyzer(perFieldAnalyzer);  //&#x5C06;perFieldAnalyzer&#x8BBE;&#x7F6E;&#x4E3A;&#x6307;&#x5B9A;&#x4E0E;&#x8BE5;&#x5B57;&#x6BB5;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x6790;&#x4EEA;&#x3002;
+request.setPerFieldAnalyzer(perFieldAnalyzer);  //将perFieldAnalyzer设置为指定与该字段不同的分析仪。
 
-request.setRealtime(false); //&#x5C06;&#x5B9E;&#x65F6;&#x8BBE;&#x7F6E;&#x4E3A;&#x5047;(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;&#x771F;)&#x4EE5;&#x63A5;&#x8FD1;&#x5B9E;&#x65F6;&#x5730;&#x68C0;&#x7D22;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x3002;
-request.setRouting(&quot;routing&quot;); //&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;&#x53C2;&#x6570;
-</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x672F;&#x8BED;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;&#x672F;&#x8BED;&#x54CD;&#x5E94;:</p>
+request.setRealtime(false); //将实时设置为假(默认值为真)以接近实时地检索术语向量。
+request.setRouting(&quot;routing&quot;); //设置路由参数
+</code></pre><p><strong>同步执行</strong></p>
+<p> 当以下列方式执行术语请求时，客户端在继续执行代码之前，等待返回术语响应:</p>
 <pre><code>TermVectorsResponse response =
         client.termvectors(request, RequestOptions.DEFAULT);
-</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
-<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseException&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
-<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;TermVectorsRequest&#xFF0C;&#x4EE5;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5C06;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
-<pre><code>client.termvectorsAsync(request, RequestOptions.DEFAULT, listener); //&#x8981;&#x6267;&#x884C;&#x7684;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x8BF7;&#x6C42;&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
-<p> &#x672F;&#x8BED;&#x5411;&#x91CF;&#x7684;&#x5178;&#x578B;&#x76D1;&#x542C;&#x5668;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+</code></pre><p> 同步调用可能会在高级REST客户端中解析REST响应失败、请求超时或类似服务器没有响应的情况下抛出IOException。</p>
+<p> 在服务器返回4xx或5xx错误代码的情况下，高级客户端会尝试解析响应主体错误详细信息，然后抛出一个通用的ElasticsearchException，并将原始ResponseException作为抑制异常添加到其中。</p>
+<p><strong>异步执行</strong></p>
+<p> 也可以异步方式执行TermVectorsRequest，以便客户端可以直接返回。用户需要通过将请求和侦听器传递给异步术语向量方法来指定如何处理响应或潜在故障:</p>
+<pre><code>client.termvectorsAsync(request, RequestOptions.DEFAULT, listener); //要执行的术语向量请求和执行完成时要使用的操作侦听器
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。失败场景和预期异常与同步执行情况相同。</p>
+<p> 术语向量的典型监听器如下所示:</p>
 <pre><code>listener = new ActionListener&lt;TermVectorsResponse&gt;() {
     @Override
     public void onResponse(TermVectorsResponse termVectorsResponse) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //成功的时候调用
     }
     @Override
     public void onFailure(Exception e) {
-         //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+         //失败的时候调用
     }
 };
 </code></pre><p><strong>TermVectorsResponse</strong></p>
-<pre><code>String index = response.getIndex(); //&#x6587;&#x6863;&#x7684;&#x7D22;&#x5F15;&#x540D;&#x79F0;&#x3002;
-String type = response.getType(); //&#x6587;&#x6863;&#x7684;&#x7C7B;&#x578B;&#x540D;&#x79F0;&#x3002;
-String id = response.getId(); //&#x6587;&#x6863;&#x7684;id&#x3002;
-boolean found = response.getFound(); //&#x6307;&#x793A;&#x662F;&#x5426;&#x627E;&#x5230;&#x6587;&#x6863;&#x3002;
-</code></pre><p><strong>&#x68C0;&#x67E5;&#x672F;&#x8BED;&#x5411;&#x91CF;</strong></p>
-<p> &#x5982;&#x679C;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x54CD;&#x5E94;&#x5305;&#x542B;&#x975E;&#x7A7A;&#x7684;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x5217;&#x8868;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x5173;&#x4E8E;&#x6BCF;&#x4E2A;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x7684;&#x4FE1;&#x606F;:</p>
+<pre><code>String index = response.getIndex(); //文档的索引名称。
+String type = response.getType(); //文档的类型名称。
+String id = response.getId(); //文档的id。
+boolean found = response.getFound(); //指示是否找到文档。
+</code></pre><p><strong>检查术语向量</strong></p>
+<p> 如果术语向量响应包含非空的术语向量列表，则可以使用以下方法获得关于每个术语向量的信息:</p>
 <pre><code>for (TermVectorsResponse.TermVector tv : response.getTermVectorsList()) {
-    String fieldname = tv.getFieldName(); //&#x5F53;&#x524D;&#x5B57;&#x6BB5;&#x7684;&#x540D;&#x79F0;
-    int docCount = tv.getFieldStatistics().getDocCount(); //&#x5F53;&#x524D;&#x5B57;&#x6BB5;-&#x6587;&#x6863;&#x8BA1;&#x6570;&#x7684;&#x5B57;&#x6BB5;&#x7EDF;&#x8BA1;
+    String fieldname = tv.getFieldName(); //当前字段的名称
+    int docCount = tv.getFieldStatistics().getDocCount(); //当前字段-文档计数的字段统计
     long sumTotalTermFreq =
-            tv.getFieldStatistics().getSumTotalTermFreq(); //&#x5F53;&#x524D;&#x5B57;&#x6BB5;&#x7684;&#x5B57;&#x6BB5;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;-&#x603B;&#x672F;&#x8BED;&#x9891;&#x7387;&#x4E4B;&#x548C;
-    long sumDocFreq = tv.getFieldStatistics().getSumDocFreq(); //&#x5F53;&#x524D;&#x5B57;&#x6BB5;&#x7684;&#x5B57;&#x6BB5;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;-&#x6587;&#x6863;&#x9891;&#x7387;&#x7684;&#x603B;&#x548C;
-    if (tv.getTerms() != null) {&#x5F53;&#x524D;&#x5B57;&#x6BB5;&#x7684;&#x672F;&#x8BED;
+            tv.getFieldStatistics().getSumTotalTermFreq(); //当前字段的字段统计信息-总术语频率之和
+    long sumDocFreq = tv.getFieldStatistics().getSumDocFreq(); //当前字段的字段统计信息-文档频率的总和
+    if (tv.getTerms() != null) {当前字段的术语
         List&lt;TermVectorsResponse.TermVector.Term&gt; terms =
                 tv.getTerms(); //
         for (TermVectorsResponse.TermVector.Term term : terms) {
-            String termStr = term.getTerm(); //&#x672F;&#x8BED;&#x7684;&#x540D;&#x79F0;
-            int termFreq = term.getTermFreq(); //&#x672F;&#x8BED;&#x7684;&#x672F;&#x8BED;&#x9891;&#x7387;
-            int docFreq = term.getDocFreq(); //&#x8BB0;&#x5F55;&#x672F;&#x8BED;&#x7684;&#x9891;&#x7387;
-            long totalTermFreq = term.getTotalTermFreq(); //&#x672F;&#x8BED;&#x7684;&#x603B;&#x672F;&#x8BED;&#x9891;&#x7387;
-            float score = term.getScore(); //&#x5206;&#x6570;
+            String termStr = term.getTerm(); //术语的名称
+            int termFreq = term.getTermFreq(); //术语的术语频率
+            int docFreq = term.getDocFreq(); //记录术语的频率
+            long totalTermFreq = term.getTotalTermFreq(); //术语的总术语频率
+            float score = term.getScore(); //分数
             if (term.getTokens() != null) {
                 List&lt;TermVectorsResponse.TermVector.Token&gt; tokens =
-                        term.getTokens(); //&#x8BE5;&#x672F;&#x8BED;&#x7684;&#x4EE4;&#x724C;
+                        term.getTokens(); //该术语的令牌
                 for (TermVectorsResponse.TermVector.Token token : tokens) {
-                    int position = token.getPosition(); //&#x4EE4;&#x724C;&#x7684;&#x4F4D;&#x7F6E;
-                    int startOffset = token.getStartOffset(); //&#x4EE4;&#x724C;&#x7684;&#x8D77;&#x59CB;&#x504F;&#x79FB;&#x91CF;
-                    int endOffset = token.getEndOffset(); //&#x4EE4;&#x724C;&#x7684;&#x7ED3;&#x675F;&#x504F;&#x79FB;&#x91CF;
-                    String payload = token.getPayload(); //&#x4EE4;&#x724C;&#x7684;&#x6709;&#x6548;&#x8D1F;&#x8F7D;
+                    int position = token.getPosition(); //令牌的位置
+                    int startOffset = token.getStartOffset(); //令牌的起始偏移量
+                    int endOffset = token.getEndOffset(); //令牌的结束偏移量
+                    String payload = token.getPayload(); //令牌的有效负载
                 }
             }
         }
@@ -746,7 +746,7 @@ boolean found = response.getFound(); //&#x6307;&#x793A;&#x662F;&#x5426;&#x627E;&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：术语向量(Term Vectors)API","level":"1.22","depth":1,"next":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"path":"java-bulk-api.md","ref":"java-bulk-api.md","articles":[]},"previous":{"title":"JAVA实例：更新文档","level":"1.21","depth":1,"path":"java-update-api.md","ref":"java-update-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-term-vectors-api.md","mtime":"2021-03-09T01:59:02.257Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：术语向量(Term Vectors)API","level":"1.22","depth":1,"next":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"path":"java-bulk-api.md","ref":"java-bulk-api.md","articles":[]},"previous":{"title":"JAVA实例：更新文档","level":"1.21","depth":1,"path":"java-update-api.md","ref":"java-update-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-term-vectors-api.md","mtime":"2021-03-09T01:59:02.257Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

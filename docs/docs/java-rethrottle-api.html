@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,40 +610,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;rethrottle-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;rethrottle-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;rethrottle-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Rethrottle API</h2>
+                                <h2 id="java实例：rethrottle-api"><a name="java实例：rethrottle-api" class="plugin-anchor" href="#java实例：rethrottle-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Rethrottle API</h2>
 <hr>
 <p><strong>RethrottleRequest</strong></p>
-<p> RethrottleRequest&#x53EF;&#x7528;&#x4E8E;&#x66F4;&#x6539;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;reindex, update-by-query&#x6216;delete-by-query&#x7684;&#x5F53;&#x524D;&#x9650;&#x5236;&#xFF0C;&#x6216;&#x8005;&#x5B8C;&#x5168;&#x7981;&#x7528;&#x4EFB;&#x52A1;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x5B83;&#x8981;&#x6C42;&#x66F4;&#x6539;&#x4EFB;&#x52A1;&#x7684;&#x4EFB;&#x52A1;&#x6807;&#x8BC6;&#x3002;</p>
-<p> &#x5728;&#x5176;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5F62;&#x5F0F;&#x4E2D;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x7981;&#x7528;&#x8FD0;&#x884C;&#x4EFB;&#x52A1;&#x7684;throttling&#xFF0C;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;:</p>
-<pre><code>RethrottleRequest request = new RethrottleRequest(taskId); //&#x521B;&#x5EFA;&#x4E00;&#x4E2A;RethrottleRequest&#xFF0C;&#x7981;&#x7528;&#x7279;&#x5B9A;&#x4EFB;&#x52A1;id&#x7684;&#x9650;&#x5236;
-</code></pre><p> &#x901A;&#x8FC7;&#x63D0;&#x4F9B;requestsPerSecond&#x53C2;&#x6570;&#xFF0C;&#x8BF7;&#x6C42;&#x5C06;&#x73B0;&#x6709;&#x4EFB;&#x52A1;&#x9650;&#x5236;&#x66F4;&#x6539;&#x4E3A;&#x6307;&#x5B9A;&#x503C;:</p>
-<pre><code>RethrottleRequest request = new RethrottleRequest(taskId, 100.0f); //&#x5C06;&#x4EFB;&#x52A1;&#x9650;&#x5236;&#x66F4;&#x6539;&#x4E3A;&#x6BCF;&#x79D2;100&#x4E2A;&#x8BF7;&#x6C42;
-</code></pre><p> &#x6839;&#x636E;reindex, update-by-query&#x548C;delete-by-query&#x4EFB;&#x52A1;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x91CD;&#x65B0;&#x6392;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E09;&#x79CD;&#x9002;&#x5F53;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#x6765;&#x6267;&#x884C;&#x91CD;&#x65B0;&#x6392;&#x5E8F;&#x8BF7;&#x6C42;:</p>
-<pre><code>client.reindexRethrottle(request, RequestOptions.DEFAULT);  //&#x6267;&#x884C;&#x91CD;&#x65B0;&#x7D22;&#x5F15;&#x91CD;&#x65B0;&#x8C03;&#x7528;&#x8BF7;&#x6C42;
-client.updateByQueryRethrottle(request, RequestOptions.DEFAULT); //&#x6309;&#x67E5;&#x8BE2;&#x66F4;&#x65B0;&#x4E5F;&#x662F;&#x5982;&#x6B64;
-client.deleteByQueryRethrottle(request, RequestOptions.DEFAULT); //&#x6309;&#x67E5;&#x8BE2;&#x5220;&#x9664;&#x4E5F;&#x662F;&#x5982;&#x6B64;
-</code></pre><p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> rethrottle&#x8BF7;&#x6C42;&#x7684;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x8981;&#x6C42;&#x5C06;rethrottle&#x8BF7;&#x6C42;&#x5B9E;&#x4F8B;&#x548C;&#x52A8;&#x4F5C;&#x76D1;&#x542C;&#x5668;&#x5B9E;&#x4F8B;&#x90FD;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;:</p>
+<p> RethrottleRequest可用于更改正在运行的reindex, update-by-query或delete-by-query的当前限制，或者完全禁用任务的限制，它要求更改任务的任务标识。</p>
+<p> 在其最简单的形式中，您可以使用它来禁用运行任务的throttling，方法如下:</p>
+<pre><code>RethrottleRequest request = new RethrottleRequest(taskId); //创建一个RethrottleRequest，禁用特定任务id的限制
+</code></pre><p> 通过提供requestsPerSecond参数，请求将现有任务限制更改为指定值:</p>
+<pre><code>RethrottleRequest request = new RethrottleRequest(taskId, 100.0f); //将任务限制更改为每秒100个请求
+</code></pre><p> 根据reindex, update-by-query和delete-by-query任务是否应该重新排序，可以使用三种适当方法之一来执行重新排序请求:</p>
+<pre><code>client.reindexRethrottle(request, RequestOptions.DEFAULT);  //执行重新索引重新调用请求
+client.updateByQueryRethrottle(request, RequestOptions.DEFAULT); //按查询更新也是如此
+client.deleteByQueryRethrottle(request, RequestOptions.DEFAULT); //按查询删除也是如此
+</code></pre><p><strong>异步执行</strong></p>
+<p> rethrottle请求的异步执行要求将rethrottle请求实例和动作监听器实例都传递给异步方法:</p>
 <pre><code>client.reindexRethrottleAsync(request,
-        RequestOptions.DEFAULT, listener); //&#x5F02;&#x6B65;&#x6267;&#x884C;&#x91CD;&#x65B0;&#x7D22;&#x5F15;&#x91CD;&#x65B0;&#x8BA1;&#x65F6;
+        RequestOptions.DEFAULT, listener); //异步执行重新索引重新计时
 client.updateByQueryRethrottleAsync(request,
-        RequestOptions.DEFAULT, listener); //&#x6309;&#x67E5;&#x8BE2;&#x66F4;&#x65B0;&#x4E5F;&#x662F;&#x5982;&#x6B64;
+        RequestOptions.DEFAULT, listener); //按查询更新也是如此
 client.deleteByQueryRethrottleAsync(request,
-        RequestOptions.DEFAULT, listener); //&#x6309;&#x67E5;&#x8BE2;&#x5220;&#x9664;&#x4E5F;&#x662F;&#x5982;&#x6B64;
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5178;&#x578B;&#x7684;&#x76D1;&#x542C;&#x5668;&#x662F;&#x8FD9;&#x6837;&#x7684;:</p>
+        RequestOptions.DEFAULT, listener); //按查询删除也是如此
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。典型的监听器是这样的:</p>
 <pre><code>listener = new ActionListener&lt;ListTasksResponse&gt;() {
     @Override
     public void onResponse(ListTasksResponse response) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //成功的时候调用
     }
 
     @Override
     public void onFailure(Exception e) {
-        //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //失败的时候调用
     }
 };
 </code></pre><p><strong>Rethrottle Response</strong></p>
-<p> Rethrottling&#x4EE5;ListTasksResponse&#x7684;&#x5F62;&#x5F0F;&#x8FD4;&#x56DE;&#x5DF2;&#x7ECF;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x7684;&#x4EFB;&#x52A1;&#x3002;List Tasks API&#x5C06;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#x8BE5;&#x54CD;&#x5E94;&#x5BF9;&#x8C61;&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<p> Rethrottling以ListTasksResponse的形式返回已经重新启动的任务。List Tasks API将详细描述该响应对象的结构。</p>
 
                                 
                                 </section>
@@ -687,7 +687,7 @@ client.deleteByQueryRethrottleAsync(request,
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"next":{"title":"JAVA实例：Multi Term Vectors API","level":"1.29","depth":1,"path":"java-multi-term-vectors-api.md","ref":"java-multi-term-vectors-api.md","articles":[]},"previous":{"title":"JAVA实例：Delete By Query API","level":"1.27","depth":1,"path":"java-delete-by-query-api.md","ref":"java-delete-by-query-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-rethrottle-api.md","mtime":"2021-03-09T02:04:32.595Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"next":{"title":"JAVA实例：Multi Term Vectors API","level":"1.29","depth":1,"path":"java-multi-term-vectors-api.md","ref":"java-multi-term-vectors-api.md","articles":[]},"previous":{"title":"JAVA实例：Delete By Query API","level":"1.27","depth":1,"path":"java-delete-by-query-api.md","ref":"java-delete-by-query-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-rethrottle-api.md","mtime":"2021-03-09T02:04:32.595Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

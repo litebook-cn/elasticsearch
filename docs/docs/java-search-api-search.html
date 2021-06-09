@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,18 +610,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;&#x641C;&#x7D22;"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;&#x641C;&#x7D22;" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;&#x641C;&#x7D22;"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;&#x641C;&#x7D22;</h2>
+                                <h2 id="java实例：搜索"><a name="java实例：搜索" class="plugin-anchor" href="#java实例：搜索"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：搜索</h2>
 <hr>
-<p> &#x641C;&#x7D22;API&#x5141;&#x8BB8;&#x60A8;&#x6267;&#x884C;&#x641C;&#x7D22;&#x67E5;&#x8BE2;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E0E;&#x8BE5;&#x67E5;&#x8BE2;&#x5339;&#x914D;&#x7684;&#x641C;&#x7D22;&#x547D;&#x4E2D;&#x3002;&#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7684;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x6765;&#x63D0;&#x4F9B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8BF7;&#x6C42;&#x4F53;&#x6765;&#x63D0;&#x4F9B;&#x3002;</p>
-<p><strong>&#x591A;&#x7D22;&#x5F15;&#x641C;&#x7D22;</strong></p>
-<p> &#x6240;&#x6709;&#x641C;&#x7D22;API&#x90FD;&#x652F;&#x6301;&#x591A;&#x7D22;&#x5F15;&#x8BED;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x8DE8;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x5E94;&#x7528;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x641C;&#x7D22;twitter&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6587;&#x6863;:</p>
+<p> 搜索API允许您执行搜索查询，并返回与该查询匹配的搜索命中。查询可以使用简单的查询字符串作为参数来提供，也可以使用请求体来提供。</p>
+<p><strong>多索引搜索</strong></p>
+<p> 所有搜索API都支持多索引语法，可以跨多个索引应用。例如，我们可以搜索twitter索引中的所有文档:</p>
 <pre><code>GET /twitter/_search?q=user:kimchy
-</code></pre><p> &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x4E2D;&#x641C;&#x7D22;&#x5E26;&#x6709;&#x7279;&#x5B9A;&#x6807;&#x7B7E;&#x7684;&#x6240;&#x6709;&#x6587;&#x6863;(&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x6BCF;&#x4E2A;&#x7528;&#x6237;&#x6709;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x65F6;):</p>
+</code></pre><p> 我们还可以在多个索引中搜索带有特定标签的所有文档(例如，当每个用户有一个索引时):</p>
 <pre><code>GET /kimchy,elasticsearch/_search?q=tag:wow
-</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_all&#x641C;&#x7D22;&#x6240;&#x6709;&#x53EF;&#x7528;&#x7684;&#x7D22;&#x5F15;:</p>
+</code></pre><p> 或者，我们可以使用_all搜索所有可用的索引:</p>
 <pre><code>GET /_all/_search?q=tag:wow
-</code></pre><p><strong>&#x90E8;&#x5206;&#x56DE;&#x5E94;</strong></p>
-<p> &#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x5FEB;&#x901F;&#x54CD;&#x5E94;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x788E;&#x7247;&#x51FA;&#x73B0;&#x6545;&#x969C;&#xFF0C;&#x641C;&#x7D22;API&#x5C06;&#x4F7F;&#x7528;&#x90E8;&#x5206;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x54CD;&#x5E94;&#x3002;&#x6709;&#x5173;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x788E;&#x7247;&#x6545;&#x969C;&#x3002;</p>
+</code></pre><p><strong>部分回应</strong></p>
+<p> 为了确保快速响应，如果一个或多个碎片出现故障，搜索API将使用部分结果进行响应。有关更多信息，请参见碎片故障。</p>
 
                                 
                                 </section>
@@ -665,7 +665,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：搜索","level":"1.31","depth":1,"next":{"title":"JAVA实例：URI搜索","level":"1.32","depth":1,"path":"java-search-uri-request.md","ref":"java-search-uri-request.md","articles":[]},"previous":{"title":"JAVA实例：搜索API","level":"1.30","depth":1,"path":"java-search-api.md","ref":"java-search-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-search-api-search.md","mtime":"2021-03-09T02:08:19.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：搜索","level":"1.31","depth":1,"next":{"title":"JAVA实例：URI搜索","level":"1.32","depth":1,"path":"java-search-uri-request.md","ref":"java-search-uri-request.md","articles":[]},"previous":{"title":"JAVA实例：搜索API","level":"1.30","depth":1,"path":"java-search-api.md","ref":"java-search-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-search-api-search.md","mtime":"2021-03-09T02:08:19.830Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,62 +610,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;uri&#x641C;&#x7D22;"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;uri&#x641C;&#x7D22;" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;uri&#x641C;&#x7D22;"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;URI&#x641C;&#x7D22;</h2>
+                                <h2 id="java实例：uri搜索"><a name="java实例：uri搜索" class="plugin-anchor" href="#java实例：uri搜索"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：URI搜索</h2>
 <hr>
-<p> &#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x7EAF;&#x7CB9;&#x4F7F;&#x7528;URI&#x6267;&#x884C;&#x641C;&#x7D22;&#x8BF7;&#x6C42;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x6267;&#x884C;&#x641C;&#x7D22;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;&#x641C;&#x7D22;&#x9009;&#x9879;&#x90FD;&#x662F;&#x516C;&#x5F00;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x5FEB;&#x901F;&#x7684;&#x201C;curl tests&#x201D;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x662F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;:</p>
-<p> &#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x54CD;&#x5E94;&#x4F8B;&#x5B50;</p>
+<p> 通过提供请求参数，可以纯粹使用URI执行搜索请求。在使用这种模式执行搜索时，并不是所有的搜索选项都是公开的，但是对于快速的“curl tests”来说，这是很方便的。下面是一个例子:</p>
+<p> 下面是一个简单的响应例子</p>
 <p>{</p>
 <p>  &quot;timed_out&quot;: false,</p>
 <p>  &quot;took&quot;: 62,</p>
 <p>  &quot;_shards&quot;:{</p>
-<p>&#x200B;    &quot;total&quot; : 1,</p>
-<p>&#x200B;    &quot;successful&quot; : 1,</p>
-<p>&#x200B;    &quot;skipped&quot; : 0,</p>
-<p>&#x200B;    &quot;failed&quot; : 0</p>
+<p>​    &quot;total&quot; : 1,</p>
+<p>​    &quot;successful&quot; : 1,</p>
+<p>​    &quot;skipped&quot; : 0,</p>
+<p>​    &quot;failed&quot; : 0</p>
 <p>  },</p>
 <p>  &quot;hits&quot;:{</p>
-<p>&#x200B;    &quot;total&quot; : {</p>
-<p>&#x200B;      &quot;value&quot;: 1,</p>
-<p>&#x200B;      &quot;relation&quot;: &quot;eq&quot;</p>
-<p>&#x200B;    },</p>
-<p>&#x200B;    &quot;max_score&quot;: 1.3862944,</p>
-<p>&#x200B;    &quot;hits&quot; : [</p>
-<p>&#x200B;      {</p>
-<p>&#x200B;        &quot;_index&quot; : &quot;twitter&quot;,</p>
-<p>&#x200B;        &quot;_type&quot; : &quot;_doc&quot;,</p>
-<p>&#x200B;        &quot;_id&quot; : &quot;0&quot;,</p>
-<p>&#x200B;        &quot;_score&quot;: 1.3862944,</p>
-<p>&#x200B;        &quot;_source&quot; : {</p>
-<p>&#x200B;          &quot;user&quot; : &quot;kimchy&quot;,</p>
-<p>&#x200B;          &quot;date&quot; : &quot;2009-11-15T14:12:12&quot;,</p>
-<p>&#x200B;          &quot;message&quot; : &quot;trying out Elasticsearch&quot;,</p>
-<p>&#x200B;          &quot;likes&quot;: 0</p>
-<p>&#x200B;        }</p>
-<p>&#x200B;      }</p>
-<p>&#x200B;    ]</p>
+<p>​    &quot;total&quot; : {</p>
+<p>​      &quot;value&quot;: 1,</p>
+<p>​      &quot;relation&quot;: &quot;eq&quot;</p>
+<p>​    },</p>
+<p>​    &quot;max_score&quot;: 1.3862944,</p>
+<p>​    &quot;hits&quot; : [</p>
+<p>​      {</p>
+<p>​        &quot;_index&quot; : &quot;twitter&quot;,</p>
+<p>​        &quot;_type&quot; : &quot;_doc&quot;,</p>
+<p>​        &quot;_id&quot; : &quot;0&quot;,</p>
+<p>​        &quot;_score&quot;: 1.3862944,</p>
+<p>​        &quot;_source&quot; : {</p>
+<p>​          &quot;user&quot; : &quot;kimchy&quot;,</p>
+<p>​          &quot;date&quot; : &quot;2009-11-15T14:12:12&quot;,</p>
+<p>​          &quot;message&quot; : &quot;trying out Elasticsearch&quot;,</p>
+<p>​          &quot;likes&quot;: 0</p>
+<p>​        }</p>
+<p>​      }</p>
+<p>​    ]</p>
 <p>  }</p>
 <p>}</p>
-<p>&#x53C2;&#x6570;</p>
-<p> URI&#x641C;&#x7D22;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;:</p>
-<p> q&#xFF1A;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
-<p> df&#xFF1A;&#x67E5;&#x8BE2;&#x4E2D;&#x672A;&#x5B9A;&#x4E49;&#x5B57;&#x6BB5;&#x524D;&#x7F00;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x5B57;&#x6BB5;</p>
-<p> analyzer&#xFF1A;&#x5206;&#x6790;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x5206;&#x6790;&#x5668;&#x540D;&#x79F0;&#x3002;</p>
-<p> analyze_wildcard&#xFF1A;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5206;&#x6790;&#x901A;&#x914D;&#x7B26;&#x548C;&#x524D;&#x7F00;&#x67E5;&#x8BE2;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;false&#x3002;</p>
-<p> batched_reduce_size&#xFF1A;&#x534F;&#x8C03;&#x8282;&#x70B9;&#x4E0A;&#x5E94;&#x7ACB;&#x5373;&#x51CF;&#x5C11;&#x7684;&#x788E;&#x7247;&#x7ED3;&#x679C;&#x7684;&#x6570;&#x91CF;&#x3002;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4E2D;&#x7684;&#x6F5C;&#x5728;&#x788E;&#x7247;&#x6570;&#x91CF;&#x53EF;&#x80FD;&#x5F88;&#x5927;&#xFF0C;&#x5219;&#x8BE5;&#x503C;&#x5E94;&#x7528;&#x4F5C;&#x4FDD;&#x62A4;&#x673A;&#x5236;&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;&#x6BCF;&#x4E2A;&#x641C;&#x7D22;&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x5B58;&#x5F00;&#x9500;&#x3002;</p>
-<p> default_operator&#xFF1A;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x9ED8;&#x8BA4;&#x8FD0;&#x7B97;&#x7B26;&#x53EF;&#x4EE5;&#x662F;&#x201C;&#x4E0E;&#x201D;&#x6216;&#x201C;&#x6216;&#x201D;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x201C;&#x6216;&#x201D;&#x3002;</p>
-<p> lenient&#xFF1A;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x5C06;&#x5BFC;&#x81F4;&#x5FFD;&#x7565;&#x57FA;&#x4E8E;&#x683C;&#x5F0F;&#x7684;&#x5F02;&#x5E38;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;false&#x3002;</p>
-<p> explain&#xFF1A;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x6B21;&#x547D;&#x4E2D;&#xFF0C;&#x5305;&#x542B;&#x4E00;&#x4E2A;&#x5982;&#x4F55;&#x8BA1;&#x7B97;&#x547D;&#x4E2D;&#x5F97;&#x5206;&#x7684;&#x89E3;&#x91CA;&#x3002;</p>
-<p> <em>source&#xFF1A;&#x8BBE;&#x7F6E;&#x4E3A;false&#x4EE5;&#x7981;&#x7528;&#x5BF9;_source&#x5B57;&#x6BB5;&#x7684;&#x68C0;&#x7D22;&#x3002;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;</em> source <em> includes &amp; source </em> excludes&#x6765;&#x68C0;&#x7D22;&#x6587;&#x6863;&#x7684;&#x4E00;&#x90E8;&#x5206;(&#x6709;&#x5173;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x8BF7;&#x6C42;&#x6B63;&#x6587;&#x6587;&#x6863;)</p>
-<p> stored_fields&#xFF1A;&#x6BCF;&#x6B21;&#x547D;&#x4E2D;&#x65F6;&#x8981;&#x8FD4;&#x56DE;&#x7684;&#x6587;&#x6863;&#x7684;&#x9009;&#x62E9;&#x6027;&#x5B58;&#x50A8;&#x5B57;&#x6BB5;&#xFF0C;&#x4EE5;&#x9017;&#x53F7;&#x5206;&#x9694;&#x3002;&#x4E0D;&#x6307;&#x5B9A;&#x4EFB;&#x4F55;&#x503C;&#x5C06;&#x5BFC;&#x81F4;&#x6CA1;&#x6709;&#x5B57;&#x6BB5;&#x8FD4;&#x56DE;&#x3002;</p>
-<p> sort&#xFF1A;&#x8981;&#x6267;&#x884C;&#x7684;&#x6392;&#x5E8F;&#x3002;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x6BB5;&#x540D;&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x6BB5;&#x540D;:ASC/&#x5B57;&#x6BB5;&#x540D;:desc&#x3002;&#x5B57;&#x6BB5;&#x540D;&#x53EF;&#x4EE5;&#x662F;&#x6587;&#x6863;&#x4E2D;&#x7684;&#x5B9E;&#x9645;&#x5B57;&#x6BB5;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x8868;&#x793A;&#x57FA;&#x4E8E;&#x5206;&#x6570;&#x6392;&#x5E8F;&#x7684;&#x7279;&#x6B8A;&#x5206;&#x6570;&#x540D;&#x3002;&#x53EF;&#x4EE5;&#x6709;&#x51E0;&#x4E2A;&#x6392;&#x5E8F;&#x53C2;&#x6570;(&#x987A;&#x5E8F;&#x5F88;&#x91CD;&#x8981;)&#x3002;</p>
-<p> track_scores&#xFF1A;&#x6392;&#x5E8F;&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;true&#xFF0C;&#x4EE5;&#x4FBF;&#x4ECD;&#x7136;&#x8DDF;&#x8E2A;&#x5206;&#x6570;&#x5E76;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x6BCF;&#x6B21;&#x547D;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x8FD4;&#x56DE;&#x3002;</p>
-<p> track_total_hits&#xFF1A;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;10&#xFF0C;000&#x3002;&#x8BBE;&#x7F6E;&#x4E3A;false&#x4EE5;&#x7981;&#x7528;&#x5BF9;&#x5339;&#x914D;&#x67E5;&#x8BE2;&#x7684;&#x547D;&#x4E2D;&#x603B;&#x6570;&#x7684;&#x8DDF;&#x8E2A;&#x3002;&#x5B83;&#x8FD8;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x8BE5;&#x6574;&#x6570;&#x4EE3;&#x8868;&#x8981;&#x7CBE;&#x786E;&#x8BA1;&#x6570;&#x7684;&#x547D;&#x4E2D;&#x6570;&#x3002;(&#x6709;&#x5173;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x8BF7;&#x6C42;&#x6B63;&#x6587;&#x6587;&#x6863;)&#x3002;</p>
-<p> timeout&#xFF1A;&#x641C;&#x7D22;&#x8D85;&#x65F6;&#xFF0C;&#x5C06;&#x641C;&#x7D22;&#x8BF7;&#x6C42;&#x9650;&#x5B9A;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x65F6;&#x95F4;&#x503C;&#x5185;&#x6267;&#x884C;&#xFF0C;&#x8FC7;&#x671F;&#x65F6;&#x70B9;&#x51FB;&#x6B21;&#x6570;&#x7D2F;&#x8BA1;&#x5230;&#x8BE5;&#x65F6;&#x95F4;&#x70B9;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x65E0;&#x8D85;&#x65F6;&#x3002;</p>
-<p> terminate<em>after&#xFF1A;&#x4E3A;&#x6BCF;&#x4E2A;&#x788E;&#x7247;&#x6536;&#x96C6;&#x7684;&#x6700;&#x5927;&#x6587;&#x6863;&#x6570;&#xFF0C;&#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x8BE5;&#x6570;&#x91CF;&#xFF0C;&#x67E5;&#x8BE2;&#x6267;&#x884C;&#x5C06;&#x63D0;&#x524D;&#x7EC8;&#x6B62;&#x3002;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#xFF0C;&#x54CD;&#x5E94;&#x5C06;&#x6709;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x5B57;&#x6BB5;terminated_early&#xFF0C;&#x4EE5;&#x6307;&#x793A;&#x67E5;&#x8BE2;&#x6267;&#x884C;&#x662F;&#x5426;&#x5B9E;&#x9645;&#x4E0A;&#x5DF2;&#x7EC8;&#x6B62;_early&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;&#x65E0;&#x7EC8;&#x6B62;</em>&#x4E4B;&#x540E;&#x3002;</p>
-<p> from&#xFF1A;&#x4ECE;&#x547D;&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x5F00;&#x59CB;&#x8FD4;&#x56DE;&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;0&#x3002;</p>
-<p> size&#xFF1A;&#x8981;&#x8FD4;&#x56DE;&#x7684;&#x547D;&#x4E2D;&#x6570;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;10&#x3002;</p>
-<p> search_type&#xFF1A;&#x8981;&#x6267;&#x884C;&#x7684;&#x641C;&#x7D22;&#x64CD;&#x4F5C;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x53EF;&#x4EE5;&#x662F;dfs_query_then_fetch&#x6216;query_then_fetch&#x3002;&#x9ED8;&#x8BA4;&#x4E3A;query_then_fetch&#x3002;&#x6709;&#x5173;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x7684;&#x4E0D;&#x540C;&#x641C;&#x7D22;&#x7C7B;&#x578B;&#x7684;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x641C;&#x7D22;&#x7C7B;&#x578B;&#x3002;</p>
-<p> allow_partial_search_results&#xFF1A;&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4F1A;&#x4EA7;&#x751F;&#x90E8;&#x5206;&#x7ED3;&#x679C;&#xFF0C;&#x5219;&#x8BBE;&#x7F6E;&#x4E3A;false&#x8FD4;&#x56DE;&#x6574;&#x4F53;&#x5931;&#x8D25;&#x3002;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;true&#xFF0C;&#x8FD9;&#x5C06;&#x5728;&#x8D85;&#x65F6;&#x6216;&#x90E8;&#x5206;&#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5141;&#x8BB8;&#x90E8;&#x5206;&#x7ED3;&#x679C;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7FA4;&#x96C6;&#x7EA7;&#x522B;&#x7684;&#x8BBE;&#x7F6E;&#x641C;&#x7D22;&#x6765;&#x63A7;&#x5236;&#x6B64;&#x9ED8;&#x8BA4;&#x503C;&#x3002;</p>
+<p>参数</p>
+<p> URI搜索允许使用以下参数:</p>
+<p> q：查询字符串。</p>
+<p> df：查询中未定义字段前缀时使用的默认字段</p>
+<p> analyzer：分析查询字符串时要使用的分析器名称。</p>
+<p> analyze_wildcard：是否应该分析通配符和前缀查询。默认为false。</p>
+<p> batched_reduce_size：协调节点上应立即减少的碎片结果的数量。如果请求中的潜在碎片数量可能很大，则该值应用作保护机制，以减少每个搜索请求的内存开销。</p>
+<p> default_operator：要使用的默认运算符可以是“与”或“或”。默认为“或”。</p>
+<p> lenient：如果设置为true，将导致忽略基于格式的异常。默认为false。</p>
+<p> explain：对于每一次命中，包含一个如何计算命中得分的解释。</p>
+<p> <em>source：设置为false以禁用对_source字段的检索。您也可以通过使用</em> source <em> includes &amp; source </em> excludes来检索文档的一部分(有关更多详细信息，请参见请求正文文档)</p>
+<p> stored_fields：每次命中时要返回的文档的选择性存储字段，以逗号分隔。不指定任何值将导致没有字段返回。</p>
+<p> sort：要执行的排序。可以是字段名的形式，也可以是字段名:ASC/字段名:desc。字段名可以是文档中的实际字段，也可以是表示基于分数排序的特殊分数名。可以有几个排序参数(顺序很重要)。</p>
+<p> track_scores：排序时，设置为true，以便仍然跟踪分数并将其作为每次命中的一部分返回。</p>
+<p> track_total_hits：默认值为10，000。设置为false以禁用对匹配查询的命中总数的跟踪。它还接受一个整数，在本例中，该整数代表要精确计数的命中数。(有关更多详细信息，请参见请求正文文档)。</p>
+<p> timeout：搜索超时，将搜索请求限定在指定的时间值内执行，过期时点击次数累计到该时间点。默认为无超时。</p>
+<p> terminate<em>after：为每个碎片收集的最大文档数，一旦达到该数量，查询执行将提前终止。如果设置，响应将有一个布尔字段terminated_early，以指示查询执行是否实际上已终止_early。默认为无终止</em>之后。</p>
+<p> from：从命中的索引开始返回。默认为0。</p>
+<p> size：要返回的命中数。默认值为10。</p>
+<p> search_type：要执行的搜索操作的类型。可以是dfs_query_then_fetch或query_then_fetch。默认为query_then_fetch。有关可以执行的不同搜索类型的更多详细信息，请参见搜索类型。</p>
+<p> allow_partial_search_results：如果请求会产生部分结果，则设置为false返回整体失败。默认值为true，这将在超时或部分失败的情况下允许部分结果。可以使用群集级别的设置搜索来控制此默认值。</p>
 
                                 
                                 </section>
@@ -709,7 +709,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：URI搜索","level":"1.32","depth":1,"next":{"title":"JAVA实例：Search Scroll API","level":"1.33","depth":1,"path":"java-rest-high-search-scroll-api.md","ref":"java-rest-high-search-scroll-api.md","articles":[]},"previous":{"title":"JAVA实例：搜索","level":"1.31","depth":1,"path":"java-search-api-search.md","ref":"java-search-api-search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-search-uri-request.md","mtime":"2021-03-09T02:53:44.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：URI搜索","level":"1.32","depth":1,"next":{"title":"JAVA实例：Search Scroll API","level":"1.33","depth":1,"path":"java-rest-high-search-scroll-api.md","ref":"java-rest-high-search-scroll-api.md","articles":[]},"previous":{"title":"JAVA实例：搜索","level":"1.31","depth":1,"path":"java-search-api-search.md","ref":"java-search-api-search.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-search-uri-request.md","mtime":"2021-03-09T02:53:44.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

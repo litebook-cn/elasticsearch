@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,42 +610,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;multi-term-vectors-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;multi-term-vectors-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;multi-term-vectors-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Multi Term Vectors API</h2>
+                                <h2 id="java实例：multi-term-vectors-api"><a name="java实例：multi-term-vectors-api" class="plugin-anchor" href="#java实例：multi-term-vectors-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Multi Term Vectors API</h2>
 <hr>
-<p> Multi Term Vectors API&#x5141;&#x8BB8;&#x4E00;&#x6B21;&#x83B7;&#x5F97;&#x591A;&#x4E2A;&#x5411;&#x91CF;&#x3002;</p>
+<p> Multi Term Vectors API允许一次获得多个向量。</p>
 <p><strong>Multi Term Vectors Request</strong></p>
-<p> &#x521B;&#x5EFA;MultiTermVectorsRequest&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p>
-<p> &#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;MultiTermVectorsRequest&#xFF0C;&#x7136;&#x540E;&#x5411;&#x5176;&#x4E2D;&#x6DFB;&#x52A0;&#x5355;&#x72EC;&#x7684;TermVectorsRequest&#x6C42;&#x3002;</p>
-<pre><code>MultiTermVectorsRequest request = new MultiTermVectorsRequest(); //&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;MultiTermVectorsRequest&#x3002;
+<p> 创建MultiTermVectorsRequest有两种方法。</p>
+<p> 第一种方法是创建一个空的MultiTermVectorsRequest，然后向其中添加单独的TermVectorsRequest求。</p>
+<pre><code>MultiTermVectorsRequest request = new MultiTermVectorsRequest(); //创建一个空的MultiTermVectorsRequest。
 TermVectorsRequest tvrequest1 =
     new TermVectorsRequest(&quot;authors&quot;, &quot;1&quot;);
 tvrequest1.setFields(&quot;user&quot;);
-request.add(tvrequest1); //&#x5C06;&#x7B2C;&#x4E00;&#x4E2A;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x5230;&#x591A;&#x672F;&#x8BED;&#x5411;&#x91CF;&#x8BF7;&#x6C42;&#x4E2D;&#x3002;
+request.add(tvrequest1); //将第一个术语向量请求添加到多术语向量请求中。
 
 XContentBuilder docBuilder = XContentFactory.jsonBuilder();
 docBuilder.startObject().field(&quot;user&quot;, &quot;guest-user&quot;).endObject();
 TermVectorsRequest tvrequest2 =
     new TermVectorsRequest(&quot;authors&quot;, docBuilder);
-request.add(tvrequest2); //&#x5C06;&#x4EBA;&#x5DE5;&#x6587;&#x6863;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x672F;&#x8BED;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x5230;&#x591A;&#x672F;&#x8BED;&#x8BF7;&#x6C42;&#x4E2D;&#x3002;
-</code></pre><p> &#x5F53;&#x6240;&#x6709;TermVectorsRequest&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684;&#x53C2;&#x6570;(&#x5982;&#x7D22;&#x5F15;&#x548C;&#x5176;&#x4ED6;&#x8BBE;&#x7F6E;)&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6A21;&#x677F;TermVectorsRequest&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x6240;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8BE5;&#x6A21;&#x677F;&#x8BF7;&#x6C42;&#x53EF;&#x4EE5;&#x4E0E;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x8BF7;&#x6C42;&#x7684;&#x6240;&#x6709;&#x6587;&#x6863;id&#x4E00;&#x8D77;&#x4F20;&#x9012;&#x7ED9;MultiTermVectorsRequest&#x3002;</p>
+request.add(tvrequest2); //将人工文档的第二个术语请求添加到多术语请求中。
+</code></pre><p> 当所有TermVectorsRequest共享相同的参数(如索引和其他设置)时，可以使用第二种方法。在这种情况下，可以创建一个模板TermVectorsRequest，并设置所有必要的设置，该模板请求可以与执行这些请求的所有文档id一起传递给MultiTermVectorsRequest。</p>
 <pre><code>TermVectorsRequest tvrequestTemplate =
-    new TermVectorsRequest(&quot;authors&quot;, &quot;fake_id&quot;); //&#x521B;&#x5EFA;&#x6A21;&#x677F;TermVectorsRequest&#x3002;
+    new TermVectorsRequest(&quot;authors&quot;, &quot;fake_id&quot;); //创建模板TermVectorsRequest。
 tvrequestTemplate.setFields(&quot;user&quot;);
 String[] ids = {&quot;1&quot;, &quot;2&quot;};
 MultiTermVectorsRequest request =
-    new MultiTermVectorsRequest(ids, tvrequestTemplate); //&#x5C06;&#x6587;&#x6863;&#x7684;id&#x548C;&#x6A21;&#x677F;&#x4F20;&#x9012;&#x7ED9;MultiTermVectorsRequest&#x3002;
-</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;MultiTermVectorsRequest&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;MultiTermVectorsResponse:</p>
+    new MultiTermVectorsRequest(ids, tvrequestTemplate); //将文档的id和模板传递给MultiTermVectorsRequest。
+</code></pre><p><strong>同步执行</strong></p>
+<p> 当以下列方式执行MultiTermVectorsRequest时，客户端会在继续执行代码之前等待返回MultiTermVectorsResponse:</p>
 <pre><code>MultiTermVectorsResponse response =
     client.mtermvectors(request, RequestOptions.DEFAULT);
-</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
-<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseException&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
-<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;MultiTermVectorsRequest&#xFF0C;&#x4EE5;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5C06;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;MultiTermVectors&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
+</code></pre><p> 同步调用可能会在高级REST客户端中解析REST响应失败、请求超时或类似服务器没有响应的情况下抛出IOException。</p>
+<p> 在服务器返回4xx或5xx错误代码的情况下，高级客户端会尝试解析响应主体错误详细信息，然后抛出一个通用的ElasticsearchException，并将原始ResponseException作为抑制异常添加到其中。</p>
+<p><strong>异步执行</strong></p>
+<p> 也可以异步方式执行MultiTermVectorsRequest，以便客户端可以直接返回。用户需要通过将请求和侦听器传递给异步MultiTermVectors方法来指定如何处理响应或潜在故障:</p>
 <pre><code>client.mtermvectorsAsync(
     request, RequestOptions.DEFAULT, listener);
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
-<p> MultiTermVectors&#x7684;&#x5178;&#x578B;&#x76D1;&#x542C;&#x5668;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。失败场景和预期异常与同步执行情况相同。</p>
+<p> MultiTermVectors的典型监听器如下所示:</p>
 <pre><code>listener = new ActionListener&lt;MultiTermVectorsResponse&gt;() {
     @Override
     public void onResponse(MultiTermVectorsResponse mtvResponse) {
@@ -657,9 +657,9 @@ MultiTermVectorsRequest request =
     }
 };
 </code></pre><p><strong>Multi Term Vectors Response</strong></p>
-<p> MultiTermVectorsResponse&#x5141;&#x8BB8;&#x83B7;&#x5F97;TermVectorsResponse&#x7684;&#x5217;&#x8868;&#xFF0C;&#x6BCF;&#x4E2A;&#x54CD;&#x5E94;&#x90FD;&#x53EF;&#x4EE5;&#x6309;&#x7167;Term Vectors API&#x4E2D;&#x7684;&#x63CF;&#x8FF0;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x3002;</p>
+<p> MultiTermVectorsResponse允许获得TermVectorsResponse的列表，每个响应都可以按照Term Vectors API中的描述进行检查。</p>
 <pre><code>List&lt;TermVectorsResponse&gt; tvresponseList =
-    response.getTermVectorsResponses(); //&#x83B7;&#x53D6;MultiTermVectorsResponse&#x5217;&#x8868;
+    response.getTermVectorsResponses(); //获取MultiTermVectorsResponse列表
 if (tvresponseList != null) {
     for (TermVectorsResponse tvresponse : tvresponseList) {
     }
@@ -707,7 +707,7 @@ if (tvresponseList != null) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Multi Term Vectors API","level":"1.29","depth":1,"next":{"title":"JAVA实例：搜索API","level":"1.30","depth":1,"path":"java-search-api.md","ref":"java-search-api.md","articles":[]},"previous":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"path":"java-rethrottle-api.md","ref":"java-rethrottle-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-multi-term-vectors-api.md","mtime":"2021-03-09T02:05:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Multi Term Vectors API","level":"1.29","depth":1,"next":{"title":"JAVA实例：搜索API","level":"1.30","depth":1,"path":"java-search-api.md","ref":"java-search-api.md","articles":[]},"previous":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"path":"java-rethrottle-api.md","ref":"java-rethrottle-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-multi-term-vectors-api.md","mtime":"2021-03-09T02:05:32.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

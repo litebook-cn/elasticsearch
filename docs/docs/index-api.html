@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,15 +610,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x7D22;&#x5F15;api"><a name="&#x7D22;&#x5F15;api" class="plugin-anchor" href="#&#x7D22;&#x5F15;api"><i class="fa fa-link" aria-hidden="true"></i></a>&#x7D22;&#x5F15;API</h2>
+                                <h2 id="索引api"><a name="索引api" class="plugin-anchor" href="#索引api"><i class="fa fa-link" aria-hidden="true"></i></a>索引API</h2>
 <hr>
-<p> &#x8FD9;&#x4E9B;API&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x7D22;&#x5F15;&#x7684;&#x6240;&#x6709;&#x65B9;&#x9762;&#xFF0C;&#x5982;&#x8BBE;&#x7F6E;&#x3001;&#x522B;&#x540D;&#x3001;&#x6620;&#x5C04;&#x3001;&#x7D22;&#x5F15;&#x6A21;&#x677F;&#x3002;</p>
-<p><strong>&#x521B;&#x5EFA;&#x7D22;&#x5F15;</strong></p>
-<p> &#x8FD9;&#x4E2A;API&#x7528;&#x6765;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x5C06;JSON&#x5BF9;&#x8C61;&#x4F20;&#x9012;&#x7ED9;&#x7D22;&#x5F15;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#x3002;&#x8981;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#xFF0C;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5E26;&#x6709;settings&#x3001;mappings&#x548C;aliases&#x7684;post&#x8BF7;&#x6C42;&#xFF0C;&#x6216;&#x8005;&#x53EA;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E0D;&#x5E26;&#x6B63;&#x6587;&#x7684;&#x7B80;&#x5355;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<p> 这些API负责管理索引的所有方面，如设置、别名、映射、索引模板。</p>
+<p><strong>创建索引</strong></p>
+<p> 这个API用来创建索引，当用户将JSON对象传递给索引时，可以自动创建索引，也可以在此之前手动创建索引。要创建索引，您只需要发送一个带有settings、mappings和aliases的post请求，或者只发送一个不带正文的简单请求。例如，</p>
 <pre><code>POST /colleges
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;acknowledged&quot;:true}
-  &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;settings.
+  或者，附带一些settings.
 POST /colleges
 {
    &quot;settings&quot; : {
@@ -627,9 +627,9 @@ POST /colleges
       }
    }
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;acknowledged&quot;:true}
-</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;mapping.</p>
+</code></pre><p> 或者，附带一些mapping.</p>
 <pre><code>POST /colleges
 {
    &quot;settings&quot; : {
@@ -643,9 +643,9 @@ POST /colleges
       }
    }
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;acknowledged&quot;:true}
-</code></pre><p> &#x6216;&#x8005;&#xFF0C;&#x9644;&#x5E26;&#x4E00;&#x4E9B;alias&#x3002;</p>
+</code></pre><p> 或者，附带一些alias。</p>
 <pre><code>POST /colleges
 {
    &quot;aliases&quot; : {
@@ -657,16 +657,16 @@ POST /colleges
       }
    }
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;acknowledged&quot;:true}
-</code></pre><p><strong>&#x5220;&#x9664;&#x7D22;&#x5F15;</strong></p>
-<p> &#x8BE5;API&#x7528;&#x6765;&#x5220;&#x9664;&#x4EFB;&#x4F55;&#x7D22;&#x5F15;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x7279;&#x5B9A;&#x7D22;&#x5F15;&#x540D;&#x79F0;&#x7684;&#x5220;&#x9664;&#x8BF7;&#x6C42;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p><strong>删除索引</strong></p>
+<p> 该API用来删除任何索引。您只需要传递一个带有特定索引名称的删除请求。例如，</p>
 <pre><code>DELETE /colleges
-</code></pre><p> &#x4F7F;&#x7528;_all&#xFF0C;*&#x5373;&#x53EF;&#x5220;&#x9664;&#x6240;&#x6709;&#x7D22;&#x5F15;&#x3002;</p>
-<p><strong>&#x83B7;&#x53D6;&#x7D22;&#x5F15;</strong></p>
-<p> &#x8FD9;&#x4E2A;API&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x53D1;&#x9001;get&#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x5C06;&#x8FD4;&#x56DE;&#x5173;&#x4E8E;&#x7D22;&#x5F15;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+</code></pre><p> 使用_all，*即可删除所有索引。</p>
+<p><strong>获取索引</strong></p>
+<p> 这个API可以通过向一个或多个索引发送get请求，这将返回关于索引的信息。</p>
 <pre><code>GET /schools
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{
    &quot;schools&quot;:{
       &quot;aliases&quot;:{}, &quot;mappings&quot;:{
@@ -690,34 +690,34 @@ POST /colleges
       &quot;warmers&quot;:{}
    }
 }
-</code></pre><p> &#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_all&#x6216;*&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
-<p><strong>&#x68C0;&#x67E5;&#x7D22;&#x5F15;&#x662F;&#x5426;&#x5B58;&#x5728;</strong></p>
-<p> &#x5411;&#x67D0;&#x4E2A;&#x7D22;&#x5F15;&#x53D1;&#x9001;GET&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x7D22;&#x5F15;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;&#x5982;&#x679C;HTTP&#x54CD;&#x5E94;&#x4E3A;200&#xFF0C;&#x5219;&#x5B58;&#x5728;&#xFF1B;&#x5982;&#x679C;&#x662F;404&#xFF0C;&#x5219;&#x4E0D;&#x5B58;&#x5728;&#x3002;</p>
-<p><strong>&#x5F00;&#x542F;/&#x5173;&#x95ED;&#x7D22;&#x5F15;</strong></p>
-<p> &#x901A;&#x8FC7;&#x5728;&#x8BF7;&#x6C42;&#x4E2D;&#x6DFB;&#x52A0;_close&#x6216;_open&#x6765;&#x8BF7;&#x6C42;&#x7D22;&#x5F15;&#xFF0C;&#x5173;&#x95ED;&#x6216;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p> 您可以使用_all或*获取所有的信息。</p>
+<p><strong>检查索引是否存在</strong></p>
+<p> 向某个索引发送GET请求，就可以确定该索引是否存在。如果HTTP响应为200，则存在；如果是404，则不存在。</p>
+<p><strong>开启/关闭索引</strong></p>
+<p> 通过在请求中添加_close或_open来请求索引，关闭或打开一个或多个索引非常容易。例如，</p>
 <pre><code>POST /schools/_close
-</code></pre><p>&#x6216;&#x8005;</p>
+</code></pre><p>或者</p>
 <pre><code>POST /schools/_open
-</code></pre><p><strong>&#x7D22;&#x5F15;&#x522B;&#x540D;</strong></p>
-<p> &#x8FD9;&#x4E2A;API&#x901A;&#x8FC7;&#x4F7F;&#x7528;_aliases&#x5173;&#x952E;&#x5B57;&#x5E2E;&#x52A9;&#x7ED9;&#x7D22;&#x5F15;&#x8D4B;&#x4E88;&#x522B;&#x540D;&#x3002;&#x5355;&#x4E2A;&#x522B;&#x540D;&#x53EF;&#x4EE5;&#x6620;&#x5C04;&#x5230;&#x591A;&#x4E2A;&#x522B;&#x540D;&#xFF0C;&#x522B;&#x540D;&#x4E0D;&#x80FD;&#x4E0E;&#x7D22;&#x5F15;&#x540C;&#x540D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p><strong>索引别名</strong></p>
+<p> 这个API通过使用_aliases关键字帮助给索引赋予别名。单个别名可以映射到多个别名，别名不能与索引同名。例如，</p>
 <pre><code>POST /_aliases
 {
    &quot;actions&quot; : [
       { &quot;add&quot; : { &quot;index&quot; : &quot;schools&quot;, &quot;alias&quot; : &quot;schools_pri&quot; } }
    ]
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;acknowledged&quot;:true}
-</code></pre><p>&#x7136;&#x540E;&#xFF0C;</p>
+</code></pre><p>然后，</p>
 <pre><code>GET /schools_pri
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
-<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>响应</strong></p>
+<pre><code>………………………………………………
 {&quot;schools&quot;:{&quot;aliases&quot;:{&quot;schools_pri&quot;:{}},&quot;}}
-&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
-</code></pre><p><strong>&#x7D22;&#x5F15;&#x8BBE;&#x7F6E;</strong></p>
-<p> &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;&#x7F51;&#x5740;&#x672B;&#x5C3E;&#x9644;&#x52A0;_settings&#x5173;&#x952E;&#x5B57;&#x6765;&#x83B7;&#x5F97;&#x7D22;&#x5F15;&#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+………………………………………………
+</code></pre><p><strong>索引设置</strong></p>
+<p> 可以通过在网址末尾附加_settings关键字来获得索引的设置。例如，</p>
 <pre><code>GET /schools/_settings
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{
    &quot;schools&quot;:{
       &quot;settings&quot;:{
@@ -729,14 +729,14 @@ POST /colleges
       }
    }
 }
-</code></pre><p><strong>&#x5206;&#x8BCD;</strong></p>
-<p> &#x8BE5;API&#x5E2E;&#x52A9;&#x5206;&#x6790;&#x6587;&#x672C;&#x5E76;&#x53D1;&#x9001;&#x5E26;&#x6709;&#x504F;&#x79FB;&#x503C;&#x548C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;token&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p><strong>分词</strong></p>
+<p> 该API帮助分析文本并发送带有偏移值和数据类型的token。例如，</p>
 <pre><code>POST /_analyze
 {
    &quot;analyzer&quot; : &quot;standard&quot;,
    &quot;text&quot; : &quot;you are reading this at tutorials point&quot;
 }
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{
    &quot;tokens&quot;:[
       {&quot;token&quot;:&quot;you&quot;, &quot;start_offset&quot;:0, &quot;end_offset&quot;:3, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:0},
@@ -748,9 +748,9 @@ POST /colleges
       {&quot;token&quot;:&quot;point&quot;, &quot;start_offset&quot;:34, &quot;end_offset&quot;:39, &quot;type&quot;:&quot;&lt;ALPHANUM&gt;&quot;, &quot;position&quot;:6}
    ]
 }
-</code></pre><p> &#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7D22;&#x5F15;&#x6765;&#x5206;&#x6790;&#x6587;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6839;&#x636E;&#x4E0E;&#x8BE5;&#x7D22;&#x5F15;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5206;&#x6790;&#x5668;&#x6765;&#x5206;&#x6790;&#x6587;&#x672C;&#x3002;</p>
-<p><strong>&#x7D22;&#x5F15;&#x6A21;&#x677F;</strong></p>
-<p> &#x60A8;&#x8FD8;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x5E26;&#x6709;&#x6620;&#x5C04;&#x7684;&#x7D22;&#x5F15;&#x6A21;&#x677F;&#xFF0C;&#x8FD9;&#x4E9B;&#x6A21;&#x677F;&#x53EF;&#x4EE5;&#x5E94;&#x7528;&#x4E8E;&#x65B0;&#x7684;&#x7D22;&#x5F15;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p> 您也可以使用索引来分析文本，然后将根据与该索引相关联的分析器来分析文本。</p>
+<p><strong>索引模板</strong></p>
+<p> 您还可以创建带有映射的索引模板，这些模板可以应用于新的索引。例如，</p>
 <pre><code>POST /_template/template_a
 {
    &quot;template&quot; : &quot;tu*&quot;, 
@@ -763,24 +763,24 @@ POST /colleges
       }
    }
 }
-</code></pre><p> &#x4EFB;&#x4F55;&#x4EE5;&#x201C;tu&#x201D;&#x5F00;&#x5934;&#x7684;&#x7D22;&#x5F15;&#x90FD;&#x5C06;&#x5177;&#x6709;&#x4E0E;template_a&#x76F8;&#x540C;&#x7684;&#x8BBE;&#x7F6E;&#x3002;</p>
-<p><strong>&#x7D22;&#x5F15;&#x7EDF;&#x8BA1;</strong></p>
-<p> &#x8BE5;API&#x5E2E;&#x52A9;&#x60A8;&#x63D0;&#x53D6;&#x7279;&#x5B9A;&#x7D22;&#x5F15;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#x3002;&#x60A8;&#x53EA;&#x9700;&#x8981;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x7D22;&#x5F15;&#x7F51;&#x5740;&#x548C;_stats&#x5173;&#x952E;&#x5B57;&#x7684;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x3002;</p>
+</code></pre><p> 任何以“tu”开头的索引都将具有与template_a相同的设置。</p>
+<p><strong>索引统计</strong></p>
+<p> 该API帮助您提取特定索引的统计信息。您只需要发送一个带有索引网址和_stats关键字的获取请求。</p>
 <pre><code>GET /schools/_stats
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
-<pre><code>&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+</code></pre><p><strong>响应</strong></p>
+<pre><code>………………………………………………
 {&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}, &quot;_all&quot;:{&quot;primaries&quot;:{&quot;docs&quot;:{
    &quot;count&quot;:3, &quot;deleted&quot;:0}}}, &quot;store&quot;:{&quot;size_in_bytes&quot;:16653, &quot;throttle_time_in_millis&quot;:0},
-&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;&#x2026;
+………………………………………………
 </code></pre><p><strong>Flush</strong></p>
-<p> &#x6B64;API&#x7528;&#x4E8E;&#x6E05;&#x9664;&#x7D22;&#x5F15;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E76;&#x5C06;&#x5176;&#x8FC1;&#x79FB;&#x5230;&#x7D22;&#x5F15;&#x5B58;&#x50A8;&#x4E2D;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x6E05;&#x9664;&#x5185;&#x90E8;&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+<p> 此API用于清除索引内存中的数据并将其迁移到索引存储中，还可以清除内部事务日志。例如，</p>
 <pre><code>GET /schools/_flush
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}}
-</code></pre><p><strong>&#x5237;&#x65B0;</strong></p>
-<p> &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;ElasticSearch&#x4F1A;&#x5B9A;&#x65F6;&#x5237;&#x65B0;&#xFF0C;&#x4F46;&#x662F;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;_refresh&#x663E;&#x5F0F;&#x5237;&#x65B0;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x3002;&#x4F8B;&#x5982;&#xFF0C;</p>
+</code></pre><p><strong>刷新</strong></p>
+<p> 默认情况下，ElasticSearch会定时刷新，但是您可以使用_refresh显式刷新一个或多个索引。例如，</p>
 <pre><code>GET /schools/_refresh
-</code></pre><p><strong>&#x54CD;&#x5E94;</strong></p>
+</code></pre><p><strong>响应</strong></p>
 <pre><code>{&quot;_shards&quot;:{&quot;total&quot;:10, &quot;successful&quot;:5, &quot;failed&quot;:0}}
 </code></pre>
                                 
@@ -825,7 +825,7 @@ POST /colleges
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"索引API","level":"1.9","depth":1,"next":{"title":"集群API","level":"1.10","depth":1,"path":"cluster-api.md","ref":"cluster-api.md","articles":[]},"previous":{"title":"聚合","level":"1.8","depth":1,"path":"aggregations.md","ref":"aggregations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"index-api.md","mtime":"2021-03-08T10:32:00.075Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"索引API","level":"1.9","depth":1,"next":{"title":"集群API","level":"1.10","depth":1,"path":"cluster-api.md","ref":"cluster-api.md","articles":[]},"previous":{"title":"聚合","level":"1.8","depth":1,"path":"aggregations.md","ref":"aggregations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"index-api.md","mtime":"2021-03-08T10:32:00.075Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

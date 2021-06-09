@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,103 +610,103 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;multi-get-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;multi-get-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;multi-get-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Multi-Get API</h2>
+                                <h2 id="java实例：multi-get-api"><a name="java实例：multi-get-api" class="plugin-anchor" href="#java实例：multi-get-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Multi-Get API</h2>
 <hr>
-<p> multiGet API&#x5728;&#x4E00;&#x4E2A;http&#x8BF7;&#x6C42;&#x4E2D;&#x5E76;&#x884C;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x3002;</p>
+<p> multiGet API在一个http请求中并行执行多个获取请求。</p>
 <p><strong>Multi-Get Request</strong></p>
-<p> MultiGetRequest&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E3A;&#x7A7A;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;MultiGetRequest.Item&#x5230;&#x67E5;&#x8BE2;&#x4E2D;&#x3002;</p>
+<p> MultiGetRequest的构造函数为空，你可以添加MultiGetRequest.Item到查询中。</p>
 <pre><code>MultiGetRequest request = new MultiGetRequest();
 request.add(new MultiGetRequest.Item(
-    &quot;index&quot;,         //&#x7D22;&#x5F15;
-    &quot;example_id&quot;));  //&#x6587;&#x6863;id
-request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;another_id&quot;)); //&#x6DFB;&#x52A0;&#x53E6;&#x4E00;&#x4E2A;&#x8981;&#x63D0;&#x53D6;&#x7684;&#x9879;&#x76EE;
-</code></pre><p><strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong></p>
+    &quot;index&quot;,         //索引
+    &quot;example_id&quot;));  //文档id
+request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;another_id&quot;)); //添加另一个要提取的项目
+</code></pre><p><strong>可选参数</strong></p>
 <pre><code>request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;example_id&quot;)
-    .fetchSourceContext(FetchSourceContext.DO_NOT_FETCH_SOURCE));  //&#x7981;&#x7528;&#x6E90;&#x68C0;&#x7D22;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x542F;&#x7528;
+    .fetchSourceContext(FetchSourceContext.DO_NOT_FETCH_SOURCE));  //禁用源检索，默认情况下启用
 String[] includes = new String[] {&quot;foo&quot;, &quot;*r&quot;};
 String[] excludes = Strings.EMPTY_ARRAY;
 FetchSourceContext fetchSourceContext =
         new FetchSourceContext(true, includes, excludes);
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;example_id&quot;)
-    .fetchSourceContext(fetchSourceContext));  //&#x4E3A;&#x7279;&#x5B9A;&#x5B57;&#x6BB5;&#x914D;&#x7F6E;&#x6E90;&#x5305;&#x542B;
+    .fetchSourceContext(fetchSourceContext));  //为特定字段配置源包含
 </code></pre><pre><code>String[] includes = Strings.EMPTY_ARRAY;
 String[] excludes = new String[] {&quot;foo&quot;, &quot;*r&quot;};
 FetchSourceContext fetchSourceContext =
         new FetchSourceContext(true, includes, excludes);
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;example_id&quot;)
-    .fetchSourceContext(fetchSourceContext));  //&#x4E3A;&#x7279;&#x5B9A;&#x5B57;&#x6BB5;&#x914D;&#x7F6E;&#x6E90;&#x6392;&#x9664;
+    .fetchSourceContext(fetchSourceContext));  //为特定字段配置源排除
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;example_id&quot;)
-    .storedFields(&quot;foo&quot;));  //&#x914D;&#x7F6E;&#x7279;&#x5B9A;&#x5B58;&#x50A8;&#x5B57;&#x6BB5;&#x7684;&#x68C0;&#x7D22;(&#x8981;&#x6C42;&#x5B57;&#x6BB5;&#x5728;&#x6620;&#x5C04;&#x4E2D;&#x5355;&#x72EC;&#x5B58;&#x50A8;)
+    .storedFields(&quot;foo&quot;));  //配置特定存储字段的检索(要求字段在映射中单独存储)
 MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
 MultiGetItemResponse item = response.getResponses()[0];
-String value = item.getResponse().getField(&quot;foo&quot;).getValue(); //&#x68C0;&#x7D22;foo&#x5B58;&#x50A8;&#x5B57;&#x6BB5;(&#x8981;&#x6C42;&#x8BE5;&#x5B57;&#x6BB5;&#x5728;&#x6620;&#x5C04;&#x4E2D;&#x5355;&#x72EC;&#x5B58;&#x50A8;)
+String value = item.getResponse().getField(&quot;foo&quot;).getValue(); //检索foo存储字段(要求该字段在映射中单独存储)
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;with_routing&quot;)
-    .routing(&quot;some_routing&quot;));    //&#x8DEF;&#x7531;&#x503C;
+    .routing(&quot;some_routing&quot;));    //路由值
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;with_version&quot;)
-    .versionType(VersionType.EXTERNAL)  //&#x7248;&#x672C;
-    .version(10123L));              //&#x7248;&#x672C;&#x7C7B;&#x578B;
-  preference, realtime&#x548C;refresh&#x53EF;&#x4EE5;&#x5728;&#x4E3B;&#x8BF7;&#x6C42;&#x4E0A;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F46;&#x4E0D;&#x80FD;&#x5728;&#x4EFB;&#x4F55;&#x9879;&#x76EE;&#x4E0A;&#x8BBE;&#x7F6E;:
-request.preference(&quot;some_preference&quot;);  //&#x504F;&#x597D;&#x503C;
-request.realtime(false);//&#x5C06;&#x5B9E;&#x65F6;&#x6807;&#x5FD7;&#x8BBE;&#x7F6E;&#x4E3A;false(&#x9ED8;&#x8BA4;true)
-request.refresh(true); //&#x5728;&#x68C0;&#x7D22;&#x6587;&#x6863;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x5237;&#x65B0;(&#x9ED8;&#x8BA4;false)
-</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x591A;&#x91CD;&#x7F51;&#x683C;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x7B49;&#x5F85;&#x591A;&#x91CD;&#x7F51;&#x683C;&#x54CD;&#x5E94;&#x8FD4;&#x56DE;:</p>
+    .versionType(VersionType.EXTERNAL)  //版本
+    .version(10123L));              //版本类型
+  preference, realtime和refresh可以在主请求上设置，但不能在任何项目上设置:
+request.preference(&quot;some_preference&quot;);  //偏好值
+request.realtime(false);//将实时标志设置为false(默认true)
+request.refresh(true); //在检索文档之前执行刷新(默认false)
+</code></pre><p><strong>同步执行</strong></p>
+<p> 当以下列方式执行多重网格请求时，客户端在继续执行代码之前，会等待多重网格响应返回:</p>
 <pre><code>MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
-</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
-<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseException&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
-<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;MultiGetRequest&#xFF0C;&#x4EE5;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5411;&#x5F02;&#x6B65;&#x591A;&#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x4F20;&#x9012;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
-<pre><code>client.mgetAsync(request, RequestOptions.DEFAULT, listener); //&#x8981;&#x6267;&#x884C;&#x7684;&#x591A;&#x91CD;&#x8BF7;&#x6C42;&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
-<p> &#x5178;&#x578B;&#x7684;multi-get&#x76D1;&#x542C;&#x5668;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+</code></pre><p> 同步调用可能会在高级REST客户端中解析REST响应失败、请求超时或类似服务器没有响应的情况下抛出IOException。</p>
+<p> 在服务器返回4xx或5xx错误代码的情况下，高级客户端会尝试解析响应主体错误详细信息，然后抛出一个通用的ElasticsearchException，并将原始ResponseException作为抑制异常添加到其中。</p>
+<p><strong>异步执行</strong></p>
+<p> 也可以异步方式执行MultiGetRequest，以便客户端可以直接返回。用户需要通过向异步多获取方法传递请求和侦听器来指定如何处理响应或潜在故障:</p>
+<pre><code>client.mgetAsync(request, RequestOptions.DEFAULT, listener); //要执行的多重请求和执行完成时要使用的操作侦听器
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。失败场景和预期异常与同步执行情况相同。</p>
+<p> 典型的multi-get监听器如下所示:</p>
 <pre><code>listener = new ActionListener&lt;MultiGetResponse&gt;() {
     @Override
     public void onResponse(MultiGetResponse response) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;
+        //成功的时候执行
     }
 
     @Override
     public void onFailure(Exception e) {
-        //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;
+        //失败的时候执行
     }
 };
 </code></pre><p><strong>Multi Get Response</strong></p>
-<p> &#x8FD4;&#x56DE;&#x7684;MultiGetResponse&#x5305;&#x542B;&#x4E00;&#x4E2A;MultiGetItemResponse&#x5217;&#x8868;&#xFF0C;&#x6309;&#x8BF7;&#x6C42;&#x7684;&#x987A;&#x5E8F;&#x6392;&#x5217;&#x5728;GetResponse&#x4E2D;&#x3002;MultiGetResponse&#x5305;&#x542B;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x65F6;&#x7684;&#x83B7;&#x53D6;GetResponse&#x6216;MultiGetResponse&#x3002;&#x5931;&#x8D25;&#x5219;&#x63D0;&#x793A;&#x5931;&#x8D25;&#xFF0C;&#x6210;&#x529F;&#x770B;&#x8D77;&#x6765;&#x5C31;&#x50CF;&#x666E;&#x901A;&#x7684;GetResponse&#x3002;</p>
+<p> 返回的MultiGetResponse包含一个MultiGetItemResponse列表，按请求的顺序排列在GetResponse中。MultiGetResponse包含获取成功时的获取GetResponse或MultiGetResponse。失败则提示失败，成功看起来就像普通的GetResponse。</p>
 <pre><code>MultiGetItemResponse firstItem = response.getResponses()[0];
-assertNull(firstItem.getFailure()); //getFailure&#x8FD4;&#x56DE;null&#x610F;&#x5473;&#x7740;&#x6CA1;&#x6709;&#x5931;&#x8D25;&#x3002;
-GetResponse firstGet = firstItem.getResponse();//getResponse&#x8FD4;&#x56DE;GetResponse&#x3002;
+assertNull(firstItem.getFailure()); //getFailure返回null意味着没有失败。
+GetResponse firstGet = firstItem.getResponse();//getResponse返回GetResponse。
 String index = firstItem.getIndex();
 String id = firstItem.getId();
 if (firstGet.isExists()) {
     long version = firstGet.getVersion();
-    String sourceAsString = firstGet.getSourceAsString(); //&#x4EE5;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x6587;&#x6863;
-    Map&lt;String, Object&gt; sourceAsMap = firstGet.getSourceAsMap();//&#x4EE5;Map&lt;String, Object&gt;&#x7684;&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x6587;&#x6863;
-    byte[] sourceAsBytes = firstGet.getSourceAsBytes(); //&#x4EE5; byte[]&#x5F62;&#x5F0F;&#x68C0;&#x7D22;&#x6587;&#x6863;
+    String sourceAsString = firstGet.getSourceAsString(); //以字符串形式检索文档
+    Map&lt;String, Object&gt; sourceAsMap = firstGet.getSourceAsMap();//以Map&lt;String, Object&gt;的形式检索文档
+    byte[] sourceAsBytes = firstGet.getSourceAsBytes(); //以 byte[]形式检索文档
 } else {
-    //&#x5904;&#x7406;&#x627E;&#x4E0D;&#x5230;&#x6587;&#x6863;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x867D;&#x7136;&#x8FD4;&#x56DE;&#x7684;&#x54CD;&#x5E94;&#x6709;404&#x4E2A;&#x72B6;&#x6001;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6709;&#x6548;&#x7684;GetResponse&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5F15;&#x53D1;&#x7684;&#x5F02;&#x5E38;&#x3002;&#x8FD9;&#x79CD;&#x54CD;&#x5E94;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x6E90;&#x6587;&#x6863;&#xFF0C;&#x5176;isExists&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;false&#x3002;
+    //处理找不到文档的情况。请注意，虽然返回的响应有404个状态代码，但返回的是有效的GetResponse，而不是引发的异常。这种响应不包含任何源文档，其isExists方法返回false。
 }
-</code></pre><p> &#x5F53;&#x5BF9;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x7D22;&#x5F15;&#x6267;&#x884C;&#x7684;&#x5B50;&#x8BF7;&#x6C42;&#x4E4B;&#x4E00;getFailure&#x5C06;&#x5305;&#x542B;&#x5F02;&#x5E38;:</p>
-<pre><code>assertNull(missingIndexItem.getResponse());//getResponse&#x4E3A;&#x7A7A;&#x3002;
-Exception e = missingIndexItem.getFailure().getFailure();//getFailure&#x4E0D;&#x662F;&#x5E76;&#x4E14;&#x5305;&#x542B;&#x5F02;&#x5E38;&#x3002;
-ElasticsearchException ee = (ElasticsearchException) e; //  &#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x662F;&#x4E00;&#x4E2A;ElasticsearchException
+</code></pre><p> 当对不存在的索引执行的子请求之一getFailure将包含异常:</p>
+<pre><code>assertNull(missingIndexItem.getResponse());//getResponse为空。
+Exception e = missingIndexItem.getFailure().getFailure();//getFailure不是并且包含异常。
+ElasticsearchException ee = (ElasticsearchException) e; //  这个异常是一个ElasticsearchException
 // TODO status is broken! fix in a followup
-// assertEquals(RestStatus.NOT_FOUND, ee.status());//&#x5B83;&#x7684;&#x72B6;&#x6001;&#x4E3A;&#x201C;&#x672A;&#x627E;&#x5230;&#x201D;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x591A;&#x91CD;&#x83B7;&#x53D6;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;HTTP 404&#x3002;
+// assertEquals(RestStatus.NOT_FOUND, ee.status());//它的状态为“未找到”。如果不是多重获取，它应该是一个HTTP 404。
 assertThat(e.getMessage(),
-    containsString(&quot;reason=no such index [missing_index]&quot;));//getMessage&#x89E3;&#x91CA;&#x4E86;&#x539F;&#x56E0;&#x3002;
-</code></pre><p> &#x5982;&#x679C;&#x8BF7;&#x6C42;&#x4E86;&#x7279;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x7248;&#x672C;&#xFF0C;&#x5E76;&#x4E14;&#x73B0;&#x6709;&#x6587;&#x6863;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5219;&#x4F1A;&#x5F15;&#x53D1;&#x7248;&#x672C;&#x51B2;&#x7A81;: </p>
+    containsString(&quot;reason=no such index [missing_index]&quot;));//getMessage解释了原因。
+</code></pre><p> 如果请求了特定的文档版本，并且现有文档具有不同的版本号，则会引发版本冲突: </p>
 <pre><code>MultiGetRequest request = new MultiGetRequest();
 request.add(new MultiGetRequest.Item(&quot;index&quot;, &quot;example_id&quot;)
     .version(1000L));
 MultiGetResponse response = client.mget(request, RequestOptions.DEFAULT);
 MultiGetItemResponse item = response.getResponses()[0];
-assertNull(item.getResponse());//getResponse&#x4E3A;&#x7A7A;&#x3002;
-Exception e = item.getFailure().getFailure();//getFailure&#x4E0D;&#x662F;&#x5E76;&#x4E14;&#x5305;&#x542B;&#x5F02;&#x5E38;&#x3002;
-ElasticsearchException ee = (ElasticsearchException) e;//&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x662F;&#x4E00;&#x4E2A;ElasticsearchException
+assertNull(item.getResponse());//getResponse为空。
+Exception e = item.getFailure().getFailure();//getFailure不是并且包含异常。
+ElasticsearchException ee = (ElasticsearchException) e;//这个异常是一个ElasticsearchException
 // TODO status is broken! fix in a followup
-// assertEquals(RestStatus.CONFLICT, ee.status());//&#x5B83;&#x7684;&#x72B6;&#x6001;&#x4E3A;CONFLICT&#x3002;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x591A;&#x91CD;&#x83B7;&#x53D6;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;HTTP 409&#x3002;
+// assertEquals(RestStatus.CONFLICT, ee.status());//它的状态为CONFLICT。如果不是多重获取，它应该是一个HTTP 409。
 assertThat(e.getMessage(),
     containsString(&quot;version conflict, current version [1] is &quot;
-        + &quot;different than the one provided [1000]&quot;)); //getMessage&#x89E3;&#x91CA;&#x4E86;&#x5B9E;&#x9645;&#x539F;&#x56E0;
+        + &quot;different than the one provided [1000]&quot;)); //getMessage解释了实际原因
 </code></pre>
                                 
                                 </section>
@@ -750,7 +750,7 @@ assertThat(e.getMessage(),
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Multi-Get API","level":"1.24","depth":1,"next":{"title":"JAVA实例：Reindex API","level":"1.25","depth":1,"path":"java-reindex-request.md","ref":"java-reindex-request.md","articles":[]},"previous":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"path":"java-bulk-api.md","ref":"java-bulk-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-multiget-api.md","mtime":"2021-03-09T02:00:48.571Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Multi-Get API","level":"1.24","depth":1,"next":{"title":"JAVA实例：Reindex API","level":"1.25","depth":1,"path":"java-reindex-request.md","ref":"java-reindex-request.md","articles":[]},"previous":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"path":"java-bulk-api.md","ref":"java-bulk-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-multiget-api.md","mtime":"2021-03-09T02:00:48.571Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

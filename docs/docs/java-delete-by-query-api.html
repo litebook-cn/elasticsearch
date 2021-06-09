@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,71 +610,71 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;delete-by-query-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;delete-by-query-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;delete-by-query-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Delete By Query API</h2>
+                                <h2 id="java实例：delete-by-query-api"><a name="java实例：delete-by-query-api" class="plugin-anchor" href="#java实例：delete-by-query-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Delete By Query API</h2>
 <hr>
 <p><strong>DeleteByQueryRequest</strong></p>
-<p> DeleteByQueryRequest&#x53EF;&#x7528;&#x4E8E;&#x4ECE;&#x7D22;&#x5F15;&#x4E2D;&#x5220;&#x9664;&#x6587;&#x6863;&#x3002;&#x5B83;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8981;&#x6267;&#x884C;&#x5220;&#x9664;&#x7684;&#x73B0;&#x6709;&#x7D22;&#x5F15;(&#x6216;&#x4E00;&#x7EC4;&#x7D22;&#x5F15;)&#x3002;</p>
-<p> DeleteByQueryRequest&#x7684;&#x6700;&#x7B80;&#x5355;&#x5F62;&#x5F0F;&#x5982;&#x4E0B;&#xFF0C;&#x5B83;&#x5220;&#x9664;&#x7D22;&#x5F15;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6587;&#x6863;:</p>
+<p> DeleteByQueryRequest可用于从索引中删除文档。它需要一个要执行删除的现有索引(或一组索引)。</p>
+<p> DeleteByQueryRequest的最简单形式如下，它删除索引中的所有文档:</p>
 <pre><code>DeleteByQueryRequest request =
-        new DeleteByQueryRequest(&quot;source1&quot;, &quot;source2&quot;); //&#x5728;&#x4E00;&#x7EC4;&#x7D22;&#x5F15;&#x4E0A;&#x521B;&#x5EFA;DeleteByQueryRequest&#x3002;
-</code></pre><p> &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7248;&#x672C;&#x51B2;&#x7A81;&#x4F1A;&#x4E2D;&#x6B62;DeleteByQueryRequest&#x8FDB;&#x7A0B;&#xFF0C;&#x4F46;&#x60A8;&#x53EF;&#x4EE5;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x8BA1;&#x6570;:</p>
-<pre><code>request.setConflicts(&quot;proceed&quot;); //&#x8BBE;&#x7F6E;&#x7248;&#x672C;&#x51B2;&#x7A81;&#x65F6;&#x7EE7;&#x7EED;
-</code></pre><p> &#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x67E5;&#x8BE2;&#x6765;&#x9650;&#x5236;&#x6587;&#x6863;&#x3002;</p>
-<pre><code>request.setQuery(new TermQueryBuilder(&quot;user&quot;, &quot;kimchy&quot;)); //&#x4EC5;&#x590D;&#x5236;&#x5B57;&#x6BB5;&#x7528;&#x6237;&#x8BBE;&#x7F6E;&#x4E3A;kimchy&#x7684;&#x6587;&#x6863;
-</code></pre><p> &#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x5927;&#x5C0F;&#x6765;&#x9650;&#x5236;&#x5DF2;&#x5904;&#x7406;&#x6587;&#x6863;&#x7684;&#x6570;&#x91CF;&#x3002;</p>
-<pre><code>request.setSize(10); //&#x53EA;&#x62F7;&#x8D1D;&#x5341;&#x4E2A;&#x6587;&#x6863;
-</code></pre><p> &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;DeleteByQueryRequest&#x53EF;&#x4EE5;&#x6279;&#x91CF;&#x5904;&#x7406;1000&#x4E2A;&#x6587;&#x6863;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;setBatchSize&#x66F4;&#x6539;&#x6279;&#x5904;&#x7406;&#x5927;&#x5C0F;&#x3002;</p>
-<pre><code>request.setBatchSize(100); //&#x5355;&#x6279;&#x5904;&#x7406;100&#x4EFD;&#x6587;&#x4EF6;
-</code></pre><p> DeleteByQueryRequest&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5E26;&#x6709;&#x8BBE;&#x7F6E;&#x5207;&#x7247;&#x7684;&#x5207;&#x7247;&#x6EDA;&#x52A8;&#x6765;&#x5E76;&#x884C;&#x5316;:</p>
-<pre><code>request.setSlices(2); //&#x8BBE;&#x7F6E;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x5207;&#x7247;&#x6570;&#x91CF;
-</code></pre><p> DeleteByQueryRequest&#x4F7F;&#x7528;Scroll&#x53C2;&#x6570;&#x6765;&#x63A7;&#x5236;&#x5B83;&#x5C06;&#x201C;&#x641C;&#x7D22;&#x4E0A;&#x4E0B;&#x6587;&#x201D;&#x4FDD;&#x6301;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x3002;</p>
-<pre><code>request.setScroll(TimeValue.timeValueMinutes(10)); //&#x8BBE;&#x7F6E;&#x6EDA;&#x52A8;&#x65F6;&#x95F4;
-</code></pre><p> &#x5982;&#x679C;&#x60A8;&#x63D0;&#x4F9B;&#x4E86;&#x8DEF;&#x7531;&#xFF0C;&#x5219;&#x8DEF;&#x7531;&#x5C06;&#x88AB;&#x590D;&#x5236;&#x5230;&#x6EDA;&#x52A8;&#x67E5;&#x8BE2;&#xFF0C;&#x4ECE;&#x800C;&#x5C06;&#x8BE5;&#x8FC7;&#x7A0B;&#x9650;&#x5236;&#x5728;&#x4E0E;&#x8BE5;&#x8DEF;&#x7531;&#x503C;&#x5339;&#x914D;&#x7684;&#x788E;&#x7247;&#x4E0A;&#x3002;</p>
-<pre><code>request.setRouting(&quot;=cat&quot;); //&#x8BBE;&#x7F6E;&#x8DEF;&#x7531;
-</code></pre><p><strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong></p>
-<p> &#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x9009;&#x9879;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x63D0;&#x4F9B;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;:</p>
-<pre><code>request.setTimeout(TimeValue.timeValueMinutes(2)); //&#x7B49;&#x5F85;&#x6309;&#x67E5;&#x8BE2;&#x5220;&#x9664;&#x8BF7;&#x6C42;&#x4F5C;&#x4E3A;&#x65F6;&#x95F4;&#x503C;&#x6267;&#x884C;&#x7684;&#x8D85;&#x65F6;
-request.setRefresh(true); //&#x8C03;&#x7528;&#x67E5;&#x8BE2;&#x5220;&#x9664;&#x540E;&#x5237;&#x65B0;&#x7D22;&#x5F15;
-request.setIndicesOptions(IndicesOptions.LENIENT_EXPAND_OPEN); //&#x8BBE;&#x7F6E;&#x7D22;&#x5F15;&#x9009;&#x9879;
-</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;DeleteByQueryRequest&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;DeleteByQueryResponse:</p>
+        new DeleteByQueryRequest(&quot;source1&quot;, &quot;source2&quot;); //在一组索引上创建DeleteByQueryRequest。
+</code></pre><p> 默认情况下，版本冲突会中止DeleteByQueryRequest进程，但您可以用以下方法对它们进行计数:</p>
+<pre><code>request.setConflicts(&quot;proceed&quot;); //设置版本冲突时继续
+</code></pre><p> 您可以通过添加查询来限制文档。</p>
+<pre><code>request.setQuery(new TermQueryBuilder(&quot;user&quot;, &quot;kimchy&quot;)); //仅复制字段用户设置为kimchy的文档
+</code></pre><p> 也可以通过设置大小来限制已处理文档的数量。</p>
+<pre><code>request.setSize(10); //只拷贝十个文档
+</code></pre><p> 默认情况下，DeleteByQueryRequest可以批量处理1000个文档。您可以使用setBatchSize更改批处理大小。</p>
+<pre><code>request.setBatchSize(100); //单批处理100份文件
+</code></pre><p> DeleteByQueryRequest也可以使用带有设置切片的切片滚动来并行化:</p>
+<pre><code>request.setSlices(2); //设置要使用的切片数量
+</code></pre><p> DeleteByQueryRequest使用Scroll参数来控制它将“搜索上下文”保持多长时间。</p>
+<pre><code>request.setScroll(TimeValue.timeValueMinutes(10)); //设置滚动时间
+</code></pre><p> 如果您提供了路由，则路由将被复制到滚动查询，从而将该过程限制在与该路由值匹配的碎片上。</p>
+<pre><code>request.setRouting(&quot;=cat&quot;); //设置路由
+</code></pre><p><strong>可选参数</strong></p>
+<p> 除了上述选项之外，还可以选择提供以下参数:</p>
+<pre><code>request.setTimeout(TimeValue.timeValueMinutes(2)); //等待按查询删除请求作为时间值执行的超时
+request.setRefresh(true); //调用查询删除后刷新索引
+request.setIndicesOptions(IndicesOptions.LENIENT_EXPAND_OPEN); //设置索引选项
+</code></pre><p><strong>同步执行</strong></p>
+<p> 当以下列方式执行DeleteByQueryRequest时，客户端会在继续执行代码之前等待返回DeleteByQueryResponse:</p>
 <pre><code>BulkByScrollResponse bulkResponse =
         client.deleteByQuery(request, RequestOptions.DEFAULT);
-</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
-<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseExceptio&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
-<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;DeleteByQueryRequest&#xFF0C;&#x4EE5;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5C06;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;&#x6309;&#x67E5;&#x8BE2;&#x5220;&#x9664;&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
-<pre><code>client.deleteByQueryAsync(request, RequestOptions.DEFAULT, listener); //&#x8981;&#x6267;&#x884C;&#x7684;DeleteByQueryRequest&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x4E00;&#x65E6;&#x5B8C;&#x6210;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
-<p> delete-by-query&#x7684;&#x5178;&#x578B;&#x4FA6;&#x542C;&#x5668;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+</code></pre><p> 同步调用可能会在高级REST客户端中解析REST响应失败、请求超时或类似服务器没有响应的情况下抛出IOException。</p>
+<p> 在服务器返回4xx或5xx错误代码的情况下，高级客户端会尝试解析响应主体错误详细信息，然后抛出一个通用的ElasticsearchException，并将原始ResponseExceptio作为抑制异常添加到其中。</p>
+<p><strong>异步执行</strong></p>
+<p> 也可以异步方式执行DeleteByQueryRequest，以便客户端可以直接返回。用户需要通过将请求和侦听器传递给异步按查询删除方法来指定如何处理响应或潜在故障:</p>
+<pre><code>client.deleteByQueryAsync(request, RequestOptions.DEFAULT, listener); //要执行的DeleteByQueryRequest和执行完成时要使用的操作侦听器
+</code></pre><p> 异步方法不会阻塞并立即返回。一旦完成，如果执行成功完成，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。失败场景和预期异常与同步执行情况相同。</p>
+<p> delete-by-query的典型侦听器如下所示:</p>
 <pre><code>listener = new ActionListener&lt;BulkByScrollResponse&gt;() {
     @Override
     public void onResponse(BulkByScrollResponse bulkResponse) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //成功的时候调用
     }
     @Override
     public void onFailure(Exception e) {
-        //&#x5931;&#x8D25;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //失败的时候调用
     }
 };
 </code></pre><p><strong>DeleteByQueryResponse</strong></p>
-<p> &#x8FD4;&#x56DE;&#x7684;DeleteByQueryResponse&#x5305;&#x542B;&#x6709;&#x5173;&#x5DF2;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5141;&#x8BB8;&#x8FED;&#x4EE3;&#x6BCF;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
-<pre><code>TimeValue timeTaken = bulkResponse.getTook(); //&#x83B7;&#x53D6;&#x603B;&#x65F6;&#x95F4;
-boolean timedOut = bulkResponse.isTimedOut(); //&#x68C0;&#x67E5;&#x8BF7;&#x6C42;&#x662F;&#x5426;&#x8D85;&#x65F6;
-long totalDocs = bulkResponse.getTotal(); //&#x83B7;&#x53D6;&#x5904;&#x7406;&#x7684;&#x6587;&#x6863;&#x603B;&#x6570;
-long deletedDocs = bulkResponse.getDeleted(); //&#x5DF2;&#x5220;&#x9664;&#x7684;&#x6587;&#x6863;&#x6570;
-long batches = bulkResponse.getBatches(); //&#x5DF2;&#x6267;&#x884C;&#x7684;&#x6279;&#x6B21;&#x6570;&#x91CF;
-long noops = bulkResponse.getNoops(); //&#x8DF3;&#x8FC7;&#x7684;&#x6587;&#x6863;&#x6570;
-long versionConflicts = bulkResponse.getVersionConflicts(); //&#x7248;&#x672C;&#x51B2;&#x7A81;&#x7684;&#x6570;&#x91CF;
-long bulkRetries = bulkResponse.getBulkRetries(); //&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x91CD;&#x8BD5;&#x6279;&#x91CF;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;&#x7684;&#x6B21;&#x6570;
-long searchRetries = bulkResponse.getSearchRetries(); //&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x91CD;&#x8BD5;&#x641C;&#x7D22;&#x64CD;&#x4F5C;&#x7684;&#x6B21;&#x6570;
-TimeValue throttledMillis = bulkResponse.getStatus().getThrottled(); //&#x5982;&#x679C;&#x5F53;&#x524D;&#x5904;&#x4E8E;&#x7761;&#x7720;&#x72B6;&#x6001;&#xFF0C;&#x6B64;&#x8BF7;&#x6C42;&#x9650;&#x5236;&#x81EA;&#x8EAB;&#x7684;&#x603B;&#x65F6;&#x95F4;&#x4E0D;&#x5305;&#x62EC;&#x5F53;&#x524D;&#x9650;&#x5236;&#x65F6;&#x95F4;
+<p> 返回的DeleteByQueryResponse包含有关已执行操作的信息，并允许迭代每个结果，如下所示:</p>
+<pre><code>TimeValue timeTaken = bulkResponse.getTook(); //获取总时间
+boolean timedOut = bulkResponse.isTimedOut(); //检查请求是否超时
+long totalDocs = bulkResponse.getTotal(); //获取处理的文档总数
+long deletedDocs = bulkResponse.getDeleted(); //已删除的文档数
+long batches = bulkResponse.getBatches(); //已执行的批次数量
+long noops = bulkResponse.getNoops(); //跳过的文档数
+long versionConflicts = bulkResponse.getVersionConflicts(); //版本冲突的数量
+long bulkRetries = bulkResponse.getBulkRetries(); //请求必须重试批量索引操作的次数
+long searchRetries = bulkResponse.getSearchRetries(); //请求必须重试搜索操作的次数
+TimeValue throttledMillis = bulkResponse.getStatus().getThrottled(); //如果当前处于睡眠状态，此请求限制自身的总时间不包括当前限制时间
 TimeValue throttledUntilMillis =
-        bulkResponse.getStatus().getThrottledUntil(); //&#x4EFB;&#x4F55;&#x5F53;&#x524D;&#x4F11;&#x7720;&#x7684;&#x5269;&#x4F59;&#x5EF6;&#x8FDF;&#xFF0C;&#x6216;&#x8005;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4F11;&#x7720;&#xFF0C;&#x5219;&#x4E3A;0
+        bulkResponse.getStatus().getThrottledUntil(); //任何当前休眠的剩余延迟，或者如果没有休眠，则为0
 List&lt;ScrollableHitSource.SearchFailure&gt; searchFailures =
-        bulkResponse.getSearchFailures(); //&#x641C;&#x7D22;&#x9636;&#x6BB5;&#x5931;&#x8D25;
+        bulkResponse.getSearchFailures(); //搜索阶段失败
 List&lt;BulkItemResponse.Failure&gt; bulkFailures =
-        bulkResponse.getBulkFailures(); //&#x6279;&#x91CF;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;&#x671F;&#x95F4;&#x5931;&#x8D25;
+        bulkResponse.getBulkFailures(); //批量索引操作期间失败
 </code></pre>
                                 
                                 </section>
@@ -718,7 +718,7 @@ List&lt;BulkItemResponse.Failure&gt; bulkFailures =
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Delete By Query API","level":"1.27","depth":1,"next":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"path":"java-rethrottle-api.md","ref":"java-rethrottle-api.md","articles":[]},"previous":{"title":"JAVA实例：Update By Query API","level":"1.26","depth":1,"path":"java-update-by-query-api.md","ref":"java-update-by-query-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-delete-by-query-api.md","mtime":"2021-03-09T02:03:50.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Delete By Query API","level":"1.27","depth":1,"next":{"title":"JAVA实例：Rethrottle API","level":"1.28","depth":1,"path":"java-rethrottle-api.md","ref":"java-rethrottle-api.md","articles":[]},"previous":{"title":"JAVA实例：Update By Query API","level":"1.26","depth":1,"path":"java-update-by-query-api.md","ref":"java-update-by-query-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-delete-by-query-api.md","mtime":"2021-03-09T02:03:50.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

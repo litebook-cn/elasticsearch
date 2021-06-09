@@ -97,7 +97,7 @@
     
         
         <li>
-            <a href="/" target="_blank" class="custom-link">ElasticSearch 7 教程</a>
+            <a href="http://litebook.cn/" target="_blank" class="custom-link">文档大全</a>
         </li>
     
     
@@ -115,7 +115,7 @@
                 <a href="./">
             
                     
-                    介绍
+                    ElasticSearch 7 教程
             
                 </a>
             
@@ -610,130 +610,130 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="java&#x5B9E;&#x4F8B;&#xFF1A;bulk-api"><a name="java&#x5B9E;&#x4F8B;&#xFF1A;bulk-api" class="plugin-anchor" href="#java&#x5B9E;&#x4F8B;&#xFF1A;bulk-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA&#x5B9E;&#x4F8B;&#xFF1A;Bulk API</h2>
+                                <h2 id="java实例：bulk-api"><a name="java实例：bulk-api" class="plugin-anchor" href="#java实例：bulk-api"><i class="fa fa-link" aria-hidden="true"></i></a>JAVA实例：Bulk API</h2>
 <hr>
-<p> Java&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x63D0;&#x4F9B;&#x5927;&#x5BB9;&#x91CF;&#x5904;&#x7406;&#x5668;&#x6765;&#x5E2E;&#x52A9;&#x5904;&#x7406;&#x5927;&#x5BB9;&#x91CF;&#x8BF7;&#x6C42;&#x3002;</p>
+<p> Java高级REST客户端提供大容量处理器来帮助处理大容量请求。</p>
 <p><strong>BulkRequest</strong></p>
-<p> BulkRequest&#x53EF;&#x7528;&#x4E8E;&#x4F7F;&#x7528;&#x5355;&#x4E2A;&#x8BF7;&#x6C42;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x3001;&#x66F4;&#x65B0;&#x548C;/&#x6216;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x3002;</p>
-<p> &#x5B83;&#x9700;&#x8981;&#x5C06;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6DFB;&#x52A0;&#x5230;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x4E2D;:</p>
-<pre><code>BulkRequest request = new BulkRequest(); //&#x521B;&#x5EFA;BulkRequest
+<p> BulkRequest可用于使用单个请求执行多个索引、更新和/或删除操作。</p>
+<p> 它需要将至少一个操作添加到批量请求中:</p>
+<pre><code>BulkRequest request = new BulkRequest(); //创建BulkRequest
 request.add(new IndexRequest(&quot;posts&quot;).id(&quot;1&quot;)  
-        .source(XContentType.JSON,&quot;field&quot;, &quot;foo&quot;));//&#x5C06;&#x7B2C;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x5230;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x4E2D;
+        .source(XContentType.JSON,&quot;field&quot;, &quot;foo&quot;));//将第一个索引请求添加到批量请求中
 request.add(new IndexRequest(&quot;posts&quot;).id(&quot;2&quot;)  
-        .source(XContentType.JSON,&quot;field&quot;, &quot;bar&quot;));//&#x6DFB;&#x52A0;&#x7B2C;&#x4E8C;&#x4E2A;&#x7D22;&#x5F15;&#x8BF7;&#x6C42;
+        .source(XContentType.JSON,&quot;field&quot;, &quot;bar&quot;));//添加第二个索引请求
 request.add(new IndexRequest(&quot;posts&quot;).id(&quot;3&quot;)  
-        .source(XContentType.JSON,&quot;field&quot;, &quot;baz&quot;));//&#x6DFB;&#x52A0;&#x7B2C;&#x4E09;&#x4E2A;&#x7D22;&#x5F15;&#x8BF7;&#x6C42;
-</code></pre><p>&#x8B66;&#x544A;</p>
-<p> Bulk API&#x53EA;&#x652F;&#x6301;JSON&#x6216;SMILE&#x4E2D;&#x7F16;&#x7801;&#x7684;&#x6587;&#x6863;&#x3002;&#x4EE5;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x683C;&#x5F0F;&#x63D0;&#x4F9B;&#x6587;&#x6863;&#x90FD;&#x5C06;&#x5BFC;&#x81F4;&#x9519;&#x8BEF;&#x3002;</p>
-<p> &#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x4E2D;:</p>
+        .source(XContentType.JSON,&quot;field&quot;, &quot;baz&quot;));//添加第三个索引请求
+</code></pre><p>警告</p>
+<p> Bulk API只支持JSON或SMILE中编码的文档。以任何其他格式提供文档都将导致错误。</p>
+<p> 不同的操作类型可以添加到同一个批量请求中:</p>
 <pre><code>BulkRequest request = new BulkRequest();
-request.add(new DeleteRequest(&quot;posts&quot;, &quot;3&quot;)); //&#x5411;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x5220;&#x9664;&#x8BF7;&#x6C42;
+request.add(new DeleteRequest(&quot;posts&quot;, &quot;3&quot;)); //向批量请求添加删除请求
 request.add(new UpdateRequest(&quot;posts&quot;, &quot;2&quot;) 
-        .doc(XContentType.JSON,&quot;other&quot;, &quot;test&quot;));//&#x5411;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x3002;
+        .doc(XContentType.JSON,&quot;other&quot;, &quot;test&quot;));//向批量请求添加更新请求。
 request.add(new IndexRequest(&quot;posts&quot;).id(&quot;4&quot;)  
-        .source(XContentType.JSON,&quot;field&quot;, &quot;baz&quot;));//&#x4F7F;&#x7528;SMILE&#x683C;&#x5F0F;&#x6DFB;&#x52A0;&#x7D22;&#x5F15;&#x8BF7;&#x6C42;
-</code></pre><p><strong>&#x53EF;&#x9009;&#x53C2;&#x6570;</strong></p>
-<pre><code>request.timeout(TimeValue.timeValueMinutes(2)); //&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;
-request.timeout(&quot;2m&quot;); //&#x8BBE;&#x7F6E;&#x8D85;&#x65F6;&#x65F6;&#x95F4;
-request.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL); //WriteRequest.RefreshPolicy&#x5B9E;&#x4F8B;&#x5F62;&#x5F0F;&#x8BBE;&#x7F6E;&#x5237;&#x65B0;&#x7B56;&#x7565;  
-request.setRefreshPolicy(&quot;wait_for&quot;); //&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x8BBE;&#x7F6E;&#x5237;&#x65B0;&#x7B56;&#x7565;                     
-request.waitForActiveShards(2); //&#x8BBE;&#x7F6E;&#x5728;&#x7EE7;&#x7EED;&#x7D22;&#x5F15;/&#x66F4;&#x65B0;/&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x6D3B;&#x52A8;&#x7684;&#x788E;&#x7247;&#x526F;&#x672C;&#x7684;&#x6570;&#x91CF;&#x3002;
-request.waitForActiveShards(ActiveShardCount.ALL); //&#x4F5C;&#x4E3A;&#x52A8;&#x6001;&#x786C;&#x88C5;&#x8F7D;&#x63D0;&#x4F9B;&#x7684;&#x788E;&#x7247;&#x526F;&#x672C;&#x6570;&#xFF0C;&#x53EF;&#x9009;&#xFF1A;ActiveShardCount.ALL, ActiveShardCount.ONE&#x6216; ActiveShardCount.DEFAULT
-request.pipeline(&quot;pipelineId&quot;); //&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B50;&#x8BF7;&#x6C42;&#x7684;&#x5168;&#x5C40;&#x7BA1;&#x9053;&#x6807;&#x8BC6;
-request.routing(&quot;routingId&quot;); //&#x7528;&#x4E8E;&#x5168;&#x5C40;&#x8DEF;&#x7531;&#x6240;&#x6709;&#x5B50;&#x8BF7;&#x6C42;
-BulkRequest defaulted = new BulkRequest(&quot;posts&quot;); //&#x5177;&#x6709;&#x5168;&#x5C40;&#x7D22;&#x5F15;&#x7684;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#xFF0C;&#x7528;&#x4E8E;&#x6240;&#x6709;&#x5B50;&#x8BF7;&#x6C42;&#xFF0C;&#x9664;&#x975E;&#x5728;&#x5B50;&#x8BF7;&#x6C42;&#x4E0A;&#x88AB;&#x91CD;&#x5199;&#x3002;&#x6B64;&#x53C2;&#x6570;&#x4E3A;@Nullable&#xFF0C;&#x53EA;&#x80FD;&#x5728;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x521B;&#x5EFA;&#x671F;&#x95F4;&#x8BBE;&#x7F6E;&#x3002;
-</code></pre><p><strong>&#x540C;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x5F53;&#x4EE5;&#x4E0B;&#x5217;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x7B49;&#x5F85;&#x8FD4;&#x56DE;&#x6279;&#x91CF;&#x54CD;&#x5E94;:</p>
+        .source(XContentType.JSON,&quot;field&quot;, &quot;baz&quot;));//使用SMILE格式添加索引请求
+</code></pre><p><strong>可选参数</strong></p>
+<pre><code>request.timeout(TimeValue.timeValueMinutes(2)); //设置超时时间
+request.timeout(&quot;2m&quot;); //设置超时时间
+request.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL); //WriteRequest.RefreshPolicy实例形式设置刷新策略  
+request.setRefreshPolicy(&quot;wait_for&quot;); //字符串形式设置刷新策略                     
+request.waitForActiveShards(2); //设置在继续索引/更新/删除操作之前必须活动的碎片副本的数量。
+request.waitForActiveShards(ActiveShardCount.ALL); //作为动态硬装载提供的碎片副本数，可选：ActiveShardCount.ALL, ActiveShardCount.ONE或 ActiveShardCount.DEFAULT
+request.pipeline(&quot;pipelineId&quot;); //用于所有子请求的全局管道标识
+request.routing(&quot;routingId&quot;); //用于全局路由所有子请求
+BulkRequest defaulted = new BulkRequest(&quot;posts&quot;); //具有全局索引的批量请求，用于所有子请求，除非在子请求上被重写。此参数为@Nullable，只能在批量请求创建期间设置。
+</code></pre><p><strong>同步执行</strong></p>
+<p> 当以下列方式执行批量请求时，客户端在继续执行代码之前，会等待返回批量响应:</p>
 <pre><code>BulkResponse bulkResponse = client.bulk(request, RequestOptions.DEFAULT);
-</code></pre><p> &#x540C;&#x6B65;&#x8C03;&#x7528;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x9AD8;&#x7EA7;REST&#x5BA2;&#x6237;&#x7AEF;&#x4E2D;&#x89E3;&#x6790;REST&#x54CD;&#x5E94;&#x5931;&#x8D25;&#x3001;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#x6216;&#x7C7B;&#x4F3C;&#x670D;&#x52A1;&#x5668;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x629B;&#x51FA;IOException&#x3002;</p>
-<p> &#x5728;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;4xx&#x6216;5xx&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9AD8;&#x7EA7;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5C1D;&#x8BD5;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x4E3B;&#x4F53;&#x9519;&#x8BEF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x629B;&#x51FA;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;ElasticsearchException&#xFF0C;&#x5E76;&#x5C06;&#x539F;&#x59CB;ResponseException&#x4F5C;&#x4E3A;&#x6291;&#x5236;&#x5F02;&#x5E38;&#x6DFB;&#x52A0;&#x5230;&#x5176;&#x4E2D;&#x3002;</p>
-<p><strong>&#x5F02;&#x6B65;&#x6267;&#x884C;</strong></p>
-<p> &#x4E5F;&#x53EF;&#x4EE5;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x6267;&#x884C;BulkRequest&#xFF0C;&#x8FD9;&#x6837;&#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x7528;&#x6237;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5C06;&#x8BF7;&#x6C42;&#x548C;&#x4FA6;&#x542C;&#x5668;&#x4F20;&#x9012;&#x7ED9;&#x5F02;&#x6B65;&#x5927;&#x5BB9;&#x91CF;&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5904;&#x7406;&#x54CD;&#x5E94;&#x6216;&#x6F5C;&#x5728;&#x6545;&#x969C;:</p>
-<pre><code>client.bulkAsync(request, RequestOptions.DEFAULT, listener); //&#x8981;&#x6267;&#x884C;&#x7684;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x548C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x65F6;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;
-</code></pre><p> &#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x5E76;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x3002;&#x5982;&#x679C;&#x6267;&#x884C;&#x6210;&#x529F;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onResponse&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x6267;&#x884C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x4F7F;&#x7528;onFailure&#x65B9;&#x6CD5;&#x56DE;&#x8C03;&#x64CD;&#x4F5C;&#x4FA6;&#x542C;&#x5668;&#x3002;&#x5931;&#x8D25;&#x573A;&#x666F;&#x548C;&#x9884;&#x671F;&#x5F02;&#x5E38;&#x4E0E;&#x540C;&#x6B65;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x76F8;&#x540C;&#x3002;</p>
-<p> &#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x6279;&#x91CF;&#x76D1;&#x542C;&#x7A0B;&#x5E8F;&#x5982;&#x4E0B;:</p>
+</code></pre><p> 同步调用可能会在高级REST客户端中解析REST响应失败、请求超时或类似服务器没有响应的情况下抛出IOException。</p>
+<p> 在服务器返回4xx或5xx错误代码的情况下，高级客户端会尝试解析响应主体错误详细信息，然后抛出一个通用的ElasticsearchException，并将原始ResponseException作为抑制异常添加到其中。</p>
+<p><strong>异步执行</strong></p>
+<p> 也可以异步方式执行BulkRequest，这样客户端就可以直接返回。用户需要通过将请求和侦听器传递给异步大容量方法来指定如何处理响应或潜在故障:</p>
+<pre><code>client.bulkAsync(request, RequestOptions.DEFAULT, listener); //要执行的批量请求和执行完成时要使用的操作侦听器
+</code></pre><p> 异步方法不会阻塞并立即返回。如果执行成功，则使用onResponse方法回调操作侦听器，如果执行失败，则使用onFailure方法回调操作侦听器。失败场景和预期异常与同步执行情况相同。</p>
+<p> 一个典型的批量监听程序如下:</p>
 <pre><code>ActionListener&lt;BulkResponse&gt; listener = new ActionListener&lt;BulkResponse&gt;() {
     @Override
     public void onResponse(BulkResponse bulkResponse) {
-        //&#x6210;&#x529F;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //成功的时候调用
     }
 
     @Override
     public void onFailure(Exception e) {
-        //&#x51FA;&#x9519;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;
+        //出错的时候调用
     }
 };
 </code></pre><p><strong>BulkResponse</strong></p>
-<p> &#x8FD4;&#x56DE;&#x7684;BulkResponse&#x5305;&#x542B;&#x6709;&#x5173;&#x5DF2;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5141;&#x8BB8;&#x8FED;&#x4EE3;&#x6BCF;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;: </p>
-<pre><code>for (BulkItemResponse bulkItemResponse : bulkResponse) { //&#x8FED;&#x4EE3;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7684;&#x7ED3;&#x679C;
-    DocWriteResponse itemResponse = bulkItemResponse.getResponse(); //&#x68C0;&#x7D22;&#x64CD;&#x4F5C;&#x7684;&#x54CD;&#x5E94;(&#x6210;&#x529F;&#x4E0E;&#x5426;)&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x7D22;&#x5F15;&#x54CD;&#x5E94;&#x3001;&#x66F4;&#x65B0;&#x54CD;&#x5E94;&#x6216;&#x5220;&#x9664;&#x54CD;&#x5E94;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x88AB;&#x89C6;&#x4E3A;DocWriteResponse&#x5B9E;&#x4F8B;
+<p> 返回的BulkResponse包含有关已执行操作的信息，并允许迭代每个结果，如下所示: </p>
+<pre><code>for (BulkItemResponse bulkItemResponse : bulkResponse) { //迭代所有操作的结果
+    DocWriteResponse itemResponse = bulkItemResponse.getResponse(); //检索操作的响应(成功与否)，可以是索引响应、更新响应或删除响应，它们都可以被视为DocWriteResponse实例
 
     switch (bulkItemResponse.getOpType()) {
-    case INDEX:    //&#x5904;&#x7406;&#x7D22;&#x5F15;&#x64CD;&#x4F5C;&#x7684;&#x54CD;&#x5E94;
+    case INDEX:    //处理索引操作的响应
     case CREATE:
         IndexResponse indexResponse = (IndexResponse) itemResponse;
         break;
-    case UPDATE:   //&#x5904;&#x7406;&#x66F4;&#x65B0;&#x64CD;&#x4F5C;&#x7684;&#x54CD;&#x5E94;
+    case UPDATE:   //处理更新操作的响应
         UpdateResponse updateResponse = (UpdateResponse) itemResponse;
         break;
-    case DELETE:   //&#x5904;&#x7406;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x7684;&#x54CD;&#x5E94;
+    case DELETE:   //处理删除操作的响应
         DeleteResponse deleteResponse = (DeleteResponse) itemResponse;
     }
 }
-</code></pre><p> &#x6279;&#x91CF;&#x54CD;&#x5E94;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5FEB;&#x901F;&#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x5931;&#x8D25;&#x7684;&#x65B9;&#x6CD5;:</p>
-<pre><code>if (bulkResponse.hasFailures()) { // &#x5982;&#x679C;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;true
+</code></pre><p> 批量响应提供了一种快速检查一个或多个操作是否失败的方法:</p>
+<pre><code>if (bulkResponse.hasFailures()) { // 如果至少有一个操作失败，此方法返回true
 
 }
-</code></pre><p> &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x8FED;&#x4EE3;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#x7ED3;&#x679C;&#xFF0C;&#x4EE5;&#x68C0;&#x67E5;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x5931;&#x8D25;&#xFF0C;&#x5982;&#x679C;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x68C0;&#x7D22;&#x76F8;&#x5E94;&#x7684;&#x5931;&#x8D25;:</p>
+</code></pre><p> 在这种情况下，有必要迭代所有操作结果，以检查操作是否失败，如果失败，则检索相应的失败:</p>
 <pre><code>for (BulkItemResponse bulkItemResponse : bulkResponse) {
-    if (bulkItemResponse.isFailed()) { //&#x6307;&#x793A;&#x7ED9;&#x5B9A;&#x64CD;&#x4F5C;&#x662F;&#x5426;&#x5931;&#x8D25;
+    if (bulkItemResponse.isFailed()) { //指示给定操作是否失败
         BulkItemResponse.Failure failure =
-                bulkItemResponse.getFailure(); //&#x68C0;&#x7D22;&#x5931;&#x8D25;&#x64CD;&#x4F5C;&#x7684;&#x5931;&#x8D25;
+                bulkItemResponse.getFailure(); //检索失败操作的失败
     }
 }
-</code></pre><p><strong>&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;</strong></p>
-<p> &#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5B9E;&#x7528;&#x7A0B;&#x5E8F;&#x7C7B;&#x7B80;&#x5316;&#x4E86;Bulk API&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x8BE5;&#x7C7B;&#x5141;&#x8BB8;&#x7D22;&#x5F15;/&#x66F4;&#x65B0;/&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x5728;&#x6DFB;&#x52A0;&#x5230;&#x5904;&#x7406;&#x5668;&#x65F6;&#x900F;&#x660E;&#x5730;&#x6267;&#x884C;&#x3002;</p>
-<p> &#x4E3A;&#x4E86;&#x6267;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;&#x9700;&#x8981;&#x4EE5;&#x4E0B;&#x7EC4;&#x4EF6;:</p>
+</code></pre><p><strong>批量处理器</strong></p>
+<p> 批量处理器通过提供一个实用程序类简化了Bulk API的使用，该类允许索引/更新/删除操作在添加到处理器时透明地执行。</p>
+<p> 为了执行请求，批量处理器需要以下组件:</p>
 <pre><code>RestHighLevelClient
-</code></pre><p>&#x8BE5;&#x5BA2;&#x6237;&#x7AEF;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5E76;&#x68C0;&#x7D22;BulkResponse</p>
+</code></pre><p>该客户端用于执行批量请求并检索BulkResponse</p>
 <pre><code>BulkProcessor.Listener
-</code></pre><p> &#x6BCF;&#x6B21;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x6267;&#x884C;&#x524D;&#x540E;&#x6216;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x4FA6;&#x542C;&#x5668;</p>
-<p> &#x90A3;&#x4E48;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;. builder&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;:</p>
-<pre><code>BulkProcessor.Listener listener = new BulkProcessor.Listener() { //&#x521B;&#x5EFA;BulkProcessor.Listener
+</code></pre><p> 每次批量请求执行前后或批量请求失败时，都会调用该侦听器</p>
+<p> 那么批量处理器. builder方法可以用来构建一个新的批量处理器:</p>
+<pre><code>BulkProcessor.Listener listener = new BulkProcessor.Listener() { //创建BulkProcessor.Listener
     @Override
     public void beforeBulk(long executionId, BulkRequest request) {
-        //&#x6BCF;&#x6B21;&#x6267;&#x884C;BulkRequest&#x4E4B;&#x524D;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;
+        //每次执行BulkRequest之前都会调用此方法
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request,
             BulkResponse response) {
-        //&#x6BCF;&#x6B21;&#x6267;&#x884C;BulkRequest&#x540E;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;
+        //每次执行BulkRequest后都会调用此方法
     }
 
     @Override
     public void afterBulk(long executionId, BulkRequest request,
             Throwable failure) {
-        //&#x5F53;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5931;&#x8D25;&#x65F6;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;
+        //当批量请求失败时调用此方法
     }
 };
-</code></pre><p> BulkProcessor.Builder &#x63D0;&#x4F9B;&#x4E86;&#x914D;&#x7F6E;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;&#x5982;&#x4F55;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;:</p>
+</code></pre><p> BulkProcessor.Builder 提供了配置批量处理器如何处理请求执行的方法:</p>
 <pre><code>BulkProcessor bulkProcessor = BulkProcessor.builder(
         (request, bulkListener) -&gt;
             client.bulkAsync(request, RequestOptions.DEFAULT, bulkListener),
-        listener).build(); //&#x901A;&#x8FC7;&#x4ECE;BulkProcessor.Builder&#x8C03;&#x7528;build()&#x65B9;&#x6CD5;&#x6765;&#x521B;&#x5EFA;BulkProcessor&#x3002;resthighleveloclient . BulkAsync()&#x65B9;&#x6CD5;&#x5C06;&#x7528;&#x4E8E;&#x5728;&#x673A;&#x7F69;&#x4E0B;&#x6267;&#x884C;BulkRequest&#x3002;
-  BulkProcessor.Builder &#x4F9B;&#x4E86;&#x914D;&#x7F6E;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;&#x5982;&#x4F55;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x6267;&#x884C;&#x7684;&#x65B9;&#x6CD5;:
+        listener).build(); //通过从BulkProcessor.Builder调用build()方法来创建BulkProcessor。resthighleveloclient . BulkAsync()方法将用于在机罩下执行BulkRequest。
+  BulkProcessor.Builder 供了配置批量处理器如何处理请求执行的方法:
 BulkProcessor.Builder builder = BulkProcessor.builder(
         (request, bulkListener) -&gt;
             client.bulkAsync(request, RequestOptions.DEFAULT, bulkListener),
         listener);
-builder.setBulkActions(500); //&#x6839;&#x636E;&#x5F53;&#x524D;&#x6DFB;&#x52A0;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x8BBE;&#x7F6E;&#x5237;&#x65B0;&#x65B0;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x95F4;(&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;1000&#xFF0C;-1&#x7981;&#x7528;)
-builder.setBulkSize(new ByteSizeValue(1L, ByteSizeUnit.MB)); //&#x6839;&#x636E;&#x5F53;&#x524D;&#x6DFB;&#x52A0;&#x7684;&#x64CD;&#x4F5C;&#x5927;&#x5C0F;&#x8BBE;&#x7F6E;&#x5237;&#x65B0;&#x65B0;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x95F4;(&#x9ED8;&#x8BA4;&#x4E3A;5Mb&#xFF0C;-1&#x7981;&#x7528;)
-builder.setConcurrentRequests(0); //&#x8BBE;&#x7F6E;&#x5141;&#x8BB8;&#x6267;&#x884C;&#x7684;&#x5E76;&#x53D1;&#x8BF7;&#x6C42;&#x6570;(&#x9ED8;&#x8BA4;&#x4E3A;1&#xFF0C;0&#x4EC5;&#x5141;&#x8BB8;&#x6267;&#x884C;&#x5355;&#x4E2A;&#x8BF7;&#x6C42;)
-builder.setFlushInterval(TimeValue.timeValueSeconds(10L)); //&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5237;&#x65B0;&#x95F4;&#x9694;&#xFF0C;&#x5982;&#x679C;&#x95F4;&#x9694;&#x8FC7;&#x53BB;&#xFF0C;&#x5237;&#x65B0;&#x4EFB;&#x4F55;&#x5F85;&#x5904;&#x7406;&#x7684;&#x6279;&#x91CF;&#x8BF7;&#x6C42;(&#x9ED8;&#x8BA4;&#x4E3A;&#x672A;&#x8BBE;&#x7F6E;)
+builder.setBulkActions(500); //根据当前添加的操作数设置刷新新批量请求的时间(默认值为1000，-1禁用)
+builder.setBulkSize(new ByteSizeValue(1L, ByteSizeUnit.MB)); //根据当前添加的操作大小设置刷新新批量请求的时间(默认为5Mb，-1禁用)
+builder.setConcurrentRequests(0); //设置允许执行的并发请求数(默认为1，0仅允许执行单个请求)
+builder.setFlushInterval(TimeValue.timeValueSeconds(10L)); //设置一个刷新间隔，如果间隔过去，刷新任何待处理的批量请求(默认为未设置)
 builder.setBackoffPolicy(BackoffPolicy
-        .constantBackoff(TimeValue.timeValueSeconds(1L), 3)); //&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6052;&#x5B9A;&#x7684;&#x540E;&#x9000;&#x7B56;&#x7565;&#xFF0C;&#x6700;&#x521D;&#x7B49;&#x5F85;1&#x79D2;&#x949F;&#xFF0C;&#x6700;&#x591A;&#x91CD;&#x8BD5;3&#x6B21;&#x3002;&#x6709;&#x5173;&#x66F4;&#x591A;&#x9009;&#x9879;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;BackoffPolicy.noBackoff(), BackoffPolicy.constantBackoff()&#x548C;BackoffPolicy.exponentialBackoff(). 
-  &#x4E00;&#x65E6;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x53EF;&#x4EE5;&#x5411;&#x5B83;&#x6DFB;&#x52A0;&#x8BF7;&#x6C42;:
+        .constantBackoff(TimeValue.timeValueSeconds(1L), 3)); //设置一个恒定的后退策略，最初等待1秒钟，最多重试3次。有关更多选项，请参见BackoffPolicy.noBackoff(), BackoffPolicy.constantBackoff()和BackoffPolicy.exponentialBackoff(). 
+  一旦批量处理器被创建，可以向它添加请求:
 IndexRequest one = new IndexRequest(&quot;posts&quot;).id(&quot;1&quot;)
         .source(XContentType.JSON, &quot;title&quot;,
                 &quot;In which order are my Elasticsearch queries executed?&quot;);
@@ -746,12 +746,12 @@ IndexRequest three = new IndexRequest(&quot;posts&quot;).id(&quot;3&quot;)
 bulkProcessor.add(one);
 bulkProcessor.add(two);
 bulkProcessor.add(three);
-</code></pre><p> &#x8BF7;&#x6C42;&#x5C06;&#x7531;BulkProcessor&#x6267;&#x884C;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x4E3A;&#x6BCF;&#x4E2A;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x8C03;&#x7528;BulkProcessor.Listener&#x3002;</p>
-<p> &#x4FA6;&#x542C;&#x5668;&#x63D0;&#x4F9B;&#x8BBF;&#x95EE;BulkRequest&#x548C;BulkResponse&#x7684;&#x65B9;&#x6CD5;:</p>
+</code></pre><p> 请求将由BulkProcessor执行，它负责为每个批量请求调用BulkProcessor.Listener。</p>
+<p> 侦听器提供访问BulkRequest和BulkResponse的方法:</p>
 <pre><code>BulkProcessor.Listener listener = new BulkProcessor.Listener() {
     @Override
     public void beforeBulk(long executionId, BulkRequest request) {
-        int numberOfActions = request.numberOfActions(); //&#x5728;&#x6BCF;&#x6B21;&#x6267;&#x884C;BulkRequest&#x4E4B;&#x524D;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x77E5;&#x9053;&#x5728;BulkRequest&#x4E2D;&#x5C06;&#x8981;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x91CF;
+        int numberOfActions = request.numberOfActions(); //在每次执行BulkRequest之前调用，这个方法允许知道在BulkRequest中将要执行的操作的数量
         logger.debug(&quot;Executing bulk [{}] with {} requests&quot;,
                 executionId, numberOfActions);
     }
@@ -759,7 +759,7 @@ bulkProcessor.add(three);
     @Override
     public void afterBulk(long executionId, BulkRequest request,
             BulkResponse response) {
-        if (response.hasFailures()) { //&#x5728;&#x6BCF;&#x6B21;&#x6267;&#x884C;BulkRequest&#x540E;&#x8C03;&#x7528;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x77E5;&#x9053;BulkResponse&#x662F;&#x5426;&#x5305;&#x542B;&#x9519;&#x8BEF;
+        if (response.hasFailures()) { //在每次执行BulkRequest后调用，该方法允许知道BulkResponse是否包含错误
             logger.warn(&quot;Bulk [{}] executed with failures&quot;, executionId);
         } else {
             logger.debug(&quot;Bulk [{}] completed in {} milliseconds&quot;,
@@ -770,15 +770,15 @@ bulkProcessor.add(three);
     @Override
     public void afterBulk(long executionId, BulkRequest request,
             Throwable failure) {
-        logger.error(&quot;Failed to execute bulk&quot;, failure); //&#x5982;&#x679C;BulkRequest&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5141;&#x8BB8;&#x77E5;&#x9053;&#x5931;&#x8D25;
+        logger.error(&quot;Failed to execute bulk&quot;, failure); //如果BulkRequest失败，则调用该方法，该方法允许知道失败
     }
 };
-</code></pre><p> &#x4E00;&#x65E6;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x90FD;&#x6DFB;&#x52A0;&#x5230;BulkProcessor&#x4E2D;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4E24;&#x79CD;&#x53EF;&#x7528;&#x7684;&#x5173;&#x95ED;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#x6765;&#x5173;&#x95ED;&#x5B83;&#x7684;&#x5B9E;&#x4F8B;&#x3002;</p>
-<p> awaitClose()&#x65B9;&#x6CD5;&#x53EF;&#x7528;&#x4E8E;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230;&#x5904;&#x7406;&#x5B8C;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x6216;&#x7ECF;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x7B49;&#x5F85;&#x65F6;&#x95F4;:</p>
-<pre><code>boolean terminated = bulkProcessor.awaitClose(30L, TimeUnit.SECONDS); //&#x5982;&#x679C;&#x6240;&#x6709;&#x5927;&#x5BB9;&#x91CF;&#x8BF7;&#x6C42;&#x90FD;&#x5DF2;&#x5B8C;&#x6210;&#xFF0C;&#x5219;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;true&#x5982;&#x679C;&#x5728;&#x6240;&#x6709;&#x5927;&#x5BB9;&#x91CF;&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x5DF2;&#x8FC7;&#xFF0C;&#x5219;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;false
-</code></pre><p> close()&#x65B9;&#x6CD5;&#x53EF;&#x7528;&#x4E8E;&#x7ACB;&#x5373;&#x5173;&#x95ED;&#x6279;&#x91CF;&#x5904;&#x7406;&#x5668;:</p>
+</code></pre><p> 一旦所有请求都添加到BulkProcessor中，就需要使用两种可用的关闭方法之一来关闭它的实例。</p>
+<p> awaitClose()方法可用于等待，直到处理完所有请求或经过指定的等待时间:</p>
+<pre><code>boolean terminated = bulkProcessor.awaitClose(30L, TimeUnit.SECONDS); //如果所有大容量请求都已完成，则该方法返回true如果在所有大容量请求完成之前等待时间已过，则该方法返回false
+</code></pre><p> close()方法可用于立即关闭批量处理器:</p>
 <pre><code>bulkProcessor.close();
-</code></pre><p> &#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#x90FD;&#x4F1A;&#x5728;&#x5173;&#x95ED;&#x5904;&#x7406;&#x5668;&#x4E4B;&#x524D;&#x5237;&#x65B0;&#x6DFB;&#x52A0;&#x5230;&#x5904;&#x7406;&#x5668;&#x4E2D;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x7981;&#x6B62;&#x5411;&#x5176;&#x4E2D;&#x6DFB;&#x52A0;&#x4EFB;&#x4F55;&#x65B0;&#x8BF7;&#x6C42;&#x3002;</p>
+</code></pre><p> 这两种方法都会在关闭处理器之前刷新添加到处理器中的请求，并且禁止向其中添加任何新请求。</p>
 
                                 
                                 </section>
@@ -822,7 +822,7 @@ bulkProcessor.add(three);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"next":{"title":"JAVA实例：Multi-Get API","level":"1.24","depth":1,"path":"java-multiget-api.md","ref":"java-multiget-api.md","articles":[]},"previous":{"title":"JAVA实例：术语向量(Term Vectors)API","level":"1.22","depth":1,"path":"java-term-vectors-api.md","ref":"java-term-vectors-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"ElasticSearch 7 教程":"/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-bulk-api.md","mtime":"2021-03-09T02:00:01.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-10T11:33:48.132Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"JAVA实例：Bulk API","level":"1.23","depth":1,"next":{"title":"JAVA实例：Multi-Get API","level":"1.24","depth":1,"path":"java-multiget-api.md","ref":"java-multiget-api.md","articles":[]},"previous":{"title":"JAVA实例：术语向量(Term Vectors)API","level":"1.22","depth":1,"path":"java-term-vectors-api.md","ref":"java-term-vectors-api.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-search","-livereload","search-pro","splitter","expandable-chapters-small","anchors","sharing-plus","baidu-nfer","sitemap3","back-to-top-button","code"],"root":"docs","styles":{"website":"styles/website.css"},"pluginsConfig":{"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"baidu-nfer":{"token":"ac84ff22d92f93dc6bd83aa7a6745813"},"expandable-chapters-small":{},"sharing":{"qq":false,"all":["google","facebook","weibo","twitter","qq","qzone","linkedin","pocket"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"sitemap3":{"hostname":"http://elasticsearch.litebook.cn"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ElasticSearch 7 教程","language":"zh-hans","links":{"sidebar":{"文档大全":"http://litebook.cn/"}},"gitbook":"*","description":"Elasticsearch是一个开源的分布式实时全文搜索和分析引擎。它用于单页应用程序项目。Elasticsearch是用Java开发的开源软件，被世界上许多大组织和公司使用。它是根据Apache许可证2.0版获得许可的。在这个简短的教程中，我们将解释Elasticsearch的基础及其特性。"},"file":{"path":"java-bulk-api.md","mtime":"2021-03-09T02:00:01.127Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-09T00:42:30.069Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
